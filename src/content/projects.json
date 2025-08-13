@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "אתר מסעדה פרימיום",
+    "slug": "premium-restaurant",
+    "client": "מסעדת השף",
+    "category": "מסעדות",
+    "tags": ["React", "Next.js", "Framer Motion", "WebGL"],
+    "summary": "אתר מסעדה פרימיום עם אנימציות מתקדמות ומערכת הזמנות חכמה",
+    "description": "בנינו אתר מסעדה מרהיב עם אנימציות גלילה מתקדמות, תפריט אינטראקטיבי, ומערכת הזמנות מקוונת. האתר כולל גלריית תמונות דינמית ואפקטים ויזואליים מרשימים.",
+    "problem": "המסעדה נזקקה לאתר מודרני שימשוך לקוחות ויאפשר הזמנות מקוונות",
+    "solution": "יצרנו אתר פרימיום עם אנימציות מתקדמות ומערכת הזמנות חכמה",
+    "results": {
+      "conversions": "+150%",
+      "orders": "+200%",
+      "engagement": "+180%"
+    },
+    "images": [
+      "/projects/restaurant-1.jpg",
+      "/projects/restaurant-2.jpg",
+      "/projects/restaurant-3.jpg"
+    ],
+    "technologies": ["Next.js", "TypeScript", "Framer Motion", "Three.js", "Tailwind CSS"],
+    "duration": "6 שבועות",
+    "budget": "15,000 ₪"
+  },
+  {
+    "id": 2,
+    "title": "פלטפורמת קורסים דיגיטליים",
+    "slug": "digital-courses-platform",
+    "client": "אקדמיה דיגיטלית",
+    "category": "חינוך",
+    "tags": ["React", "Node.js", "MongoDB", "Stripe"],
+    "summary": "פלטפורמה מתקדמת למכירת קורסים דיגיטליים עם מערכת תשלומים",
+    "description": "פיתחנו פלטפורמה מלאה למכירת קורסים דיגיטליים הכוללת מערכת משתמשים, תשלומים, וידאו סטרימינג, ומעקב התקדמות.",
+    "problem": "החברה נזקקה לפלטפורמה שתאפשר מכירת קורסים דיגיטליים",
+    "solution": "בנינו פלטפורמה מלאה עם מערכת תשלומים ומעקב התקדמות",
+    "results": {
+      "sales": "+300%",
+      "users": "+250%",
+      "retention": "+120%"
+    },
+    "images": [
+      "/projects/courses-1.jpg",
+      "/projects/courses-2.jpg",
+      "/projects/courses-3.jpg"
+    ],
+    "technologies": ["Next.js", "Node.js", "MongoDB", "Stripe", "AWS"],
+    "duration": "8 שבועות",
+    "budget": "25,000 ₪"
+  },
+  {
+    "id": 3,
+    "title": "אתר סטודיו עיצוב",
+    "slug": "design-studio",
+    "client": "סטודיו ויזואל",
+    "category": "עיצוב",
+    "tags": ["React", "GSAP", "WebGL", "Three.js"],
+    "summary": "אתר סטודיו עיצוב עם אנימציות WebGL מתקדמות",
+    "description": "יצרנו אתר סטודיו עיצוב עם אנימציות WebGL מרשימות, גלריית עבודות אינטראקטיבית, ואפקטים ויזואליים מתקדמים.",
+    "problem": "הסטודיו רצה אתר שישקף את היצירתיות והחדשנות שלהם",
+    "solution": "בנינו אתר עם אנימציות WebGL מתקדמות ואפקטים ויזואליים",
+    "results": {
+      "inquiries": "+180%",
+      "portfolio_views": "+220%",
+      "brand_recognition": "+150%"
+    },
+    "images": [
+      "/projects/studio-1.jpg",
+      "/projects/studio-2.jpg",
+      "/projects/studio-3.jpg"
+    ],
+    "technologies": ["React", "Three.js", "GSAP", "WebGL", "Tailwind CSS"],
+    "duration": "7 שבועות",
+    "budget": "20,000 ₪"
+  },
+  {
+    "id": 4,
+    "title": "אפליקציית סטארט-אפ",
+    "slug": "startup-app",
+    "client": "טכנולוגיה חדשה",
+    "category": "טכנולוגיה",
+    "tags": ["React Native", "Firebase", "Redux", "TypeScript"],
+    "summary": "אפליקציה לסטארט-אפ עם מערכת משתמשים מתקדמת",
+    "description": "פיתחנו אפליקציה מלאה לסטארט-אפ כולל מערכת משתמשים, התראות, וממשק משתמש מתקדם.",
+    "problem": "הסטארט-אפ נזקק לאפליקציה שתאפשר למשתמשים לתקשר ולשתף",
+    "solution": "בנינו אפליקציה מלאה עם מערכת משתמשים מתקדמת",
+    "results": {
+      "downloads": "+500%",
+      "active_users": "+300%",
+      "engagement": "+200%"
+    },
+    "images": [
+      "/projects/app-1.jpg",
+      "/projects/app-2.jpg",
+      "/projects/app-3.jpg"
+    ],
+    "technologies": ["React Native", "Firebase", "Redux", "TypeScript", "Expo"],
+    "duration": "10 שבועות",
+    "budget": "35,000 ₪"
+  }
+] 
