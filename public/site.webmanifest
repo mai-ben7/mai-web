@@ -1,0 +1,102 @@
+{
+  "name": "Mai Web - אתרים חיים שמזיזים אנשים",
+  "short_name": "Mai Web",
+  "description": "בונים אתרים מרהיבים עם אנימציות חכמות שמבליטות את העסק שלך וממירות מבקרים ללקוחות",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F0E12",
+  "theme_color": "#008CFF",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "he",
+  "dir": "rtl",
+  "categories": ["business", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/images/logo-only.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo-only.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "שירותים",
+      "short_name": "שירותים",
+      "description": "צפה בחבילות השירות שלנו",
+      "url": "/services",
+      "icons": [
+        {
+          "src": "/images/logo-only.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "פורטפוליו",
+      "short_name": "פורטפוליו",
+      "description": "צפה בפרויקטים שלנו",
+      "url": "/portfolio",
+      "icons": [
+        {
+          "src": "/images/logo-only.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "צור קשר",
+      "short_name": "צור קשר",
+      "description": "צור קשר עם Mai Web",
+      "url": "/contact",
+      "icons": [
+        {
+          "src": "/images/logo-only.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "דף הבית - גרסת דסקטופ"
+    },
+    {
+      "src": "/screenshots/mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "דף הבית - גרסת מובייל"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred",
+  "protocol_handlers": [
+    {
+      "protocol": "web+mailto",
+      "url": "/contact?email=%s"
+    }
+  ]
+} 
