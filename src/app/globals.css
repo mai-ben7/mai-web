@@ -4,6 +4,56 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom energy particle animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(96, 165, 250, 1);
+  }
+}
+
+@keyframes trail {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}
+
+.energy-orb {
+  animation: float 4s ease-in-out infinite, glow 3s ease-in-out infinite;
+}
+
+.energy-trail {
+  animation: trail 6s ease-in-out infinite;
+}
+
 /* Testimonials Section Animations */
 @keyframes a-rays-move {
   0% {
