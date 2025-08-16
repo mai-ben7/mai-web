@@ -1,0 +1,7 @@
+next.config.js
+package-lock.json
+src/app/globals.css
+src/app/layout.tsx
+src/components/3DGlobe.tsx
+src/components/HeroParticles.tsx
+src/components/HomePageClient.tsx
