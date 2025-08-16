@@ -5,31 +5,10 @@ import { useState, useRef, useMemo, useEffect, Suspense } from 'react'
 import { FloatingModal } from './FloatingModal'
 import { Play, ArrowRight, Sparkles } from 'lucide-react'
 import { AnimatedButton } from './AnimatedButton'
-
-// Function to get ThreeScene only on client side
-const getThreeScene = () => {
-  if (typeof window !== 'undefined') {
-    try {
-      return require('./ThreeScene').default
-    } catch (error) {
-      console.warn('ThreeScene failed to load:', error)
-      return null
-    }
-  }
-  return null
-}
+import { Advanced3DParticles } from './Advanced3DParticles'
 
 export function AnimatedHero() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
-  const [isClient, setIsClient] = useState(false)
-  const [ThreeScene, setThreeScene] = useState<any>(null)
-
-  useEffect(() => {
-    setIsClient(true)
-    // Load ThreeScene only after component mounts (client-side)
-    const scene = getThreeScene()
-    setThreeScene(scene)
-  }, [])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -68,18 +47,16 @@ export function AnimatedHero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 pt-20">
-      {/* 3D Background - Only render on client */}
-      {isClient && ThreeScene && (
-        <div className="absolute inset-0">
-          <Suspense fallback={
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-white">טוען אנימציה...</div>
-            </div>
-          }>
-            <ThreeScene />
-          </Suspense>
-        </div>
-      )}
+      {/* Advanced 3D Particles Background */}
+      <div className="absolute inset-0">
+        <Suspense fallback={
+          <div className="w-full h-full flex items-center justify-center">
+            <div className="text-white">טוען אנימציה...</div>
+          </div>
+        }>
+          <Advanced3DParticles />
+        </Suspense>
+      </div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-8">
         <motion.div
@@ -189,7 +166,7 @@ export function AnimatedHero() {
                 </motion.div>
                 <div className="text-2xl font-bold mb-2">אנימציה תלת מימדית</div>
                 <div className="text-sm opacity-80">150,000 חלקיקים זוהרים</div>
-                <div className="text-xs opacity-60 mt-2">Powered by Three.js</div>
+                <div className="text-xs opacity-60 mt-2">Powered by Three.js & React</div>
               </div>
             </div>
           </motion.div>
@@ -213,4 +190,4 @@ export function AnimatedHero() {
       </FloatingModal>
     </section>
   )
-} 
+}
