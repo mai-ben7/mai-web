@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react"
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram, Facebook } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { fadeInUp } from "@/lib/animations"
@@ -18,18 +18,18 @@ const navigation = {
   social: [
     {
       name: "GitHub",
-      href: "#",
+      href: "https://github.com/mai-ben7",
       icon: Github,
     },
     {
-      name: "LinkedIn",
+      name: "Instagram",
       href: "#",
-      icon: Linkedin,
+      icon: Instagram,
     },
     {
-      name: "Twitter",
+      name: "Facebook",
       href: "#",
-      icon: Twitter,
+      icon: Facebook,
     },
   ],
 }
@@ -55,7 +55,7 @@ export function Footer() {
                />
              </div>
             <p className="text-sm leading-6 opacity-80">
-              בונים אתרים חיים שמזיזים אנשים. אנימציות חכמות, עיצוב מודרני, ותוצאות אמיתיות.
+              בונה אתרים חיים שמזיזים אנשים. אנימציות חכמות, עיצוב מודרני, ותוצאות אמיתיות.
             </p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
@@ -95,18 +95,18 @@ export function Footer() {
                   <li className="flex items-center gap-3 text-sm opacity-60">
                     <Mail className="h-4 w-4" />
                     <a href="mailto:hello@maiweb.co.il" className="hover:opacity-100 transition-opacity">
-                      hello@maiweb.co.il
+                      maiweb25@gmail.com
                     </a>
                   </li>
                   <li className="flex items-center gap-3 text-sm opacity-60">
                     <Phone className="h-4 w-4" />
                     <a href="tel:+972501234567" className="hover:opacity-100 transition-opacity">
-                      050-123-4567
+                      052-753-3750
                     </a>
                   </li>
                   <li className="flex items-center gap-3 text-sm opacity-60">
                     <MapPin className="h-4 w-4" />
-                    <span>תל אביב, ישראל</span>
+                    <span>גבעתיים, ישראל</span>
                   </li>
                 </ul>
               </div>
@@ -121,13 +121,10 @@ export function Footer() {
           whileInView="animate"
           viewport={{ once: true }}
         >
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <div className="flex justify-center">
             <p className="text-sm leading-5 opacity-60">
-              &copy; 2024 mai web. כל הזכויות שמורות למאי בן שבע.
+              &copy; 2025 mai web. כל הזכויות שמורות למאי בן שבע.
             </p>
-            <Button asChild variant="outline" size="sm">
-              <Link href="/contact">קבעו ייעוץ חינם</Link>
-            </Button>
           </div>
         </motion.div>
       </div>

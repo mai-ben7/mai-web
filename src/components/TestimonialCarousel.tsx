@@ -115,7 +115,7 @@ export function TestimonialCarousel() {
                         <p className="text-gray-600 font-medium text-sm">
                           {testimonialsData[currentIndex].role}
                         </p>
-                        <p className="text-blue-600 font-semibold">
+                        <p className="text-blue-600 font-semibold text-sm">
                           {testimonialsData[currentIndex].company}
                         </p>
                       </div>
@@ -147,7 +147,7 @@ export function TestimonialCarousel() {
           </div>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center mt-12 space-x-3">
+          <div className="flex justify-center mt-12 gap-4">
             {testimonialsData.map((_, index) => (
               <button
                 key={index}

@@ -44,34 +44,14 @@ export function Header() {
                  <div className="flex lg:flex-1">
            <a href="/" className="-m-3 pt-1">
              <span className="sr-only">mai web</span>
-                           <motion.div
-                className="relative group"
-                whileHover={{ 
-                  scale: 1.1,
-                  rotate: [0, -10, 10, -10, 0],
-                  y: [0, -5, 0],
-                  filter: "brightness(1.2) drop-shadow(0 0 10px rgba(255,255,255,0.3))"
-                }}
-                whileTap={{ scale: 0.95 }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeInOut"
-                }}
-              >
+                           <div className="relative">
                                  <img 
-                   src="/images/logo+name.png" 
-                   alt="mai web" 
-                   className="h-full w-auto object-contain relative z-10"
-                   style={{ maxHeight: '60px' }}
-                 />
-                 {/* Glowing border effect - behind the logo */}
-                 <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-500 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 p-0.5 -z-10">
-                   <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 blur-sm group-hover:blur-md transition-all duration-500" />
-                 </div>
-                 {/* Sparkle effect - behind the logo */}
-                 <div className="absolute -top-1 -right-1 w-2 h-2 bg-yellow-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 delay-200 animate-pulse -z-10" />
-                 <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-pink-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 delay-300 animate-pulse -z-10" />
-              </motion.div>
+                                   src="/images/logo+name.png" 
+                                   alt="mai web" 
+                                   className="h-full w-auto object-contain"
+                                   style={{ maxHeight: '60px' }}
+                                 />
+                           </div>
            </a>
          </div>
         
@@ -91,9 +71,9 @@ export function Header() {
               key={item.name}
               href={item.href}
               className={cn(
-                "text-base font-semibold leading-6 transition-colors hover:text-brand cursor-pointer",
+                "text-base font-semibold leading-6 transition-colors hover:bg-gradient-to-r hover:from-blue-500 hover:to-pink-500 hover:bg-clip-text hover:text-transparent cursor-pointer",
                 pathname === item.href
-                  ? "text-brand"
+                  ? "bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent"
                   : "text-foreground"
               )}
               onClick={() => console.log(`Navigating to: ${item.href}`)}
@@ -116,7 +96,7 @@ export function Header() {
             )}
           </Button>
           
-          <Button asChild variant="brand">
+          <Button asChild className="bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300">
             <a href="/contact">קבעו ייעוץ חינם</a>
           </Button>
         </div>
@@ -141,34 +121,14 @@ export function Header() {
                              <div className="flex items-center justify-between">
                  <a href="/" className="-m-3 pt-5">
                    <span className="sr-only">mai web</span>
-                                       <motion.div
-                      className="relative group"
-                      whileHover={{ 
-                        scale: 1.1,
-                        rotate: [0, -10, 10, -10, 0],
-                        y: [0, -5, 0],
-                        filter: "brightness(1.2) drop-shadow(0 0 10px rgba(255,255,255,0.3))"
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{
-                        duration: 0.6,
-                        ease: "easeInOut"
-                      }}
-                    >
+                                       <div className="relative">
                                              <img 
-                         src="/images/logo+name.png" 
-                         alt="mai web" 
-                         className="h-full w-auto object-contain relative z-10"
-                         style={{ maxHeight: '50px' }}
-                       />
-                                              {/* Glowing border effect - behind the logo */}
-                        <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-500 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 p-0.5 -z-10">
-                          <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 blur-sm group-hover:blur-md transition-all duration-500" />
-                        </div>
-                        {/* Sparkle effect - behind the logo */}
-                        <div className="absolute -top-1 -right-1 w-2 h-2 bg-yellow-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 delay-200 animate-pulse -z-10" />
-                        <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-pink-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 delay-300 animate-pulse -z-10" />
-                    </motion.div>
+                                               src="/images/logo+name.png" 
+                                               alt="mai web" 
+                                               className="h-full w-auto object-contain"
+                                               style={{ maxHeight: '50px' }}
+                                             />
+                                       </div>
                  </a>
                 <Button
                   variant="ghost"
@@ -187,9 +147,9 @@ export function Header() {
                         key={item.name}
                         href={item.href}
                         className={cn(
-                          "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer",
+                          "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 transition-colors hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-pink-500/10 cursor-pointer",
                           pathname === item.href
-                            ? "text-brand"
+                            ? "bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent"
                             : "text-foreground"
                         )}
                         onClick={() => {
@@ -214,7 +174,7 @@ export function Header() {
                           <Moon className="h-5 w-5" />
                         )}
                       </Button>
-                                             <Button asChild className="w-full" variant="brand">
+                                             <Button asChild className="w-full bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300">
                          <a href="/contact">קבעו ייעוץ חינם</a>
                        </Button>
                     </div>

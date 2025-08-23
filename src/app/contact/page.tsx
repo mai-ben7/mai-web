@@ -66,7 +66,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold">אימייל</h3>
-                      <p className="text-muted-foreground">hello@maiweb.co.il</p>
+                      <p className="text-muted-foreground">maiweb25@gmail.com</p>
                     </div>
                   </div>
                   
@@ -76,7 +76,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold">טלפון</h3>
-                      <p className="text-muted-foreground">050-123-4567</p>
+                      <p className="text-muted-foreground">052-753-3750</p>
                     </div>
                   </div>
                   
@@ -86,19 +86,10 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold">מיקום</h3>
-                      <p className="text-muted-foreground">תל אביב, ישראל</p>
+                      <p className="text-muted-foreground">גבעתיים, ישראל</p>
                     </div>
                   </div>
-                  
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-brand/10 flex items-center justify-center">
-                      <Clock className="h-6 w-6 text-brand" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">שעות פעילות</h3>
-                      <p className="text-muted-foreground">א'-ה' 9:00-18:00</p>
-                    </div>
-                  </div>
+
                 </div>
               </motion.div>
 
@@ -109,28 +100,36 @@ export default function ContactPage() {
                 whileInView="animate"
                 viewport={{ once: true }}
               >
-                <Card>
-                  <CardHeader>
-                    <div className="flex space-x-1 bg-muted p-1 rounded-lg">
+                <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border shadow-xl">
+                  <CardHeader className="pb-6">
+                    <div className="flex space-x-1 bg-gray-100 dark:bg-gray-700 p-1 rounded-lg">
                       <Button
-                        variant={activeTab === 'contact' ? 'default' : 'ghost'}
+                        variant={activeTab === 'contact' ? 'default' : 'outline'}
                         size="sm"
                         onClick={() => setActiveTab('contact')}
-                        className="flex-1"
+                        className={`flex-1 ${
+                          activeTab === 'contact' 
+                            ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0 shadow-md' 
+                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-gray-300 dark:border-gray-600'
+                        }`}
                       >
                         יצירת קשר
                       </Button>
                       <Button
-                        variant={activeTab === 'consultation' ? 'default' : 'ghost'}
+                        variant={activeTab === 'consultation' ? 'default' : 'outline'}
                         size="sm"
                         onClick={() => setActiveTab('consultation')}
-                        className="flex-1"
+                        className={`flex-1 ${
+                          activeTab === 'consultation' 
+                            ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0 shadow-md' 
+                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-gray-300 dark:border-gray-600'
+                        }`}
                       >
                         ייעוץ חינם
                       </Button>
                     </div>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="pt-0">
                     {activeTab === 'contact' ? (
                       <ContactForm type="contact" />
                     ) : (

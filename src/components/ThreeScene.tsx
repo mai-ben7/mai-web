@@ -172,7 +172,7 @@ function ParticleSystem({ mousePosition, scrollY }: { mousePosition: { x: number
 export default function ThreeScene() {
   return (
     <Canvas
-      camera={{ position: [0, 4, 50], fov: 60 }}
+      camera={{ position: [0, 50, 50], fov: 60 }}
       gl={{ 
         antialias: true, 
         alpha: true,
