@@ -11,7 +11,7 @@ import { fadeInUp, staggerContainer } from "@/lib/animations"
 const packages = [
   {
     name: "Basic",
-    price: "5,000 ₪",
+    price: "מחיר בהתאמה אישית",
     description: "אידיאלי לעסקים בתחילת הדרך",
     icon: Zap,
     gradient: "from-emerald-500 to-teal-500",
@@ -30,7 +30,7 @@ const packages = [
   },
   {
     name: "Basic Plus",
-    price: "8,000 ₪",
+    price: "מחיר בהתאמה אישית",
     description: "כל מה שב-Basic + מערכת משתמשים מתקדמת",
     icon: TrendingUp,
     gradient: "from-violet-500 to-purple-500",
@@ -49,7 +49,7 @@ const packages = [
   },
   {
     name: "Extra",
-    price: "15,000 ₪",
+    price: "מחיר בהתאמה אישית",
     description: "חבילת פרימיום עם אתר חי ואנימציות מתקדמות",
     icon: Rocket,
     gradient: "from-orange-500 to-red-500",
@@ -68,7 +68,7 @@ const packages = [
   },
   {
     name: "Extra Plus",
-    price: "25,000 ₪",
+    price: "מחיר בהתאמה אישית",
     description: "המופע המלא: אתר אנימטיבי חי מרשים במיוחד",
     icon: Crown,
     gradient: "from-yellow-500 to-orange-500",
@@ -184,6 +184,7 @@ export function Packages() {
           {packages.map((pkg, index) => (
             <motion.div 
               key={index} 
+              className="pt-8"
               variants={animationVariants[pkg.animation as keyof typeof animationVariants]}
               whileHover={{ 
                 y: -10,
@@ -194,7 +195,7 @@ export function Packages() {
               onHoverEnd={() => setHoveredPackage(null)}
             >
               <Card 
-                className={`h-full relative overflow-hidden transition-all duration-500 cursor-pointer bg-white/80 backdrop-blur-sm border-0 shadow-xl ${
+                className={`h-full relative transition-all duration-500 cursor-pointer bg-white/80 backdrop-blur-sm border-0 shadow-xl ${
                   pkg.popular 
                     ? 'ring-2 ring-orange-400 shadow-2xl scale-105 bg-gradient-to-br from-orange-50 to-red-50' 
                     : 'hover:shadow-2xl hover:bg-white/90'
@@ -208,12 +209,12 @@ export function Packages() {
                 {/* Popular Badge */}
                 {pkg.popular && (
                   <motion.div 
-                    className="absolute -top-3 left-1/2 -translate-x-1/2 z-10"
+                    className="absolute -top-5 left-1/2 -translate-x-1/2 z-20 inline-block"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.5 }}
                   >
-                    <div className="bg-gradient-to-r from-orange-400 to-red-500 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 shadow-lg">
+                    <div className="bg-gradient-to-r from-orange-400 to-red-500 text-white px-4 py-1.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-lg">
                       <Star className="h-4 w-4" />
                       פופולרי
                     </div>

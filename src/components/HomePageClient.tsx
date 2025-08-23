@@ -7,7 +7,6 @@ import { AnimatedHero } from "@/components/AnimatedHero"
 import { AnimatedFeatureCards } from "@/components/AnimatedFeatureCards"
 import { Packages } from "@/components/Packages"
 import { TestimonialCarousel } from "@/components/TestimonialCarousel"
-import { ScrollTestimonials } from "@/components/ScrollTestimonials"
 import { Footer } from "@/components/Footer"
 import { FloatingParticles } from "@/components/FloatingParticles"
 import { FloatingModal } from "@/components/FloatingModal"
@@ -48,7 +47,6 @@ export function HomePageClient() {
         <AnimatedFeatureCards />
         <Packages />
         <TestimonialCarousel />
-        <ScrollTestimonials />
       </main>
       <Footer />
 

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight, Star } from "lucide-react"
+import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -29,109 +29,133 @@ export function TestimonialCarousel() {
     setCurrentIndex((prevIndex) => 
       prevIndex === testimonialsData.length - 1 ? 0 : prevIndex + 1
     )
+    setIsPaused(true)
+    setTimeout(() => setIsPaused(false), 3000)
   }
 
   const prevTestimonial = () => {
     setCurrentIndex((prevIndex) => 
       prevIndex === 0 ? testimonialsData.length - 1 : prevIndex - 1
     )
+    setIsPaused(true)
+    setTimeout(() => setIsPaused(false), 3000)
   }
 
   return (
-    <section className="py-24 bg-bg-soft">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="py-24 bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <motion.div
-          className="mx-auto max-w-2xl text-center mb-16"
           variants={fadeInUp}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-6">
             מה הלקוחות אומרים
           </h2>
-          <p className="mt-4 text-lg leading-8 text-muted-foreground">
-            תוצאות אמיתיות של לקוחות מרוצים
+          <p className="text-xl leading-8 text-gray-600 max-w-2xl mx-auto">
+            תוצאות אמיתיות של לקוחות מרוצים שעבדו איתנו
           </p>
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto">
-          <div
-            className="relative"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="relative"
+            >
+              <Card 
+                className="relative overflow-hidden border-0 shadow-2xl bg-white/90 backdrop-blur-sm"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
               >
-                <Card className="text-center p-8">
-                  <CardContent className="space-y-6">
-                    {/* Rating */}
-                    <div className="flex justify-center gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-5 w-5 fill-yellow-400 text-yellow-400"
-                        />
-                      ))}
+                <CardContent className="p-0">
+                  <div className="relative">
+                    {/* Background Pattern */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5" />
+                    
+                    {/* Quote Icon */}
+                    <div className="absolute top-8 right-8 text-blue-600/20">
+                      <Quote className="h-16 w-16" />
                     </div>
 
-                    {/* Quote */}
-                    <blockquote className="text-lg text-foreground leading-relaxed">
-                      "{testimonialsData[currentIndex].content}"
-                    </blockquote>
-
-                    {/* Author */}
-                    <div className="space-y-2">
-                      <div className="font-semibold text-foreground">
-                        {testimonialsData[currentIndex].name}
+                    <div className="relative p-8">
+                      {/* Rating Stars */}
+                      <div className="flex justify-center gap-1 mb-8">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className="h-6 w-6 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+                          />
+                        ))}
                       </div>
-                      <div className="text-sm text-muted-foreground">
-                        {testimonialsData[currentIndex].role}, {testimonialsData[currentIndex].company}
+
+                      {/* Testimonial Content */}
+                      <blockquote className="text-center mb-10">
+                        <p className="text-xl leading-relaxed text-gray-800 font-medium italic mb-6">
+                          "{testimonialsData[currentIndex].content}"
+                        </p>
+                      </blockquote>
+
+                      {/* Author Info */}
+                      <div className="text-center">
+                        <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-4 shadow-lg">
+                          <span className="text-white font-bold text-xl">
+                            {testimonialsData[currentIndex].name.charAt(0)}
+                          </span>
+                        </div>
+                        <h3 className="text-lg font-bold text-gray-900 mb-2">
+                          {testimonialsData[currentIndex].name}
+                        </h3>
+                        <p className="text-gray-600 font-medium text-sm">
+                          {testimonialsData[currentIndex].role}
+                        </p>
+                        <p className="text-blue-600 font-semibold">
+                          {testimonialsData[currentIndex].company}
+                        </p>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </AnimatePresence>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </AnimatePresence>
 
-            {/* Navigation */}
-            <div className="absolute inset-y-0 left-0 flex items-center">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={prevTestimonial}
-                className="rounded-full bg-background/80 backdrop-blur-sm hover:bg-background"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-            </div>
-
-            <div className="absolute inset-y-0 right-0 flex items-center">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={nextTestimonial}
-                className="rounded-full bg-background/80 backdrop-blur-sm hover:bg-background"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </div>
+          {/* Navigation Buttons */}
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between items-center pointer-events-none px-4">
+            <Button
+              variant="outline"
+              size="icon"
+              className="pointer-events-auto bg-white/90 backdrop-blur-sm hover:bg-white shadow-xl border-gray-200 hover:border-gray-300 transition-all duration-300"
+              onClick={prevTestimonial}
+            >
+              <ChevronRight className="h-5 w-5" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="pointer-events-auto bg-white/90 backdrop-blur-sm hover:bg-white shadow-xl border-gray-200 hover:border-gray-300 transition-all duration-300"
+              onClick={nextTestimonial}
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </Button>
           </div>
 
-          {/* Dots */}
-          <div className="flex justify-center mt-8 gap-2">
+          {/* Dots Indicator */}
+          <div className="flex justify-center mt-12 space-x-3">
             {testimonialsData.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  index === currentIndex ? "bg-brand" : "bg-muted-foreground/30"
+                className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                  index === currentIndex 
+                    ? 'bg-blue-600 scale-125 shadow-lg' 
+                    : 'bg-gray-300 hover:bg-gray-400 hover:scale-110'
                 }`}
               />
             ))}
@@ -140,4 +164,4 @@ export function TestimonialCarousel() {
       </div>
     </section>
   )
-} 
+}

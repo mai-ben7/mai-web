@@ -45,62 +45,32 @@ export function Header() {
            <a href="/" className="-m-3 pt-1">
              <span className="sr-only">mai web</span>
                            <motion.div
-                className="relative"
+                className="relative group"
                 whileHover={{ 
-                  scale: 1.05,
-                  rotate: [0, -5, 5, -5, 0],
-                  y: [0, -2, 0]
+                  scale: 1.1,
+                  rotate: [0, -10, 10, -10, 0],
+                  y: [0, -5, 0],
+                  filter: "brightness(1.2) drop-shadow(0 0 10px rgba(255,255,255,0.3))"
                 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{
-                  duration: 0.5,
+                  duration: 0.6,
                   ease: "easeInOut"
                 }}
               >
-                <img 
-                  src="/images/logo+name.png" 
-                  alt="mai web" 
-                  className="h-full w-auto object-contain"
-                  style={{ maxHeight: '60px' }}
-                />
-                {/* Homer's eyes animation - only on hover */}
-                <motion.div
-                  className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full opacity-0"
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileHover={{
-                    scale: [0, 1.5, 1],
-                    opacity: [0, 1, 0.8]
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    delay: 0.1
-                  }}
-                />
-                <motion.div
-                  className="absolute top-1/4 right-1/4 w-1 h-1 bg-white rounded-full opacity-0"
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileHover={{
-                    scale: [0, 1.5, 1],
-                    opacity: [0, 1, 0.8]
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    delay: 0.2
-                  }}
-                />
-                {/* Homer's mouth animation - only on hover */}
-                <motion.div
-                  className="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 w-2 h-0.5 bg-white rounded-full opacity-0"
-                  initial={{ opacity: 0, scaleX: 0 }}
-                  whileHover={{
-                    scaleX: [0, 1.2, 1],
-                    opacity: [0, 1, 0.6]
-                  }}
-                  transition={{
-                    duration: 0.4,
-                    delay: 0.3
-                  }}
-                />
+                                 <img 
+                   src="/images/logo+name.png" 
+                   alt="mai web" 
+                   className="h-full w-auto object-contain relative z-10"
+                   style={{ maxHeight: '60px' }}
+                 />
+                 {/* Glowing border effect - behind the logo */}
+                 <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-500 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 p-0.5 -z-10">
+                   <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 blur-sm group-hover:blur-md transition-all duration-500" />
+                 </div>
+                 {/* Sparkle effect - behind the logo */}
+                 <div className="absolute -top-1 -right-1 w-2 h-2 bg-yellow-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 delay-200 animate-pulse -z-10" />
+                 <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-pink-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 delay-300 animate-pulse -z-10" />
               </motion.div>
            </a>
          </div>
@@ -172,62 +142,32 @@ export function Header() {
                  <a href="/" className="-m-3 pt-5">
                    <span className="sr-only">mai web</span>
                                        <motion.div
-                      className="relative"
+                      className="relative group"
                       whileHover={{ 
-                        scale: 1.05,
-                        rotate: [0, -5, 5, -5, 0],
-                        y: [0, -2, 0]
+                        scale: 1.1,
+                        rotate: [0, -10, 10, -10, 0],
+                        y: [0, -5, 0],
+                        filter: "brightness(1.2) drop-shadow(0 0 10px rgba(255,255,255,0.3))"
                       }}
                       whileTap={{ scale: 0.95 }}
                       transition={{
-                        duration: 0.5,
+                        duration: 0.6,
                         ease: "easeInOut"
                       }}
                     >
-                      <img 
-                        src="/images/logo+name.png" 
-                        alt="mai web" 
-                        className="h-full w-auto object-contain"
-                        style={{ maxHeight: '50px' }}
-                      />
-                      {/* Homer's eyes animation - only on hover */}
-                      <motion.div
-                        className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full opacity-0"
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileHover={{
-                          scale: [0, 1.5, 1],
-                          opacity: [0, 1, 0.8]
-                        }}
-                        transition={{
-                          duration: 0.3,
-                          delay: 0.1
-                        }}
-                      />
-                      <motion.div
-                        className="absolute top-1/4 right-1/4 w-1 h-1 bg-white rounded-full opacity-0"
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileHover={{
-                          scale: [0, 1.5, 1],
-                          opacity: [0, 1, 0.8]
-                        }}
-                        transition={{
-                          duration: 0.3,
-                          delay: 0.2
-                        }}
-                      />
-                      {/* Homer's mouth animation - only on hover */}
-                      <motion.div
-                        className="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 w-2 h-0.5 bg-white rounded-full opacity-0"
-                        initial={{ opacity: 0, scaleX: 0 }}
-                        whileHover={{
-                          scaleX: [0, 1.2, 1],
-                          opacity: [0, 1, 0.6]
-                        }}
-                        transition={{
-                          duration: 0.4,
-                          delay: 0.3
-                        }}
-                      />
+                                             <img 
+                         src="/images/logo+name.png" 
+                         alt="mai web" 
+                         className="h-full w-auto object-contain relative z-10"
+                         style={{ maxHeight: '50px' }}
+                       />
+                                              {/* Glowing border effect - behind the logo */}
+                        <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-500 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 p-0.5 -z-10">
+                          <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 blur-sm group-hover:blur-md transition-all duration-500" />
+                        </div>
+                        {/* Sparkle effect - behind the logo */}
+                        <div className="absolute -top-1 -right-1 w-2 h-2 bg-yellow-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 delay-200 animate-pulse -z-10" />
+                        <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-pink-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 delay-300 animate-pulse -z-10" />
                     </motion.div>
                  </a>
                 <Button

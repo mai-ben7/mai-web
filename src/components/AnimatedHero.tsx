@@ -60,13 +60,13 @@ export function AnimatedHero() {
 
       <div className="relative z-10 container mx-auto px-6 lg:px-8">
         <motion.div
-          className="grid lg:grid-cols-2 gap-12 items-center"
+          className="grid lg:grid-cols-1 gap-12 items-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Left Column - Content */}
-          <motion.div className="text-center lg:text-right" variants={itemVariants}>
+          {/* Main Content */}
+          <motion.div className="text-center" variants={itemVariants}>
             <motion.div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6"
               variants={itemVariants}
@@ -98,7 +98,7 @@ export function AnimatedHero() {
             </motion.p>
 
             <motion.div
-              className="flex justify-center lg:justify-end"
+              className="flex justify-center"
               variants={itemVariants}
             >
               <AnimatedButton onClick={() => setIsVideoModalOpen(true)}>
@@ -136,40 +136,7 @@ export function AnimatedHero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - 3D Scene Info */}
-          <motion.div
-            className="relative flex items-center justify-center"
-            variants={itemVariants}
-            initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            <div className="w-full h-full min-h-[600px] flex items-center justify-center bg-gradient-to-br from-purple-900/20 to-blue-900/20 rounded-lg relative overflow-hidden backdrop-blur-sm border border-white/10">
-              <div className="text-white text-lg relative z-10 text-center">
-                <motion.div 
-                  className="text-4xl mb-4"
-                  animate={{
-                    y: [0, -10, 0],
-                    rotate: [0, 5, 0],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  whileHover={{
-                    scale: 1.2,
-                    rotate: 10,
-                  }}
-                >
-                  ✨
-                </motion.div>
-                <div className="text-2xl font-bold mb-2">אנימציה תלת מימדית</div>
-                <div className="text-sm opacity-80">150,000 חלקיקים זוהרים</div>
-                <div className="text-xs opacity-60 mt-2">Powered by Three.js & React</div>
-              </div>
-            </div>
-          </motion.div>
+
         </motion.div>
       </div>
 

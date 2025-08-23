@@ -17,10 +17,8 @@ export const metadata: Metadata = {
   publisher: "mai web",
   icons: {
     icon: [
-      { url: "/favicon.ico?v=2", sizes: "32x32", type: "image/x-icon" },
       { url: "/images/logo-only.png?v=2", sizes: "192x192", type: "image/png" },
     ],
-    shortcut: "/favicon.ico?v=2",
     apple: "/images/logo-only.png?v=2",
   },
   formatDetection: {

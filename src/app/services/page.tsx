@@ -155,7 +155,7 @@ export default function ServicesPage() {
               viewport={{ once: true }}
             >
               {packages.map((pkg, index) => (
-                <motion.div key={index} variants={fadeInUp}>
+                <motion.div key={index} className="pt-8" variants={fadeInUp}>
                   <Card 
                     className={`h-full relative transition-all duration-300 ${
                       pkg.popular 
@@ -164,7 +164,7 @@ export default function ServicesPage() {
                     }`}
                   >
                     {pkg.popular && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
                         <div className="bg-brand text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
                           <Star className="h-3 w-3" />
                           פופולרי
