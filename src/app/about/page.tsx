@@ -1,4 +1,5 @@
-import { Metadata } from "next"
+"use client"
+
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowLeft, Code, Palette, Zap, Rocket, TrendingUp } from "lucide-react"
@@ -8,11 +9,6 @@ import { Footer } from "@/components/Footer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { fadeInUp, staggerContainer } from "@/lib/animations"
-
-export const metadata: Metadata = {
-  title: "אודות - mai web",
-  description: "למדו על מאי בן שבע והגישה שלנו לבניית אתרים מרהיבים עם אנימציות מתקדמות.",
-}
 
 const skills = [
   { name: "React & Next.js", level: 95 },
@@ -229,19 +225,19 @@ export default function AboutPage() {
               <p className="mt-4 text-lg leading-8 opacity-90">
                 בואו נבנה יחד אתר שיזיז אנשים ויביא תוצאות אמיתיות לעסק שלכם.
               </p>
-              <div className="mt-10 flex items-center justify-center gap-4">
-                <Button asChild size="lg" variant="secondary">
-                  <Link href="/contact">
-                    קבעו ייעוץ חינם
-                  </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                  <Link href="/">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    חזרה לדף הבית
-                  </Link>
-                </Button>
-              </div>
+                             <div className="mt-10 flex items-center justify-center gap-4">
+                 <Button asChild size="lg" className="bg-white text-purple-600 hover:bg-gray-100 border-2 border-white font-semibold">
+                   <Link href="/contact">
+                     קבעו ייעוץ חינם
+                   </Link>
+                 </Button>
+                 <Button asChild size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold">
+                   <Link href="/">
+                     <ArrowLeft className="mr-2 h-4 w-4" />
+                     חזרה לדף הבית
+                   </Link>
+                 </Button>
+               </div>
             </motion.div>
           </div>
         </section>
