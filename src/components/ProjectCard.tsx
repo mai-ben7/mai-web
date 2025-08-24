@@ -79,7 +79,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
          return (
            <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-t-2xl flex items-center justify-center overflow-hidden">
              <img 
-               src="/projects/placeholder.svg" 
+               src={project.coverSrc} 
                alt={project.title}
                className="w-full h-full object-cover"
                onError={(e) => {
@@ -130,24 +130,23 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           z: 50,
         }}
       >
-        {/* Cover Media */}
-        <motion.div
-          className="relative overflow-hidden"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
-        >
-          {renderCoverMedia()}
-          
-          {/* Package Badge */}
-          <div className="absolute top-4 right-4">
-            <span className={`px-3 py-1 rounded-full text-xs font-semibold shadow-lg ${getPackageColor(project.package)}`}>
-              {project.package === 'Advanced' ? 'מתקדם' : 'בסיסי'}
-            </span>
-          </div>
-        </motion.div>
+                 {/* Cover Media */}
+         <motion.div
+           className="relative overflow-hidden"
+           whileHover={{ scale: 1.05 }}
+           transition={{ duration: 0.3 }}
+         >
+           {renderCoverMedia()}
+         </motion.div>
 
-        {/* Content */}
-        <div className="p-6 space-y-4">
+                  {/* Content */}
+         <div className="p-6 space-y-4">
+           {/* Package Badge - now inside the white content area */}
+           <div className="flex justify-end">
+             <span className={`px-3 py-1 rounded-full text-xs font-semibold shadow-lg ${getPackageColor(project.package)}`}>
+               {project.package === 'Advanced' ? 'מתקדם' : 'בסיסי'}
+             </span>
+           </div>
           {/* Header */}
           <div className="space-y-2">
             <h3 
@@ -200,24 +199,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               <Button
                 asChild
                 size="sm"
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white rounded-xl"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl"
               >
                 <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="w-4 h-4 ml-2" />
                   צפה באתר
-                </a>
-              </Button>
-            )}
-            
-            {project.caseStudyUrl && (
-              <Button
-                asChild
-                size="sm"
-                variant="outline"
-                className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 rounded-xl"
-              >
-                <a href={project.caseStudyUrl}>
-                  מקרה בוחן
                 </a>
               </Button>
             )}

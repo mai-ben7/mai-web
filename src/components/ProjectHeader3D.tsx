@@ -27,8 +27,9 @@ export function ProjectHeader3D() {
     // Check for low power devices
     const checkLowPower = () => {
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-      const hasLowMemory = navigator.deviceMemory && navigator.deviceMemory < 4
-      const hasSlowConnection = navigator.connection && navigator.connection.effectiveType === 'slow-2g'
+      const nav = navigator as any
+      const hasLowMemory = nav.deviceMemory && nav.deviceMemory < 4
+      const hasSlowConnection = nav.connection && nav.connection.effectiveType === 'slow-2g'
       
       return isMobile || hasLowMemory || hasSlowConnection
     }

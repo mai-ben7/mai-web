@@ -226,14 +226,15 @@ export function trackPerformanceMetrics() {
         }
         
         if (entry.entryType === 'first-input') {
+          const fidEntry = entry as PerformanceEventTiming
           trackEvent({
             action: 'first_input_delay',
             category: 'performance',
             label: 'FID',
-            value: Math.round(entry.processingStart - entry.startTime),
+            value: Math.round(fidEntry.processingStart - fidEntry.startTime),
             custom_parameters: {
               metric: 'FID',
-              value: Math.round(entry.processingStart - entry.startTime),
+              value: Math.round(fidEntry.processingStart - fidEntry.startTime),
             },
           })
         }
@@ -248,8 +249,9 @@ export function trackPerformanceMetrics() {
 
     const clsObserver = new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
-        if (!entry.hadRecentInput) {
-          clsValue += (entry as any).value
+        const layoutShiftEntry = entry as any
+        if (!layoutShiftEntry.hadRecentInput) {
+          clsValue += layoutShiftEntry.value
           clsEntries.push(entry)
         }
       }
