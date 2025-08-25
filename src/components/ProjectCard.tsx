@@ -118,18 +118,27 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       role="article"
       aria-labelledby={`project-title-${project.slug}`}
     >
-      <motion.div
-        className="relative bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/20"
-        style={{
-          rotateX,
-          rotateY,
-          transformStyle: "preserve-3d",
-        }}
-        whileHover={{ 
-          scale: 1.02,
-          z: 50,
-        }}
-      >
+      {project.liveUrl && (
+        <a 
+          href={project.liveUrl} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="absolute inset-0 z-10"
+          aria-label={`Visit ${project.title} website`}
+        />
+      )}
+             <motion.div
+         className="relative bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/20 z-20"
+         style={{
+           rotateX,
+           rotateY,
+           transformStyle: "preserve-3d",
+         }}
+         whileHover={{ 
+           scale: 1.02,
+           z: 50,
+         }}
+       >
                  {/* Cover Media */}
          <motion.div
            className="relative overflow-hidden"
@@ -193,21 +202,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             {project.year}
           </div>
 
-          {/* Actions */}
-          <div className="flex gap-3 pt-2">
-            {project.liveUrl && (
-              <Button
-                asChild
-                size="sm"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl"
-              >
-                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="w-4 h-4 ml-2" />
-                  צפה באתר
-                </a>
-              </Button>
-            )}
-          </div>
+                     {/* Actions */}
+           <div className="flex gap-3 pt-2">
+             <div className="w-full bg-blue-600 text-white rounded-xl px-4 py-2 text-center text-sm font-medium flex items-center justify-center gap-2">
+               <ExternalLink className="w-4 h-4" />
+               צפה באתר
+             </div>
+           </div>
         </div>
 
         {/* Hover Glow Effect */}

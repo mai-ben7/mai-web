@@ -14,6 +14,19 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: 'tal-ben-sheva-portfolio',
+    title: 'Tal Ben Sheva - Portfolio',
+    client: 'Tal Ben Sheva',
+    package: 'Advanced',
+    year: 2025,
+    description: 'Portfolio website showcasing professional work and skills with modern design, animations, and interactive elements.',
+    tags: ['Next.js', 'Framer Motion', 'Tailwind', 'TypeScript', 'Vercel'],
+    coverType: 'image',
+    coverSrc: '/projects/tal-ben-sheva-portfolio.png',
+    liveUrl: 'https://tal-ben-sheva-portfolio.vercel.app/',
+    caseStudyUrl: '/case-studies/tal-ben-sheva-portfolio'
+  },
+  {
     slug: 'fitmama-pregnancy-fitness',
     title: 'FitMama - כושר בהריון',
     client: 'מיכל טננבאום',
