@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { Header } from "@/components/Header"
 import { AnimatedHero } from "@/components/AnimatedHero"
-import { AnimatedFeatureCards } from "@/components/AnimatedFeatureCards"
+import AdvancedSection from "@/components/AdvancedSection"
 import { Packages } from "@/components/Packages"
 import { TestimonialsSection } from "@/components/TestimonialsSection"
 import { Footer } from "@/components/Footer"
@@ -45,7 +45,7 @@ export function HomePageClient() {
       <Header />
       <main>
         <AnimatedHero />
-        <AnimatedFeatureCards />
+        <AdvancedSection />
         <Packages />
         <TestimonialsSection />
         <BookingSection />

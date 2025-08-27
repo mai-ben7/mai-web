@@ -85,16 +85,19 @@ export default function TestimonialsScroller({
   return (
     <section id="testimonials" className={clsx("relative", className)}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                 <header className="mb-10 text-center">
-           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">{title}</h2>
-           {subtitle ? <p className="mt-3 text-base text-slate-600">{subtitle}</p> : null}
-         </header>
-
         {isSmall ? (
-          <MobileSwipe items={items} prefersReducedMotion={prefersReducedMotion} />
+          <>
+            <header className="mb-10 text-center">
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">{title}</h2>
+              {subtitle ? <p className="mt-3 text-base text-slate-600">{subtitle}</p> : null}
+            </header>
+            <MobileSwipe items={items} prefersReducedMotion={prefersReducedMotion} />
+          </>
         ) : (
           <DesktopPinned
             items={items}
+            title={title}
+            subtitle={subtitle}
             vhPerCard={vhPerCard}
             stickyTop={stickyTop}
             prefersReducedMotion={prefersReducedMotion}
@@ -108,11 +111,15 @@ export default function TestimonialsScroller({
 /** ====== Desktop pinned variant ====== */
 function DesktopPinned({
   items,
+  title,
+  subtitle,
   vhPerCard,
   stickyTop,
   prefersReducedMotion,
 }: {
   items: Testimonial[];
+  title: string;
+  subtitle?: string;
   vhPerCard: number;
   stickyTop: number;
   prefersReducedMotion: boolean;
@@ -122,7 +129,7 @@ function DesktopPinned({
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"],
+    offset: ["start 0.8", "end start"],
   });
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -150,6 +157,12 @@ function DesktopPinned({
     >
       <div className="sticky" style={{ top: stickyTop }} aria-live="polite">
         <div className="relative mx-auto max-w-2xl">
+          {/* Header */}
+          <header className="mb-10 text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">{title}</h2>
+            {subtitle ? <p className="mt-3 text-base text-slate-600">{subtitle}</p> : null}
+          </header>
+          
           {/* Dots */}
           <div className="mb-6 flex items-center justify-center gap-3">
             {items.map((t, i) => (
