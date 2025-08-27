@@ -121,6 +121,7 @@ export function ScrollParallaxHero({ onVideoModalOpen }: ScrollParallaxHeroProps
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onVideoModalOpen?.()}
+                suppressHydrationWarning
               >
                 <span className="relative z-10 flex items-center gap-2">
                   <Play className="w-5 h-5" />
@@ -138,6 +139,7 @@ export function ScrollParallaxHero({ onVideoModalOpen }: ScrollParallaxHeroProps
                 className="group px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
+                suppressHydrationWarning
               >
                 <span className="flex items-center gap-2">
                   התחל פרויקט

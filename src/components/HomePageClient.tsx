@@ -6,12 +6,13 @@ import { Header } from "@/components/Header"
 import { AnimatedHero } from "@/components/AnimatedHero"
 import { AnimatedFeatureCards } from "@/components/AnimatedFeatureCards"
 import { Packages } from "@/components/Packages"
-import { TestimonialCarousel } from "@/components/TestimonialCarousel"
+import { TestimonialsSection } from "@/components/TestimonialsSection"
 import { Footer } from "@/components/Footer"
 import { FloatingParticles } from "@/components/FloatingParticles"
 import { FloatingModal } from "@/components/FloatingModal"
 import { Play } from "lucide-react"
 import { pageTransition } from "@/lib/animations"
+import BookingSection from "@/components/BookingSection"
 
 export function HomePageClient() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
@@ -46,7 +47,8 @@ export function HomePageClient() {
         <AnimatedHero />
         <AnimatedFeatureCards />
         <Packages />
-        <TestimonialCarousel />
+        <TestimonialsSection />
+        <BookingSection />
       </main>
       <Footer />
 

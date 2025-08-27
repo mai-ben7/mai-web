@@ -47,96 +47,69 @@ export function AnimatedHero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 pt-20">
-      {/* Advanced 3D Particles Background */}
-      <div className="absolute inset-0">
-        <Suspense fallback={
-          <div className="w-full h-full flex items-center justify-center">
-            <div className="text-white">טוען אנימציה...</div>
-          </div>
-        }>
-          <Advanced3DParticles />
-        </Suspense>
-      </div>
-
-      <div className="relative z-10 container mx-auto px-6 lg:px-8">
+      <div className="relative z-20 container mx-auto px-6 lg:px-8">
         <motion.div
-          className="grid lg:grid-cols-1 gap-12 items-center"
+          className="grid lg:grid-cols-2 gap-12 items-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Main Content */}
-          <motion.div className="text-center" variants={itemVariants}>
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6"
-              variants={itemVariants}
-              whileHover={{
-                scale: 1.05,
-                backgroundColor: "rgba(255, 255, 255, 0.15)",
-              }}
-            >
-              <Sparkles className="w-4 h-4 text-yellow-400" />
-              <span className="text-sm font-medium text-white/90">חדשנות בעיצוב אתרים</span>
-            </motion.div>
+          {/* Main Content - Left Side */}
+          <motion.div className="text-right order-1 lg:order-1 relative z-20" variants={itemVariants}>
+            <div className="bg-black/40 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl">
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6"
+                variants={itemVariants}
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: "rgba(255, 255, 255, 0.15)",
+                }}
+              >
+                <Sparkles className="w-4 h-4 text-yellow-400" />
+                <span className="text-sm font-medium text-white/90">חדשנות בעיצוב אתרים</span>
+              </motion.div>
 
-            <motion.h1
-              className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
-              variants={itemVariants}
-            >
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                אתרים חיים
-              </span>
-              <br />
-              <span className="text-white">שמזיזים אנשים</span>
-            </motion.h1>
+              <motion.h1
+                className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+                variants={itemVariants}
+              >
+                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  אתרים חיים
+                </span>
+                <br />
+                <span className="text-white">שמזיזים אנשים</span>
+              </motion.h1>
 
-            <motion.p
-              className="text-xl text-white/80 mb-8 leading-relaxed"
-              variants={itemVariants}
-            >
-              אני מאי בן שבע, בונה אתרים מרהיבים עם אנימציות חכמות שמבליטות את העסק שלך וממירות מבקרים ללקוחות.
-            </motion.p>
+              <motion.p
+                className="text-xl text-white/80 mb-8 leading-relaxed"
+                variants={itemVariants}
+              >
+                אני מאי בן שבע, בונה אתרים מרהיבים עם אנימציות חכמות שמבליטות את העסק שלך וממירות מבקרים ללקוחות.
+              </motion.p>
 
-            <motion.div
-              className="flex justify-center"
-              variants={itemVariants}
-            >
-              <AnimatedButton onClick={() => setIsVideoModalOpen(true)}>
-                קבע פגישה
-              </AnimatedButton>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              className="grid grid-cols-3 gap-8 mt-12"
-              variants={itemVariants}
-            >
-              {[
-                { number: "50+", label: "פרויקטים" },
-                { number: "98%", label: "שביעות רצון" },
-                { number: "24/7", label: "תמיכה" },
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  className="text-center"
-                  variants={floatingVariants}
-                  animate="animate"
-                  transition={{ delay: index * 0.2 }}
-                  whileHover={{
-                    scale: 1.1,
-                    y: -5,
-                  }}
-                >
-                  <div className="text-2xl lg:text-3xl font-bold text-white mb-1">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm text-white/70">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
+              <motion.div
+                className="flex justify-end"
+                variants={itemVariants}
+              >
+                <AnimatedButton onClick={() => setIsVideoModalOpen(true)}>
+                  קבע פגישה
+                </AnimatedButton>
+              </motion.div>
+            </div>
           </motion.div>
 
-
+          {/* 3D Model - Right Side */}
+          <motion.div className="order-2 lg:order-2 relative z-10" variants={itemVariants}>
+            <div className="w-full h-[500px] flex items-center justify-center relative overflow-hidden rounded-2xl">
+              <Suspense fallback={
+                <div className="w-full h-full flex items-center justify-center">
+                  <div className="text-white">טוען אנימציה...</div>
+                </div>
+              }>
+                <Advanced3DParticles />
+              </Suspense>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 

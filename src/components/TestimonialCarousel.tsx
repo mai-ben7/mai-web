@@ -133,6 +133,7 @@ export function TestimonialCarousel() {
               size="icon"
               className="pointer-events-auto bg-white/90 backdrop-blur-sm hover:bg-white shadow-xl border-gray-200 hover:border-gray-300 transition-all duration-300"
               onClick={prevTestimonial}
+              suppressHydrationWarning
             >
               <ChevronRight className="h-5 w-5" />
             </Button>
@@ -141,6 +142,7 @@ export function TestimonialCarousel() {
               size="icon"
               className="pointer-events-auto bg-white/90 backdrop-blur-sm hover:bg-white shadow-xl border-gray-200 hover:border-gray-300 transition-all duration-300"
               onClick={nextTestimonial}
+              suppressHydrationWarning
             >
               <ChevronLeft className="h-5 w-5" />
             </Button>
@@ -157,6 +159,7 @@ export function TestimonialCarousel() {
                     ? 'bg-blue-600 scale-125 shadow-lg' 
                     : 'bg-gray-300 hover:bg-gray-400 hover:scale-110'
                 }`}
+                suppressHydrationWarning
               />
             ))}
           </div>

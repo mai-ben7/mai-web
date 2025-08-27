@@ -182,6 +182,7 @@ export function AnimatedFeatureCards() {
                   <motion.button
                     className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mt-auto"
                     whileHover={{ x: 5 }}
+                    suppressHydrationWarning
                   >
                     <span>קרא עוד</span>
                     <ArrowRight className="w-4 h-4" />

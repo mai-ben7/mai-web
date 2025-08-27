@@ -20,45 +20,57 @@ export function Advanced3DParticles({ className = "" }: Advanced3DParticlesProps
         const THREE = await import('three')
         const { OrbitControls } = await import('three/addons/controls/OrbitControls.js')
 
-        // Scene setup - EXACTLY as provided by user
+        // Get container dimensions
+        const container = containerRef.current!
+        const containerWidth = container.clientWidth
+        const containerHeight = container.clientHeight
+
+        // Scene setup
         let scene = new THREE.Scene()
         scene.background = new THREE.Color(0x160016)
         
-                 let camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000)
-         camera.position.set(0, 4, 35)
+        let camera = new THREE.PerspectiveCamera(60, containerWidth / containerHeight, 1, 1000)
+        camera.position.set(0, 4, 35)
         
-        let renderer = new THREE.WebGLRenderer()
-        renderer.setSize(window.innerWidth, window.innerHeight)
-        containerRef.current!.appendChild(renderer.domElement)
+        let renderer = new THREE.WebGLRenderer({ alpha: true })
+        renderer.setSize(containerWidth, containerHeight)
+        renderer.setClearColor(0x000000, 0)
+        container.appendChild(renderer.domElement)
         
-        window.addEventListener("resize", event => {
-          camera.aspect = window.innerWidth / window.innerHeight
+        // Resize handler
+        const handleResize = () => {
+          const newWidth = container.clientWidth
+          const newHeight = container.clientHeight
+          camera.aspect = newWidth / newHeight
           camera.updateProjectionMatrix()
-          renderer.setSize(window.innerWidth, window.innerHeight)
-        })
+          renderer.setSize(newWidth, newHeight)
+        }
         
-                 let controls = new OrbitControls(camera, renderer.domElement)
-         controls.enableDamping = true
-         controls.enablePan = false
-         
-         // Mouse interaction variables
-         let mouseX = 0
-         let mouseY = 0
-         let scrollY = 0
-         
-         // Mouse move event
-         const handleMouseMove = (event: MouseEvent) => {
-           mouseX = (event.clientX / window.innerWidth) * 2 - 1
-           mouseY = -(event.clientY / window.innerHeight) * 2 + 1
-         }
-         
-         // Scroll event
-         const handleScroll = () => {
-           scrollY = window.scrollY / window.innerHeight
-         }
-         
-         window.addEventListener('mousemove', handleMouseMove)
-         window.addEventListener('scroll', handleScroll)
+        window.addEventListener("resize", handleResize)
+        
+        let controls = new OrbitControls(camera, renderer.domElement)
+        controls.enableDamping = true
+        controls.enablePan = false
+        
+        // Mouse interaction variables
+        let mouseX = 0
+        let mouseY = 0
+        let scrollY = 0
+        
+        // Mouse move event - use container-relative coordinates
+        const handleMouseMove = (event: MouseEvent) => {
+          const rect = container.getBoundingClientRect()
+          mouseX = ((event.clientX - rect.left) / containerWidth) * 2 - 1
+          mouseY = -((event.clientY - rect.top) / containerHeight) * 2 + 1
+        }
+        
+        // Scroll event
+        const handleScroll = () => {
+          scrollY = window.scrollY / window.innerHeight
+        }
+        
+        container.addEventListener('mousemove', handleMouseMove)
+        window.addEventListener('scroll', handleScroll)
         
         let gu = { time: {value: 0} }
         let sizes: number[] = []
@@ -92,70 +104,70 @@ export function Advanced3DParticles({ className = "" }: Advanced3DParticlesProps
         g.setAttribute("sizes", new THREE.Float32BufferAttribute(sizes, 1))
         g.setAttribute("shift", new THREE.Float32BufferAttribute(shift, 4))
         
-                 let m = new THREE.PointsMaterial({
-           size: 0.125,
-           transparent: true,
-           depthTest: false,
-           blending: THREE.NormalBlending,
-         } as any)
+        let m = new THREE.PointsMaterial({
+          size: 0.125,
+          transparent: true,
+          depthTest: false,
+          blending: THREE.NormalBlending,
+        } as any)
         
-                 m.onBeforeCompile = (shader: any) => {
-             shader.uniforms.time = gu.time
-             shader.uniforms.mouseX = { value: 0 }
-             shader.uniforms.mouseY = { value: 0 }
-             shader.uniforms.scrollY = { value: 0 }
-                         shader.vertexShader = `
-               uniform float time;
-               uniform float mouseX;
-               uniform float mouseY;
-               uniform float scrollY;
-               attribute float sizes;
-               attribute vec4 shift;
-               varying vec3 vColor;
-               ${shader.vertexShader}
-             `.replace(
-              `gl_PointSize = size;`,
-              `gl_PointSize = size * sizes;`
-            ).replace(
-                             `#include <color_vertex>`,
-               `#include <color_vertex>
-                 float d = length(abs(position) / vec3(40., 10., 40));
-                 d = clamp(d, 0., 1.);
-                 vColor = mix(vec3(255., 0., 150.), vec3(0., 100., 255.), d) / 255.;
-               `
-            ).replace(
-                             `#include <begin_vertex>`,
-               `#include <begin_vertex>
-                 float t = time;
-                 float moveT = mod(shift.x + shift.z * t, PI2);
-                 float moveS = mod(shift.y + shift.z * t, PI2);
-                 transformed += vec3(cos(moveS) * sin(moveT), cos(moveT), sin(moveS) * sin(moveT)) * shift.w;
-                 
-                 // Mouse interaction - particles follow mouse
-                 transformed.x += mouseX * 2.0;
-                 transformed.y += mouseY * 2.0;
-                 
-                 // Scroll interaction - particles move with scroll
-                 transformed.z += scrollY * 5.0;
-               `
-                         )
-             
-             // Store shader reference for animation loop
-             m.userData.shader = shader
-             
-             shader.fragmentShader = `
-               varying vec3 vColor;
-               ${shader.fragmentShader}
-             `.replace(
-               `void main() {`,
-               `void main() {
-                 float d = length(gl_PointCoord.xy - 0.5);
-               `
-             ).replace(
-               `vec4 diffuseColor = vec4( diffuse, opacity );`,
-               `vec4 diffuseColor = vec4( vColor, smoothstep(0.5, 0.1, d) * 2.0 );`
-             )
-           }
+        m.onBeforeCompile = (shader: any) => {
+          shader.uniforms.time = gu.time
+          shader.uniforms.mouseX = { value: 0 }
+          shader.uniforms.mouseY = { value: 0 }
+          shader.uniforms.scrollY = { value: 0 }
+          shader.vertexShader = `
+            uniform float time;
+            uniform float mouseX;
+            uniform float mouseY;
+            uniform float scrollY;
+            attribute float sizes;
+            attribute vec4 shift;
+            varying vec3 vColor;
+            ${shader.vertexShader}
+          `.replace(
+            `gl_PointSize = size;`,
+            `gl_PointSize = size * sizes;`
+          ).replace(
+            `#include <color_vertex>`,
+            `#include <color_vertex>
+              float d = length(abs(position) / vec3(40., 10., 40));
+              d = clamp(d, 0., 1.);
+              vColor = mix(vec3(255., 0., 150.), vec3(0., 100., 255.), d) / 255.;
+            `
+          ).replace(
+            `#include <begin_vertex>`,
+            `#include <begin_vertex>
+              float t = time;
+              float moveT = mod(shift.x + shift.z * t, PI2);
+              float moveS = mod(shift.y + shift.z * t, PI2);
+              transformed += vec3(cos(moveS) * sin(moveT), cos(moveT), sin(moveS) * sin(moveT)) * shift.w;
+              
+              // Mouse interaction - particles follow mouse
+              transformed.x += mouseX * 2.0;
+              transformed.y += mouseY * 2.0;
+              
+              // Scroll interaction - particles move with scroll
+              transformed.z += scrollY * 5.0;
+            `
+          )
+          
+          // Store shader reference for animation loop
+          m.userData.shader = shader
+          
+          shader.fragmentShader = `
+            varying vec3 vColor;
+            ${shader.fragmentShader}
+          `.replace(
+            `void main() {`,
+            `void main() {
+              float d = length(gl_PointCoord.xy - 0.5);
+            `
+          ).replace(
+            `vec4 diffuseColor = vec4( diffuse, opacity );`,
+            `vec4 diffuseColor = vec4( vColor, smoothstep(0.5, 0.1, d) * 2.0 );`
+          )
+        }
         
         let p = new THREE.Points(g, m)
         p.rotation.order = "ZYX"
@@ -164,40 +176,40 @@ export function Advanced3DParticles({ className = "" }: Advanced3DParticlesProps
         
         let clock = new THREE.Clock()
         
-                 // Animation loop - EXACTLY as provided by user
-         const animate = () => {
-           controls.update()
-           let t = clock.getElapsedTime() * 0.5
-           gu.time.value = t * Math.PI
-           
-           // Update mouse and scroll uniforms
-           if (m.userData.shader) {
-             m.userData.shader.uniforms.mouseX.value = mouseX
-             m.userData.shader.uniforms.mouseY.value = mouseY
-             m.userData.shader.uniforms.scrollY.value = scrollY
-           }
-           
-           p.rotation.y = t * 0.05
-           renderer.render(scene, camera)
-           requestAnimationFrame(animate)
-         }
+        // Animation loop
+        const animate = () => {
+          controls.update()
+          let t = clock.getElapsedTime() * 0.5
+          gu.time.value = t * Math.PI
+          
+          // Update mouse and scroll uniforms
+          if (m.userData.shader) {
+            m.userData.shader.uniforms.mouseX.value = mouseX
+            m.userData.shader.uniforms.mouseY.value = mouseY
+            m.userData.shader.uniforms.scrollY.value = scrollY
+          }
+          
+          p.rotation.y = t * 0.05
+          renderer.render(scene, camera)
+          requestAnimationFrame(animate)
+        }
         animate()
 
         // Hide loading state
         setIsLoading(false)
 
-                 // Cleanup
-         return () => {
-           window.removeEventListener('resize', () => {})
-           window.removeEventListener('mousemove', handleMouseMove)
-           window.removeEventListener('scroll', handleScroll)
-           if (containerRef.current && renderer.domElement) {
-             containerRef.current.removeChild(renderer.domElement)
-           }
-           renderer.dispose()
-           g.dispose()
-           m.dispose()
-         }
+        // Cleanup
+        return () => {
+          window.removeEventListener('resize', handleResize)
+          container.removeEventListener('mousemove', handleMouseMove)
+          window.removeEventListener('scroll', handleScroll)
+          if (containerRef.current && renderer.domElement) {
+            containerRef.current.removeChild(renderer.domElement)
+          }
+          renderer.dispose()
+          g.dispose()
+          m.dispose()
+        }
       } catch (error) {
         console.error('Failed to load Three.js:', error)
         setError('Failed to load 3D animation')
@@ -214,9 +226,9 @@ export function Advanced3DParticles({ className = "" }: Advanced3DParticlesProps
   return (
     <div 
       ref={containerRef} 
-      className={`absolute inset-0 ${className}`}
+      className={`w-full h-full ${className}`}
       style={{ 
-        pointerEvents: 'none',
+        position: 'relative',
         zIndex: 1
       }}
     >

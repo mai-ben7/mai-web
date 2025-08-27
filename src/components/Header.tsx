@@ -59,6 +59,7 @@ export function Header() {
           <Button
             variant="ghost"
             onClick={() => setMobileMenuOpen(true)}
+            suppressHydrationWarning
           >
             <span className="sr-only">פתח תפריט</span>
             <Menu className="h-6 w-6" aria-hidden="true" />
@@ -87,6 +88,7 @@ export function Header() {
           <Button
             variant="ghost"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            suppressHydrationWarning
           >
             <span className="sr-only">החלף ערכת נושא</span>
             {theme === "dark" ? (
@@ -134,6 +136,7 @@ export function Header() {
                   variant="ghost"
                   size="icon"
                   onClick={() => setMobileMenuOpen(false)}
+                  suppressHydrationWarning
                 >
                   <span className="sr-only">סגור תפריט</span>
                   <X className="h-6 w-6" aria-hidden="true" />
@@ -167,6 +170,7 @@ export function Header() {
                         variant="ghost"
                         size="icon"
                         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                        suppressHydrationWarning
                       >
                         {theme === "dark" ? (
                           <Sun className="h-5 w-5" />

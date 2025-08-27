@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Check, Star, Zap, Crown, Rocket, Sparkles, ArrowRight, TrendingUp } from "lucide-react"
+import { Check, Code, FileText, ArrowRight, Sparkles } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -10,79 +10,35 @@ import { fadeInUp, staggerContainer } from "@/lib/animations"
 
 const packages = [
   {
-    name: "Basic",
-    price: "מחיר בהתאמה אישית",
-    description: "אידיאלי לעסקים בתחילת הדרך",
-    icon: Zap,
-    gradient: "from-emerald-500 to-teal-500",
-    bgGradient: "from-emerald-500/10 to-teal-500/10",
+    name: "אתר מותאם אישית בקוד מלא",
+    price: "החל מ-4,999 ₪",
+    description: "בניית אתר מותאם אישית בקוד מלא עם אנימציות מתקדמות ומודלים תלת-ממדיים אינטראקטיביים. הפתרון המושלם לעסקים שרוצים אתר ייחודי וחדשני.",
+    icon: Code,
+    gradient: "from-blue-500 to-blue-600",
+    bgGradient: "from-blue-500/10 to-blue-600/10",
     features: [
-      "דף בית + עד 3 עמודים",
-      "עיצוב נקי ומודרני",
-      "התאמה מלאה למובייל",
-      "טפסי יצירת קשר מתקדמים",
-      "חיבור בסיסי לאנליטיקס",
-      "טעינה מהירה"
+      "פיתוח בקוד מלא עם אפשרויות בלתי מוגבלות",
+      "אנימציות מתקדמות ואפקטים ויזואליים",
+      "מודלים תלת-ממדיים אינטראקטיביים (אופציונלי)",
+      "אתר אינטראקטיבי וחדשני לחלוטין"
     ],
-    cta: "התחילו עם Basic",
-    popular: false,
+    cta: "למידע נוסף",
     animation: "slideInLeft"
   },
   {
-    name: "Basic Plus",
-    price: "מחיר בהתאמה אישית",
-    description: "כל מה שב-Basic + מערכת משתמשים מתקדמת",
-    icon: TrendingUp,
-    gradient: "from-violet-500 to-purple-500",
-    bgGradient: "from-violet-500/10 to-purple-500/10",
+    name: "תבנית מוכנה בהתאמה אישית",
+    price: "החל מ-1,999 ₪",
+    description: "אתרים מוכנים לרכישה מהירה במחיר מוזל. פתרון אידיאלי כשאתה צריך אתר איכותי במהירות וביעילות.",
+    icon: FileText,
+    gradient: "from-blue-700 to-blue-800",
+    bgGradient: "from-blue-700/10 to-blue-800/10",
     features: [
-      "כל מה שב-Basic",
-      "הרשמה/התחברות מתקדמת",
-      "אזור אישי מותאם",
-      "רכיבים אינטראקטיביים",
-      "תמיכה טכנית מתמשכת",
-      "אנימציות בסיסיות"
+      "חיסכון משמעותי בזמן ובעלויות",
+      "עיצוב מקצועי ומודרני",
+      "התאמה קלה לצרכים שלך",
+      "מוכן תוך 7-14 ימי עבודה"
     ],
-    cta: "שדרגו ל-Basic Plus",
-    popular: false,
-    animation: "slideInUp"
-  },
-  {
-    name: "Extra",
-    price: "מחיר בהתאמה אישית",
-    description: "חבילת פרימיום עם אתר חי ואנימציות מתקדמות",
-    icon: Rocket,
-    gradient: "from-orange-500 to-red-500",
-    bgGradient: "from-orange-500/10 to-red-500/10",
-    features: [
-      "כל מה שב-Basic Plus",
-      "אנימציות גלילה מתקדמות",
-      "מקטע WebGL אינטראקטיבי",
-      "עמודי פרויקט קולנועיים",
-      "אופטימיזציה מתקדמת ל-SEO",
-      "ביצועים מעולים"
-    ],
-    cta: "עברו ל-Extra",
-    popular: true,
-    animation: "slideInUp"
-  },
-  {
-    name: "Extra Plus",
-    price: "מחיר בהתאמה אישית",
-    description: "המופע המלא: אתר אנימטיבי חי מרשים במיוחד",
-    icon: Crown,
-    gradient: "from-yellow-500 to-orange-500",
-    bgGradient: "from-yellow-500/10 to-orange-500/10",
-    features: [
-      "כל מה שב-Extra",
-      "מספר סצנות WebGL מתקדמות",
-      "מיקרו-אינטראקציות בכל האתר",
-      "עמודי קייס-סטדי קולנועיים",
-      "תמיכה מלאה + עדכונים חודשיים",
-      "ביצועים אופטימליים"
-    ],
-    cta: "בחרו ב-Extra Plus",
-    popular: false,
+    cta: "למידע נוסף",
     animation: "slideInRight"
   }
 ]
@@ -93,11 +49,6 @@ const animationVariants = {
     animate: { x: 0, opacity: 1 },
     exit: { x: -100, opacity: 0 }
   },
-  slideInUp: {
-    initial: { y: 100, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    exit: { y: 100, opacity: 0 }
-  },
   slideInRight: {
     initial: { x: 100, opacity: 0 },
     animate: { x: 0, opacity: 1 },
@@ -106,31 +57,30 @@ const animationVariants = {
 }
 
 export function Packages() {
-  const [selectedPackage, setSelectedPackage] = useState<string | null>(null)
   const [hoveredPackage, setHoveredPackage] = useState<string | null>(null)
 
   return (
     <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
-             {/* Unique Animated Background */}
-       <div className="absolute inset-0">
-         {/* Geometric Pattern */}
-         <div className="absolute inset-0 opacity-20">
-           <div className="absolute top-10 left-10 w-32 h-32 border-2 border-emerald-300/30 rounded-full animate-spin-slow" />
-           <div className="absolute top-20 right-20 w-24 h-24 border-2 border-violet-300/30 rounded-full animate-spin-slow-reverse" />
-           <div className="absolute bottom-20 left-1/4 w-40 h-40 border-2 border-orange-300/30 rounded-full animate-spin-slow" />
-           <div className="absolute bottom-10 right-1/3 w-28 h-28 border-2 border-yellow-300/30 rounded-full animate-spin-slow-reverse" />
-         </div>
-         
-         {/* Subtle Floating Elements */}
-         <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-emerald-400/60 rounded-full animate-pulse" />
-         <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-violet-400/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-         <div className="absolute bottom-1/4 left-1/2 w-1 h-1 bg-orange-400/60 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-         <div className="absolute bottom-1/3 right-1/4 w-1.5 h-1.5 bg-yellow-400/60 rounded-full animate-pulse" style={{ animationDelay: '3s' }} />
-         
-         {/* Gradient Overlays */}
-         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/30 to-transparent" />
-         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white/30 to-transparent" />
-       </div>
+      {/* Unique Animated Background */}
+      <div className="absolute inset-0">
+        {/* Geometric Pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-10 left-10 w-32 h-32 border-2 border-blue-300/30 rounded-full animate-spin-slow" />
+          <div className="absolute top-20 right-20 w-24 h-24 border-2 border-blue-400/30 rounded-full animate-spin-slow-reverse" />
+          <div className="absolute bottom-20 left-1/4 w-40 h-40 border-2 border-blue-500/30 rounded-full animate-spin-slow" />
+          <div className="absolute bottom-10 right-1/3 w-28 h-28 border-2 border-blue-600/30 rounded-full animate-spin-slow-reverse" />
+        </div>
+        
+        {/* Subtle Floating Elements */}
+        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-blue-400/60 rounded-full animate-pulse" />
+        <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-blue-500/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/4 left-1/2 w-1 h-1 bg-blue-600/60 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-1/3 right-1/4 w-1.5 h-1.5 bg-blue-700/60 rounded-full animate-pulse" style={{ animationDelay: '3s' }} />
+        
+        {/* Gradient Overlays */}
+        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white/30 to-transparent" />
+      </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
@@ -141,85 +91,81 @@ export function Packages() {
           viewport={{ once: true }}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500/20 to-violet-500/20 backdrop-blur-sm border border-emerald-300/30 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-blue-600/20 backdrop-blur-sm border border-blue-300/30 mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <Sparkles className="w-4 h-4 text-emerald-600" />
+            <Sparkles className="w-4 h-4 text-blue-600" />
             <span className="text-sm font-medium text-slate-700">בחרו את החבילה המתאימה</span>
           </motion.div>
 
-          <motion.h2 
-            className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6"
-            initial={{ opacity: 0, y: 30 }}
+          <motion.h2
+            className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <span className="bg-gradient-to-r from-emerald-600 via-violet-600 to-orange-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
               חבילות שירות
             </span>
           </motion.h2>
-          
-          <motion.p 
-            className="text-xl text-slate-600 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
+
+          <motion.p
+            className="text-lg text-slate-600 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
-            בחרו את החבילה המתאימה לעסק שלכם וקבלו אתר מרשים עם אנימציות מתקדמות
+            פתרונות מותאמים אישית לכל סוגי העסקים - מסטארט-אפים ועד חברות גדולות
           </motion.p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-4"
+          className="grid grid-cols-1 gap-8 lg:grid-cols-2 max-w-5xl mx-auto"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
         >
           {packages.map((pkg, index) => (
-            <motion.div 
-              key={index} 
-              className="pt-8"
+            <motion.div
+              key={pkg.name}
               variants={animationVariants[pkg.animation as keyof typeof animationVariants]}
-              whileHover={{ 
-                y: -10,
-                scale: 1.02,
-                transition: { duration: 0.3 }
-              }}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 }}
               onHoverStart={() => setHoveredPackage(pkg.name)}
               onHoverEnd={() => setHoveredPackage(null)}
+              className="flex flex-col"
             >
+              {/* Small Business Tag above second card */}
+              {pkg.name === "תבנית מוכנה בהתאמה אישית" && (
+                <motion.div
+                  className="flex justify-center mb-4"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 shadow-lg border-2 border-white/20 backdrop-blur-sm">
+                    <span className="text-sm font-bold text-white">מתאים לעסקים קטנים</span>
+                    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                  </div>
+                </motion.div>
+              )}
+              
+              {/* Empty space for first card to maintain alignment */}
+              {pkg.name === "אתר מותאם אישית בקוד מלא" && (
+                <div className="mb-4 h-12"></div>
+              )}
+              
               <Card 
-                className={`h-full relative transition-all duration-500 cursor-pointer bg-white/80 backdrop-blur-sm border-0 shadow-xl ${
-                  pkg.popular 
-                    ? 'ring-2 ring-orange-400 shadow-2xl scale-105 bg-gradient-to-br from-orange-50 to-red-50' 
-                    : 'hover:shadow-2xl hover:bg-white/90'
-                }`}
+                className={`flex-1 transition-all duration-500 cursor-pointer border-0 shadow-xl hover:shadow-2xl bg-gradient-to-br ${pkg.gradient}`}
               >
-                {/* Animated Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${pkg.bgGradient} opacity-0 transition-opacity duration-500 ${
-                  hoveredPackage === pkg.name ? 'opacity-100' : ''
-                }`} />
-                
-                {/* Popular Badge */}
-                {pkg.popular && (
-                  <motion.div 
-                    className="absolute -top-5 left-1/2 -translate-x-1/2 z-20 inline-block"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    <div className="bg-gradient-to-r from-orange-400 to-red-500 text-white px-4 py-1.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-lg">
-                      <Star className="h-4 w-4" />
-                      פופולרי
-                    </div>
-                  </motion.div>
-                )}
                 
                 <CardHeader className="text-center relative z-10">
                   <motion.div
@@ -233,14 +179,15 @@ export function Packages() {
                     <pkg.icon className="w-8 h-8 text-white" />
                   </motion.div>
                   
-                  <CardTitle className="text-2xl text-slate-800 mb-2">{pkg.name}</CardTitle>
+                  <CardTitle className="text-2xl text-white mb-2 font-bold">{pkg.name}</CardTitle>
                   <motion.div 
-                    className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-violet-600 bg-clip-text text-transparent mb-3"
+                    className="text-3xl font-bold text-white mb-3"
                     whileHover={{ scale: 1.05 }}
                   >
                     {pkg.price}
                   </motion.div>
-                  <CardDescription className="text-base text-slate-600">
+                  
+                  <CardDescription className="text-base text-white/90">
                     {pkg.description}
                   </CardDescription>
                 </CardHeader>
@@ -259,9 +206,9 @@ export function Packages() {
                           className="flex-shrink-0"
                           whileHover={{ scale: 1.2 }}
                         >
-                          <Check className="h-5 w-5 text-emerald-500 mt-0.5" />
+                          <Check className="h-5 w-5 text-green-400 mt-0.5" />
                         </motion.div>
-                        <span className="text-sm text-slate-700">{feature}</span>
+                        <span className="text-sm text-white">{feature}</span>
                       </motion.li>
                     ))}
                   </ul>
@@ -271,7 +218,7 @@ export function Packages() {
                     whileTap={{ scale: 0.95 }}
                   >
                     <Button 
-                      className={`w-full mt-6 bg-gradient-to-r ${pkg.gradient} hover:shadow-lg transition-all duration-300 text-white font-semibold`}
+                      className="w-full mt-6 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 transition-all duration-300 text-white font-semibold"
                       size="lg"
                     >
                       <span>{pkg.cta}</span>
@@ -280,12 +227,7 @@ export function Packages() {
                   </motion.div>
                 </CardContent>
 
-                {/* Hover Effects */}
-                <motion.div
-                  className="absolute inset-0 rounded-lg bg-gradient-to-r from-white/20 to-transparent opacity-0 transition-opacity duration-300"
-                  initial={false}
-                  animate={{ opacity: hoveredPackage === pkg.name ? 1 : 0 }}
-                />
+
               </Card>
             </motion.div>
           ))}
@@ -311,13 +253,13 @@ export function Packages() {
             <Button 
               asChild 
               size="lg"
-              className="bg-gradient-to-r from-emerald-500 to-violet-600 hover:from-emerald-600 hover:to-violet-700 text-white font-semibold px-8 py-4 text-lg shadow-lg"
+              className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold px-8 py-4 text-lg shadow-lg"
             >
               <a href="/contact">קבעו ייעוץ חינם</a>
             </Button>
           </motion.div>
         </motion.div>
-             </div>
-     </section>
-   )
- } 
+      </div>
+    </section>
+  )
+} 

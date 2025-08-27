@@ -106,6 +106,7 @@ export function ContactForm({ type }: ContactFormProps) {
         <Button
           onClick={() => setIsSubmitted(false)}
           variant="outline"
+          suppressHydrationWarning
         >
           שלח טופס נוסף
         </Button>

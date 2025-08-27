@@ -63,6 +63,7 @@ export function ProjectControls({
                   ? 'bg-white text-blue-600 shadow-sm'
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'
               }`}
+              suppressHydrationWarning
             >
               {option.label}
             </Button>

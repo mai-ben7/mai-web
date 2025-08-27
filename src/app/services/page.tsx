@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Check, Star, ArrowLeft } from "lucide-react"
+import { Check, ArrowLeft } from "lucide-react"
 
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
@@ -23,8 +23,7 @@ const packages = [
       "חיבור בסיסי לאנליטיקס",
       "תמיכה טכנית בסיסית"
     ],
-    cta: "התחילו עם Basic",
-    popular: false
+    cta: "התחילו עם Basic"
   },
   {
     name: "Basic Plus",
@@ -38,8 +37,7 @@ const packages = [
       "תמיכה טכנית",
       "אופטימיזציה בסיסית"
     ],
-    cta: "שדרגו ל-Basic Plus",
-    popular: false
+    cta: "שדרגו ל-Basic Plus"
   },
   {
     name: "Extra",
@@ -53,8 +51,7 @@ const packages = [
       "אופטימיזציה מתקדמת",
       "תמיכה מלאה"
     ],
-    cta: "עברו ל-Extra",
-    popular: true
+    cta: "עברו ל-Extra"
   },
   {
     name: "Extra Plus",
@@ -68,8 +65,7 @@ const packages = [
       "תמיכה מלאה + עדכונים",
       "אופטימיזציה מתקדמת"
     ],
-    cta: "בחרו ב-Extra Plus",
-    popular: false
+    cta: "בחרו ב-Extra Plus"
   }
 ]
 
@@ -151,22 +147,10 @@ export default function ServicesPage() {
               viewport={{ once: true }}
             >
               {packages.map((pkg, index) => (
-                <motion.div key={index} className="pt-8" variants={fadeInUp}>
+                <motion.div key={index} variants={fadeInUp}>
                   <Card 
-                    className={`h-full relative transition-all duration-300 ${
-                      pkg.popular 
-                        ? 'ring-2 ring-brand shadow-lg scale-105' 
-                        : 'hover:shadow-lg'
-                    }`}
+                    className="h-full transition-all duration-300 hover:shadow-lg"
                   >
-                    {pkg.popular && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
-                        <div className="bg-brand text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
-                          <Star className="h-3 w-3" />
-                          פופולרי
-                        </div>
-                      </div>
-                    )}
                     
                     <CardHeader className="text-center">
                       <CardTitle className="text-2xl">{pkg.name}</CardTitle>
@@ -188,7 +172,7 @@ export default function ServicesPage() {
                       
                       <Button 
                         className="w-full mt-6" 
-                        variant={pkg.popular ? "default" : "outline"}
+                        variant="outline"
                       >
                         {pkg.cta}
                       </Button>

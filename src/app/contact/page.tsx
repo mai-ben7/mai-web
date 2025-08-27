@@ -112,6 +112,7 @@ export default function ContactPage() {
                             ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0 shadow-md' 
                             : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-gray-300 dark:border-gray-600'
                         }`}
+                        suppressHydrationWarning
                       >
                         יצירת קשר
                       </Button>
@@ -124,6 +125,7 @@ export default function ContactPage() {
                             ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0 shadow-md' 
                             : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-gray-300 dark:border-gray-600'
                         }`}
+                        suppressHydrationWarning
                       >
                         ייעוץ חינם
                       </Button>

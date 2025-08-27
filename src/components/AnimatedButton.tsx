@@ -14,6 +14,7 @@ export function AnimatedButton({ children, onClick, className }: AnimatedButtonP
     <button 
       className={`${styles.animatedButton} ${className || ''}`}
       onClick={onClick}
+      suppressHydrationWarning
     >
       <span></span>
       <span></span>

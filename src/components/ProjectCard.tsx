@@ -51,6 +51,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setIsVideoPlaying(true)}
+                  suppressHydrationWarning
                 >
                   <Play className="w-6 h-6 text-blue-600 ml-1" />
                 </motion.div>
