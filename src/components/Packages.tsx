@@ -125,7 +125,7 @@ export function Packages() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 gap-8 lg:grid-cols-2 max-w-5xl mx-auto"
+          className="grid grid-cols-1 gap-8 lg:grid-cols-2 max-w-5xl mx-auto items-stretch"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
@@ -164,7 +164,7 @@ export function Packages() {
               )}
               
               <Card 
-                className={`flex-1 transition-all duration-500 cursor-pointer border-0 shadow-xl hover:shadow-2xl bg-gradient-to-br ${pkg.gradient}`}
+                className={`h-full flex flex-col transition-all duration-500 cursor-pointer border-0 shadow-xl hover:shadow-2xl bg-gradient-to-br ${pkg.gradient}`}
               >
                 
                 <CardHeader className="text-center relative z-10">
@@ -192,7 +192,7 @@ export function Packages() {
                   </CardDescription>
                 </CardHeader>
                 
-                <CardContent className="space-y-6 relative z-10">
+                <CardContent className="flex-1 flex flex-col space-y-6 relative z-10">
                   <ul className="space-y-4">
                     {pkg.features.map((feature, featureIndex) => (
                       <motion.li 
@@ -213,18 +213,20 @@ export function Packages() {
                     ))}
                   </ul>
                   
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button 
-                      className="w-full mt-6 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 transition-all duration-300 text-white font-semibold"
-                      size="lg"
+                  <div className="mt-auto pt-6">
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      <span>{pkg.cta}</span>
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </motion.div>
+                      <Button 
+                        className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 transition-all duration-300 text-white font-semibold"
+                        size="lg"
+                      >
+                        <span>{pkg.cta}</span>
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </motion.div>
+                  </div>
                 </CardContent>
 
 

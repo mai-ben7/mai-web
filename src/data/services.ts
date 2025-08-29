@@ -10,7 +10,7 @@ export const SERVICES: ServiceCard[] = [
     corner: "br",
     textSide: "right", // עיגול בפינה ימנית תחתונה, טקסט בצד ימין
     imageUrl:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop",
+      "/images/seo-corner.jpg",
     accent: "#10b981" // emerald-500
   },
   {
@@ -21,7 +21,7 @@ export const SERVICES: ServiceCard[] = [
     corner: "bl",
     textSide: "left", // עיגול בפינה שמאלית תחתונה, טקסט בצד שמאל
     imageUrl:
-      "https://images.unsplash.com/photo-1587440871875-191322ee64b0?q=80&w=1600&auto=format&fit=crop",
+      "/images/design-corner.jpg",
     accent: "#8b5cf6" // violet-500
   },
   {
@@ -32,7 +32,7 @@ export const SERVICES: ServiceCard[] = [
     corner: "tr",
     textSide: "right", // עיגול בפינה ימנית עליונה, טקסט בצד ימין
     imageUrl:
-      "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=1600&auto=format&fit=crop",
+      "/images/animation.png",
     accent: "#f59e0b" // amber-500
   },
   {
@@ -43,7 +43,7 @@ export const SERVICES: ServiceCard[] = [
     corner: "tl",
     textSide: "left", // עיגול בפינה שמאלית עליונה, טקסט בצד שמאל
     imageUrl:
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1600&auto=format&fit=crop",
+      "/images/performance-corner.jpg",
     accent: "#06b6d4" // cyan-500
   }
 ];

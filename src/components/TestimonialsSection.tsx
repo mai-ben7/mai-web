@@ -7,7 +7,7 @@ export function TestimonialsSection() {
       items={TESTIMONIALS}
       title="מה הלקוחות אומרים"
       subtitle="תוצאות אמיתיות מלקוחות מרוצים"
-      className="py-24 bg-gradient-to-br from-slate-900 via-purple-900/50 to-slate-800"
+      className="py-24 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600"
     />
   );
 }

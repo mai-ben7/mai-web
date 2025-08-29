@@ -47,11 +47,19 @@ export function Hero() {
               </Link>
             </Button>
             
-            <Button asChild variant="outline" size="lg" className="group">
-              <Link href="/contact">
-                קבעו ייעוץ חינם
-                <Play className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="group"
+              onClick={() => {
+                document.getElementById('booking')?.scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }}
+            >
+              קבעו ייעוץ חינם
+              <Play className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </motion.div>
           

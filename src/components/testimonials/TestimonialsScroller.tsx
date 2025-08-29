@@ -88,8 +88,8 @@ export default function TestimonialsScroller({
         {isSmall ? (
           <>
             <header className="mb-10 text-center">
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">{title}</h2>
-              {subtitle ? <p className="mt-3 text-base text-slate-300">{subtitle}</p> : null}
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white drop-shadow-lg">{title}</h2>
+              {subtitle ? <p className="mt-3 text-base text-white/90 font-medium">{subtitle}</p> : null}
             </header>
             <MobileSwipe items={items} prefersReducedMotion={prefersReducedMotion} />
           </>
@@ -159,8 +159,8 @@ function DesktopPinned({
         <div className="relative mx-auto max-w-2xl">
           {/* Header */}
           <header className="mb-10 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">{title}</h2>
-            {subtitle ? <p className="mt-3 text-base text-slate-300">{subtitle}</p> : null}
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white drop-shadow-lg">{title}</h2>
+            {subtitle ? <p className="mt-3 text-base text-white/90 font-medium">{subtitle}</p> : null}
           </header>
           
           {/* Dots */}
