@@ -6,18 +6,16 @@ import { ArrowLeft, Play } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { fadeInUp, staggerContainer } from "@/lib/animations"
-import { HeroParticles } from "./HeroParticles"
+import { HeroPlanet } from "./HeroPlanet"
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-bg-soft via-bg to-brand/5">
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-purple-950/30 to-slate-900">
       {/* WebGL Background */}
-      <div className="absolute inset-0 z-0">
-        <HeroParticles />
-      </div>
+      <HeroPlanet />
       
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+      <div className="relative z-10 flex min-h-screen items-center justify-center px-6 py-24 sm:py-32 lg:px-8">
         <motion.div
           className="mx-auto max-w-4xl text-center"
           variants={staggerContainer}
