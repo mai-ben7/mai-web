@@ -15,7 +15,6 @@ import {
 } from 'lucide-react'
 import { FloatingModal } from './FloatingModal'
 import { AnimatedBackground } from './AnimatedBackground'
-import { FloatingParticles } from './FloatingParticles'
 
 const features = [
   {
@@ -75,9 +74,6 @@ export function AnimatedFeatureCards() {
     <section className="py-24 bg-gradient-to-b from-slate-900 to-slate-800 relative overflow-hidden">
       {/* Animated Background */}
       <AnimatedBackground />
-      
-      {/* Floating Particles */}
-      <FloatingParticles />
       
       {/* Background Elements */}
       <div className="absolute inset-0">

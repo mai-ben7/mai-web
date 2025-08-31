@@ -5,7 +5,6 @@ import { useState, useRef, useMemo, useEffect, Suspense } from 'react'
 import { FloatingModal } from './FloatingModal'
 import { Play, ArrowRight, Sparkles } from 'lucide-react'
 import { AnimatedButton } from './AnimatedButton'
-import { Advanced3DParticles } from './Advanced3DParticles'
 
 export function AnimatedHero() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
@@ -98,16 +97,14 @@ export function AnimatedHero() {
             </div>
           </motion.div>
 
-          {/* 3D Model - Right Side */}
+          {/* Right Side Placeholder */}
           <motion.div className="order-2 lg:order-2 relative z-10" variants={itemVariants}>
-            <div className="w-full h-[500px] flex items-center justify-center relative overflow-hidden rounded-2xl">
-              <Suspense fallback={
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-white">טוען אנימציה...</div>
-                </div>
-              }>
-                <Advanced3DParticles />
-              </Suspense>
+            <div className="w-full h-[500px] flex items-center justify-center relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-white/20">
+              <div className="text-center text-white/80">
+                <div className="text-6xl mb-4">✨</div>
+                <div className="text-xl font-semibold">Interactive Design</div>
+                <div className="text-sm opacity-70">Modern web experiences</div>
+              </div>
             </div>
           </motion.div>
         </motion.div>

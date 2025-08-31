@@ -122,7 +122,7 @@ function Card({
       {/* overlay circle (expands on hover) */}
       <div className="overlay" aria-hidden />
 
-      {/* optional image circle (desktop only) */}
+      {/* optional image circle (deskt op only) */}
       {imageUrl ? (
         <div
           className="bgCircle hidden lg:block"

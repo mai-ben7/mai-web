@@ -14,7 +14,7 @@ const skills = [
   { name: "React & Next.js", level: 95 },
   { name: "TypeScript", level: 90 },
   { name: "Framer Motion", level: 85 },
-  { name: "Three.js & WebGL", level: 80 },
+      { name: "WebGL & Canvas", level: 80 },
   { name: "Tailwind CSS", level: 95 },
   { name: "Node.js", level: 85 },
 ]

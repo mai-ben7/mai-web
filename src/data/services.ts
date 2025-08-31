@@ -10,7 +10,7 @@ export const SERVICES: ServiceCard[] = [
     corner: "br",
     textSide: "right", // עיגול בפינה ימנית תחתונה, טקסט בצד ימין
     imageUrl:
-      "/images/seo-corner.jpg",
+      "/images/seo.png",
     accent: "#10b981" // emerald-500
   },
   {
@@ -21,7 +21,7 @@ export const SERVICES: ServiceCard[] = [
     corner: "bl",
     textSide: "left", // עיגול בפינה שמאלית תחתונה, טקסט בצד שמאל
     imageUrl:
-      "/images/design-corner.jpg",
+      "/images/design.png",
     accent: "#8b5cf6" // violet-500
   },
   {
@@ -43,7 +43,7 @@ export const SERVICES: ServiceCard[] = [
     corner: "tl",
     textSide: "left", // עיגול בפינה שמאלית עליונה, טקסט בצד שמאל
     imageUrl:
-      "/images/performance-corner.jpg",
+      "/images/performance.png",
     accent: "#06b6d4" // cyan-500
   }
 ];

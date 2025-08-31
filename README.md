@@ -6,7 +6,7 @@
 
 - **עברית מלאה עם RTL** - תמיכה מלאה בעברית וכיוון RTL
 - **אנימציות מתקדמות** - Framer Motion עם אפקטים מרשימים
-- **WebGL רקע** - React Three Fiber עם חלקיקים אינטראקטיביים
+- **אנימציות מתקדמות** - Framer Motion עם אפקטים אינטראקטיביים
 - **עיצוב מודרני** - Tailwind CSS עם ערכת צבעים מותאמת אישית
 - **נגישות מלאה** - תמיכה ב-WCAG AA+ וניווט מקלדת
 - **ביצועים מעולים** - Next.js 14 עם App Router ואופטימיזציה
@@ -17,7 +17,7 @@
 
 - **Frontend**: Next.js 14, React 18, TypeScript
 - **Styling**: Tailwind CSS, CSS Variables
-- **Animations**: Framer Motion, React Three Fiber
+- **Animations**: Framer Motion
 - **UI Components**: Radix UI, shadcn/ui
 - **Forms**: React Hook Form, Zod validation
 - **Icons**: Lucide React
@@ -67,8 +67,7 @@ src/
 │   ├── FeatureCards.tsx  # Features showcase
 │   ├── Packages.tsx      # Pricing packages
 │   ├── TestimonialCarousel.tsx # Customer testimonials
-│   ├── ContactForm.tsx   # Contact forms
-│   └── HeroParticles.tsx # WebGL background
+│   └── ContactForm.tsx   # Contact forms
 ├── content/              # Static content
 │   ├── projects.json     # Projects data
 │   └── testimonials.json # Customer testimonials

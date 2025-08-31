@@ -6,14 +6,10 @@ import { ArrowLeft, Play } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { fadeInUp, staggerContainer } from "@/lib/animations"
-import { HeroPlanet } from "./HeroPlanet"
 
 export function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-purple-950/30 to-slate-900">
-      {/* WebGL Background */}
-      <HeroPlanet />
-      
       {/* Content */}
       <div className="relative z-10 flex min-h-screen items-center justify-center px-6 py-24 sm:py-32 lg:px-8">
         <motion.div

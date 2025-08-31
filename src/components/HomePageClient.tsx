@@ -8,7 +8,6 @@ import AdvancedSection from "@/components/AdvancedSection"
 import { Packages } from "@/components/Packages"
 import { TestimonialsSection } from "@/components/TestimonialsSection"
 import { Footer } from "@/components/Footer"
-import { FloatingParticles } from "@/components/FloatingParticles"
 import { FloatingModal } from "@/components/FloatingModal"
 import { Play } from "lucide-react"
 import { pageTransition } from "@/lib/animations"
@@ -39,8 +38,7 @@ export function HomePageClient() {
       exit="exit"
       className="relative"
     >
-      {/* Floating Particles Background */}
-      {/* <FloatingParticles /> */}
+      {/* Background Effects */}
       
       <Header />
       <main>

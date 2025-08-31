@@ -6,7 +6,6 @@ import { Header } from "./Header"
 import { Footer } from "./Footer"
 import { ProjectCard } from "./ProjectCard"
 import { ProjectControls } from "./ProjectControls"
-import { ProjectHeader3D } from "./ProjectHeader3D"
 import { projects, getProjectsByPackage, searchProjects, sortProjects } from "@/lib/projects"
 import { Project } from "@/lib/projects"
 

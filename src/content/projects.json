@@ -20,7 +20,7 @@
       "/projects/restaurant-2.jpg",
       "/projects/restaurant-3.jpg"
     ],
-    "technologies": ["Next.js", "TypeScript", "Framer Motion", "Three.js", "Tailwind CSS"],
+    "technologies": ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS"],
     "duration": "6 שבועות",
     "budget": "15,000 ₪"
   },
@@ -55,7 +55,7 @@
     "slug": "design-studio",
     "client": "סטודיו ויזואל",
     "category": "עיצוב",
-    "tags": ["React", "GSAP", "WebGL", "Three.js"],
+    "tags": ["React", "GSAP", "WebGL"],
     "summary": "אתר סטודיו עיצוב עם אנימציות WebGL מתקדמות",
     "description": "יצרנו אתר סטודיו עיצוב עם אנימציות WebGL מרשימות, גלריית עבודות אינטראקטיבית, ואפקטים ויזואליים מתקדמים.",
     "problem": "הסטודיו רצה אתר שישקף את היצירתיות והחדשנות שלהם",
@@ -70,7 +70,7 @@
       "/projects/studio-2.jpg",
       "/projects/studio-3.jpg"
     ],
-    "technologies": ["React", "Three.js", "GSAP", "WebGL", "Tailwind CSS"],
+    "technologies": ["React", "GSAP", "WebGL", "Tailwind CSS"],
     "duration": "7 שבועות",
     "budget": "20,000 ₪"
   },
