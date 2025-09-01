@@ -245,3 +245,18 @@ a-rays .a__scene path {
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
 }
+
+/* Optional helpers for parallax sections */
+.parallax-panel {
+  position: relative;
+  overflow: hidden;
+  /* height: 100vh;  // uncomment if you want full-screen sections */
+}
+
+.parallax-media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  object-fit: cover;
+  will-change: transform;
+}

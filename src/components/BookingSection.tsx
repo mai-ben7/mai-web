@@ -10,14 +10,23 @@ export default function BookingSection() {
   return (
     <motion.section
       id="booking"
+      data-parallax-panel
       dir="rtl"
-      className="py-20 bg-gradient-to-br from-gray-50 to-white"
+      className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
     >
-      <div className="container mx-auto px-4">
+      {/* Parallax background */}
+      <img
+        data-parallax
+        src="/images/seo.png"
+        alt=""
+        className="parallax-media"
+        aria-hidden="true"
+      />
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
           className="text-center mb-16"

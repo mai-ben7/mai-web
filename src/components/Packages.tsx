@@ -60,7 +60,16 @@ export function Packages() {
   const [hoveredPackage, setHoveredPackage] = useState<string | null>(null)
 
   return (
-    <section id="packages" className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+    <section id="packages" data-parallax-panel className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+      {/* Parallax background */}
+      <img
+        data-parallax
+        src="/images/animation.png"
+        alt=""
+        className="parallax-media"
+        aria-hidden="true"
+      />
+      
       {/* Unique Animated Background */}
       <div className="absolute inset-0">
         {/* Geometric Pattern */}

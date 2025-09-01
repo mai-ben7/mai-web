@@ -1,58 +1,113 @@
 import { useEffect, useRef, useState } from "react";
-import { Star } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
-interface MarqueeProps {
+interface TestimonialSliderProps {
   children: React.ReactNode;
-  direction?: "left" | "right";
-  speed?: number;
-  pauseOnHover?: boolean;
+  autoPlay?: boolean;
+  interval?: number;
   className?: string;
 }
 
-const Marquee = ({
+const TestimonialSlider = ({
   children,
-  direction = "left",
-  speed = 50,
-  pauseOnHover = true,
+  autoPlay = true,
+  interval = 3000,
   className = "",
-}: MarqueeProps) => {
-  const [contentWidth, setContentWidth] = useState(0);
-  const contentRef = useRef<HTMLDivElement>(null);
+}: TestimonialSliderProps) => {
   const [isPaused, setIsPaused] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const childrenArray = Array.isArray(children) ? children : [children];
+  const totalSlides = childrenArray.length;
 
-  useEffect(() => {
-    if (contentRef.current) {
-      setContentWidth(contentRef.current.scrollWidth);
-    }
-  }, [children]);
+  // Calculate animation duration based on number of testimonials
+  const animationDuration = totalSlides * 3; // 3 seconds per testimonial
 
   return (
-    <div
-      className={`overflow-hidden relative ${className}`}
-      onMouseEnter={() => pauseOnHover && setIsPaused(true)}
-      onMouseLeave={() => pauseOnHover && setIsPaused(false)}
-    >
+    <div className={`relative ${className}`}>
+      {/* Infinite Auto-Scrolling Container */}
       <div
-        className={`flex min-w-full gap-4 ${isPaused ? 'marquee-paused' : ''}`}
-        style={{
-          animation: `scroll-${direction} ${contentWidth / speed}s linear infinite`,
-        }}
+        ref={containerRef}
+        className="overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
-        <div ref={contentRef} className="flex gap-4 shrink-0">
-          {children}
+        <div
+          className={`flex gap-4 ${isPaused ? 'marquee-paused' : ''}`}
+          style={{
+            animation: `scroll-left ${animationDuration}s linear infinite`,
+          }}
+        >
+          {/* First set of testimonials */}
+          <div className="flex gap-4 shrink-0">
+            {childrenArray.map((child, index) => (
+              <div key={`first-${index}`} className="flex-shrink-0 w-80">
+                {child}
+              </div>
+            ))}
+          </div>
+          
+          {/* Second set for seamless loop */}
+          <div className="flex gap-4 shrink-0">
+            {childrenArray.map((child, index) => (
+              <div key={`second-${index}`} className="flex-shrink-0 w-80">
+                {child}
+              </div>
+            ))}
+          </div>
+          
+          {/* Third set to ensure smooth transition */}
+          <div className="flex gap-4 shrink-0">
+            {childrenArray.map((child, index) => (
+              <div key={`third-${index}`} className="flex-shrink-0 w-80">
+                {child}
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="flex gap-4 shrink-0">{children}</div>
+      </div>
+
+      {/* Navigation Arrows (Optional Manual Control) */}
+      <button
+        onClick={() => {
+          setIsPaused(true);
+          setTimeout(() => setIsPaused(false), 5000);
+        }}
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-10"
+        aria-label="Pause auto-scroll"
+        suppressHydrationWarning
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+
+      <button
+        onClick={() => {
+          setIsPaused(true);
+          setTimeout(() => setIsPaused(false), 5000);
+        }}
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-10"
+        aria-label="Pause auto-scroll"
+        suppressHydrationWarning
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+
+      {/* Dots to show current position */}
+      <div className="flex justify-center mt-6 space-x-2">
+        {childrenArray.map((_, index) => (
+          <div
+            key={index}
+            className={`w-3 h-3 rounded-full transition-all duration-200 ${
+              isPaused ? "bg-blue-600 scale-125" : "bg-gray-300"
+            }`}
+          />
+        ))}
       </div>
 
       <style>
         {`
           @keyframes scroll-left {
             from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-          }
-          @keyframes scroll-right {
-            from { transform: translateX(-50%); }
-            to { transform: translateX(0); }
+            to { transform: translateX(-33.333%); }
           }
           
           .marquee-paused {
@@ -164,14 +219,27 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section id="testimonials" className="py-24 bg-gradient-to-br from-slate-50 to-blue-50 overflow-hidden">
-      <div className="container mx-auto px-8">
+    <section id="testimonials" data-parallax-panel className="py-24 bg-gradient-to-br from-slate-50 to-blue-50 overflow-hidden relative">
+      {/* Parallax background */}
+      <img
+        data-parallax
+        src="/images/performance.png"
+        alt=""
+        className="parallax-media"
+        aria-hidden="true"
+      />
+      
+      <div className="container mx-auto px-8 relative z-10">
         <div className="w-full max-w-6xl mx-auto space-y-8">
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold text-center text-foreground mb-6">
               מה הלקוחות אומרים
             </h2>
-            <Marquee direction="left" className="py-4 px-4 overflow-hidden" speed={25}>
+            <TestimonialSlider 
+              autoPlay={true} 
+              interval={4000} 
+              className="py-4"
+            >
               {reviews.map((review) => (
                 <ReviewCard
                   key={review.id}
@@ -181,7 +249,7 @@ export default function TestimonialsSection() {
                   review={review.review}
                 />
               ))}
-            </Marquee>
+            </TestimonialSlider>
           </div>
         </div>
       </div>

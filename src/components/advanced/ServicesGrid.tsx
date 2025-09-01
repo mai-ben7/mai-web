@@ -28,11 +28,20 @@ export default function ServicesGrid({
 }: ServicesGridProps) {
   return (
     <section
+      data-parallax-panel
       className={clsx(
-        "min-h-screen bg-gray-900 py-20 px-8 xl:px-0 flex flex-col justify-center",
+        "min-h-screen bg-gray-900 py-20 px-8 xl:px-0 flex flex-col justify-center relative overflow-hidden",
         className
       )}
     >
+      {/* Parallax background */}
+      <img
+        data-parallax
+        src="/images/design.png"
+        alt=""
+        className="parallax-media"
+        aria-hidden="true"
+      />
       <span className="text-gray-400 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 text-center">
         {eyebrow}
         <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

@@ -12,6 +12,7 @@ import { Play } from "lucide-react"
 import { pageTransition } from "@/lib/animations"
 import BookingSection from "@/components/BookingSection"
 import { FAQSection } from "@/components/FAQSection"
+import EnableSectionParallax from "@/components/parallax/EnableSectionParallax"
 
 
 export function HomePageClient() {
@@ -44,6 +45,7 @@ export function HomePageClient() {
       {/* Background Effects */}
       
       <main>
+        <EnableSectionParallax />
         <div id="hero">
           <HeroSimeyCard
             name="Mai Ben Sheva"
