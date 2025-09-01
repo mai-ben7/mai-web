@@ -65,7 +65,7 @@ export function AnimatedHero() {
                 }}
               >
                 <Sparkles className="w-4 h-4 text-yellow-400" />
-                <span className="text-sm font-medium text-white/90">חדשנות בעיצוב אתרים</span>
+                <span className="text-sm font-medium text-white/90">תיק עבודות</span>
               </motion.div>
 
               <motion.h1
@@ -73,25 +73,42 @@ export function AnimatedHero() {
                 variants={itemVariants}
               >
                 <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  אתרים חיים
+                  שלום, אני
                 </span>
                 <br />
-                <span className="text-white">שמזיזים אנשים</span>
+                <span className="text-white">Mai Ben Sheva</span>
+                <br />
+                <span className="text-2xl lg:text-3xl text-white/90 mt-4 block">
+                  Web Developer • Creative Engineer
+                </span>
               </motion.h1>
 
               <motion.p
                 className="text-xl text-white/80 mb-8 leading-relaxed"
                 variants={itemVariants}
               >
-                אני מאי בן שבע, בונה אתרים מרהיבים עם אנימציות חכמות שמבליטות את העסק שלך וממירות מבקרים ללקוחות.
+                I craft advanced, animated sites for brands that need performance + polish.
               </motion.p>
 
               <motion.div
-                className="flex justify-end"
+                className="flex justify-end gap-4 flex-wrap"
                 variants={itemVariants}
               >
-                <AnimatedButton onClick={() => setIsVideoModalOpen(true)}>
-                  קבע פגישה
+                <AnimatedButton onClick={() => {
+                  const element = document.querySelector('#packages');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}>
+                  צפה בחבילות
+                </AnimatedButton>
+                <AnimatedButton onClick={() => {
+                  const element = document.querySelector('#booking');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}>
+                  צור קשר
                 </AnimatedButton>
               </motion.div>
             </div>

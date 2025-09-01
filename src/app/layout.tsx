@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Heebo } from "next/font/google";
 import "./globals.css";
+import "@/components/hero/HeroSimeyCard.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Header } from "@/components/Header";
 
 const heebo = Heebo({ 
   subsets: ["hebrew", "latin"],
@@ -62,7 +64,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Header />
+          <main id="main" className="overflow-hidden">{children}</main>
         </ThemeProvider>
       </body>
     </html>

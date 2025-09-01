@@ -2,11 +2,10 @@
 
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
-import { Header } from "@/components/Header"
-import { AnimatedHero } from "@/components/AnimatedHero"
+import HeroSimeyCard from "@/components/hero/HeroSimeyCard"
 import AdvancedSection from "@/components/AdvancedSection"
 import { Packages } from "@/components/Packages"
-import { TestimonialsSection } from "@/components/TestimonialsSection"
+import TestimonialsSection from "@/components/TestimonialsSection"
 import { Footer } from "@/components/Footer"
 import { FloatingModal } from "@/components/FloatingModal"
 import { Play } from "lucide-react"
@@ -14,9 +13,12 @@ import { pageTransition } from "@/lib/animations"
 import BookingSection from "@/components/BookingSection"
 import { FAQSection } from "@/components/FAQSection"
 
+
 export function HomePageClient() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+
 
   // Mouse movement handler for interactive effects
   useEffect(() => {
@@ -41,14 +43,34 @@ export function HomePageClient() {
     >
       {/* Background Effects */}
       
-      <Header />
       <main>
-        <AnimatedHero />
-        <AdvancedSection />
-        <Packages />
-        <TestimonialsSection />
-        <BookingSection />
-        <FAQSection />
+        <div id="hero">
+          <HeroSimeyCard
+            name="Mai Ben Sheva"
+            role="Web Developer • Creative Engineer"
+            blurb="I build advanced, animated web experiences that convert and feel premium."
+            imageSrc="/images/mai.jpg"
+            imageAlt="Mai Ben Sheva portrait"
+            rtl={true}
+          />
+        </div>
+        
+
+        <div id="advanced">
+          <AdvancedSection />
+        </div>
+        <div id="packages">
+          <Packages />
+        </div>
+        <div id="testimonials">
+          <TestimonialsSection />
+        </div>
+        <div id="booking">
+          <BookingSection />
+        </div>
+        <div id="faq">
+          <FAQSection />
+        </div>
       </main>
       <Footer />
 

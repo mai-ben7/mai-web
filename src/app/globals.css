@@ -105,6 +105,11 @@ a-rays .a__scene path {
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    
+    /* Portfolio Hero specific variables */
+    --brand-bg: #0f172a;
+    --ease-emphasis: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --hero-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 25%, #8b5cf6 50%, #ec4899 75%, #f97316 100%);
   }
 
   .dark {
@@ -137,14 +142,22 @@ a-rays .a__scene path {
 
 
 
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
   }
   
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
   }
   
   /* RTL specific styles */
@@ -160,6 +173,7 @@ a-rays .a__scene path {
   /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   
   /* Reduced motion support */
@@ -192,4 +206,42 @@ a-rays .a__scene path {
 
 .animate-spin-slow-reverse {
   animation: spin-slow-reverse 25s linear infinite;
+}
+
+/* Enhanced Portfolio Hero animations */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(59,130,246,0.3),
+                0 0 40px rgba(139,92,246,0.2),
+                0 0 60px rgba(236,72,153,0.1);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(59,130,246,0.5),
+                0 0 60px rgba(139,92,246,0.3),
+                0 0 90px rgba(236,72,153,0.2);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
 }
