@@ -16,7 +16,7 @@ const navigation = [
   { name: "פרויקטים", href: "/projects" },
   { name: "שירותים", href: "/services" },
   { name: "אודות", href: "/about" },
-  { name: "צור קשר", href: "/contact" },
+  { name: "צור קשר", href: "#booking" },
 ]
 
 export function Header() {
@@ -77,7 +77,16 @@ export function Header() {
                   ? "bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent"
                   : "text-foreground"
               )}
-              onClick={() => console.log(`Navigating to: ${item.href}`)}
+              onClick={(e) => {
+                if (item.href.startsWith('#')) {
+                  e.preventDefault()
+                  const element = document.querySelector(item.href)
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }
+                console.log(`Navigating to: ${item.href}`)
+              }}
             >
               {item.name}
             </a>
@@ -98,8 +107,16 @@ export function Header() {
             )}
           </Button>
           
-          <Button asChild className="bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-            <a href="/contact">קבעו ייעוץ חינם</a>
+          <Button 
+            className="bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+            onClick={() => {
+              const element = document.querySelector('#booking')
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' })
+              }
+            }}
+          >
+            קבעו ייעוץ חינם
           </Button>
         </div>
       </nav>
@@ -155,7 +172,14 @@ export function Header() {
                             ? "bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent"
                             : "text-foreground"
                         )}
-                        onClick={() => {
+                        onClick={(e) => {
+                          if (item.href.startsWith('#')) {
+                            e.preventDefault()
+                            const element = document.querySelector(item.href)
+                            if (element) {
+                              element.scrollIntoView({ behavior: 'smooth' })
+                            }
+                          }
                           console.log(`Mobile navigating to: ${item.href}`)
                           setMobileMenuOpen(false)
                         }}
@@ -178,9 +202,18 @@ export function Header() {
                           <Moon className="h-5 w-5" />
                         )}
                       </Button>
-                                             <Button asChild className="w-full bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-                         <a href="/contact">קבעו ייעוץ חינם</a>
-                       </Button>
+                                             <Button 
+                                               className="w-full bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+                                               onClick={() => {
+                                                 const element = document.querySelector('#booking')
+                                                 if (element) {
+                                                   element.scrollIntoView({ behavior: 'smooth' })
+                                                 }
+                                                 setMobileMenuOpen(false)
+                                               }}
+                                             >
+                                               קבעו ייעוץ חינם
+                                             </Button>
                     </div>
                   </div>
                 </div>

@@ -13,7 +13,7 @@ const navigation = {
     { name: "פרויקטים", href: "/projects" },
     { name: "שירותים", href: "/services" },
     { name: "אודות", href: "/about" },
-    { name: "צור קשר", href: "/contact" },
+    { name: "צור קשר", href: "#booking" },
   ],
   social: [
     {
@@ -81,6 +81,15 @@ export function Footer() {
                       <Link
                         href={item.href}
                         className="text-sm leading-6 opacity-60 hover:opacity-100 transition-opacity"
+                        onClick={(e) => {
+                          if (item.href.startsWith('#')) {
+                            e.preventDefault()
+                            const element = document.querySelector(item.href)
+                            if (element) {
+                              element.scrollIntoView({ behavior: 'smooth' })
+                            }
+                          }
+                        }}
                       >
                         {item.name}
                       </Link>

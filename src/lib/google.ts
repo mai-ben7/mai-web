@@ -375,9 +375,6 @@ export async function createBooking(
   const endTime = new Date(end);
 
   try {
-    // Create Google Meet link
-    const meetLink = `https://meet.google.com/${generateMeetCode()}`;
-
     const event = {
       summary: `${serviceConfig?.label || 'אימון אישי'} - ${clientName}`,
       description: `
@@ -385,8 +382,6 @@ export async function createBooking(
         אימייל: ${clientEmail}
         טלפון: ${clientPhone}
         הערות: ${notes}
-        
-        קישור Google Meet: ${meetLink}
       `,
       start: {
         dateTime: startTime.toISOString(),
@@ -400,14 +395,6 @@ export async function createBooking(
         { email: clientEmail },
         { email: email } // Trainer's email
       ],
-      conferenceData: {
-        createRequest: {
-          requestId: `meet-${Date.now()}`,
-          conferenceSolutionKey: {
-            type: 'hangoutsMeet'
-          }
-        }
-      },
       reminders: {
         useDefault: false,
         overrides: [
@@ -421,11 +408,8 @@ export async function createBooking(
       auth: oauth2Client,
       calendarId: calendarId,
       requestBody: event,
-      conferenceDataVersion: 1,
       sendUpdates: 'none'
     });
-
-    const finalMeetLink = response.data.conferenceData?.entryPoints?.[0]?.uri || meetLink;
 
     // Send notification email to trainer
     await sendBookingNotificationToTrainer(
@@ -436,8 +420,7 @@ export async function createBooking(
       serviceConfig?.label || 'אימון אישי',
       startTime.toISOString(),
       endTime.toISOString(),
-      notes,
-      finalMeetLink
+      notes
     );
 
     // Send confirmation email to client
@@ -446,14 +429,12 @@ export async function createBooking(
       clientName,
       serviceConfig?.label || 'אימון אישי',
       startTime.toISOString(),
-      endTime.toISOString(),
-      finalMeetLink
+      endTime.toISOString()
     );
 
     return {
       eventId: response.data.id,
       htmlLink: response.data.htmlLink,
-      meetLink: finalMeetLink,
       startTime: response.data.start?.dateTime,
       endTime: response.data.end?.dateTime
     };
@@ -463,23 +444,7 @@ export async function createBooking(
   }
 }
 
-// Generate Google Meet code
-function generateMeetCode(): string {
-  const chars = 'abcdefghijklmnopqrstuvwxyz';
-  let result = '';
-  for (let i = 0; i < 3; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  result += '-';
-  for (let i = 0; i < 4; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  result += '-';
-  for (let i = 0; i < 3; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return result;
-}
+
 
 // Send notification email to trainer
 async function sendBookingNotificationToTrainer(
@@ -490,8 +455,7 @@ async function sendBookingNotificationToTrainer(
   serviceLabel: string,
   startTime: string,
   endTime: string,
-  notes: string,
-  meetLink: string
+  notes: string
 ) {
   try {
     const startDate = new Date(startTime);
@@ -514,11 +478,6 @@ async function sendBookingNotificationToTrainer(
           <p><strong>אימייל:</strong> <a href="mailto:${clientEmail}">${clientEmail}</a></p>
           ${clientPhone ? `<p><strong>טלפון:</strong> <a href="tel:${clientPhone}">${clientPhone}</a></p>` : ''}
           ${notes ? `<p><strong>הערות:</strong> ${notes}</p>` : ''}
-        </div>
-        
-        <div style="background-color: #fef3c7; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <h3 style="color: #92400e; margin-top: 0;">קישור Google Meet</h3>
-          <p><a href="${meetLink}" style="color: #2563eb; text-decoration: none;">${meetLink}</a></p>
         </div>
         
         <div style="text-align: center; margin-top: 30px; color: #6b7280; font-size: 14px;">
@@ -572,8 +531,7 @@ async function sendBookingConfirmationToClient(
   clientName: string,
   serviceLabel: string,
   startTime: string,
-  endTime: string,
-  meetLink: string
+  endTime: string
 ) {
   console.log('[email] Attempting to send confirmation to client:', clientEmail);
   try {
@@ -589,11 +547,6 @@ async function sendBookingConfirmationToClient(
           <p><strong>שירות:</strong> ${serviceLabel}</p>
           <p><strong>תאריך:</strong> ${startDate.toLocaleDateString('he-IL')}</p>
           <p><strong>שעה:</strong> ${startDate.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' })} - ${endDate.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' })}</p>
-        </div>
-        
-        <div style="background-color: #fef3c7; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <h3 style="color: #92400e; margin-top: 0;">קישור Google Meet</h3>
-          <p><a href="${meetLink}" style="color: #2563eb; text-decoration: none;">${meetLink}</a></p>
         </div>
         
         <div style="text-align: center; margin-top: 30px; color: #6b7280; font-size: 14px;">

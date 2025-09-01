@@ -25,7 +25,6 @@ interface BookingFormData {
 
 interface BookingSuccess {
   htmlLink?: string;
-  meetLink?: string;
   eventId?: string;
   slotStart?: string;
   slotEnd?: string;
@@ -214,7 +213,7 @@ export default function BookNowCard() {
     };
     
     const eventTitle = encodeURIComponent(`${selectedService.label} - לויס פיטנס`);
-    const eventDetails = encodeURIComponent(`פגישה עם מאי בן שבע\n\nשירות: ${selectedService.label}\n\nקישור Google Meet: ${bookingSuccess.meetLink || ''}`);
+    const eventDetails = encodeURIComponent(`פגישה עם מאי בן שבע\n\nשירות: ${selectedService.label}`);
     const startTime = formatDate(startDate);
     const endTime = formatDate(endDate);
     

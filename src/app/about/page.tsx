@@ -226,10 +226,17 @@ export default function AboutPage() {
                 בואו נבנה יחד אתר שיזיז אנשים ויביא תוצאות אמיתיות לעסק שלכם.
               </p>
                              <div className="mt-10 flex items-center justify-center gap-4">
-                 <Button asChild size="lg" className="bg-white text-purple-600 hover:bg-gray-100 border-2 border-white font-semibold">
-                   <Link href="/contact">
-                     קבעו ייעוץ חינם
-                   </Link>
+                 <Button 
+                   size="lg" 
+                   className="bg-white text-purple-600 hover:bg-gray-100 border-2 border-white font-semibold"
+                   onClick={() => {
+                     const element = document.querySelector('#booking')
+                     if (element) {
+                       element.scrollIntoView({ behavior: 'smooth' })
+                     }
+                   }}
+                 >
+                   קבעו ייעוץ חינם
                  </Button>
                  <Button asChild size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold">
                    <Link href="/">

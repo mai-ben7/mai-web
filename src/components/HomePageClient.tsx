@@ -12,6 +12,7 @@ import { FloatingModal } from "@/components/FloatingModal"
 import { Play } from "lucide-react"
 import { pageTransition } from "@/lib/animations"
 import BookingSection from "@/components/BookingSection"
+import { FAQSection } from "@/components/FAQSection"
 
 export function HomePageClient() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
@@ -47,6 +48,7 @@ export function HomePageClient() {
         <Packages />
         <TestimonialsSection />
         <BookingSection />
+        <FAQSection />
       </main>
       <Footer />
 

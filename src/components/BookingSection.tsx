@@ -48,7 +48,7 @@ export default function BookingSection() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">הזמנה מהירה</h3>
                 <p className="text-gray-600">
-                  קבעו פגישה תוך דקות עם Google Calendar. קבלו אישור מיידי וקישור Google Meet.
+                  קבעו פגישה תוך דקות עם Google Calendar. קבלו אישור מיידי.
                 </p>
               </div>
               

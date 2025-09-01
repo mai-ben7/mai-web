@@ -308,16 +308,22 @@ export function ProjectsClient() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
               >
-                <motion.a
-                  href="/contact"
-                  className="group relative px-10 py-5 bg-white text-blue-600 font-bold text-lg rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-300"
-                  whileHover={{ 
-                    scale: 1.05, 
-                    y: -5,
-                    boxShadow: "0 25px 50px rgba(0,0,0,0.3)"
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
+                                 <motion.button
+                   onClick={() => {
+                     const element = document.querySelector('#booking')
+                     if (element) {
+                       element.scrollIntoView({ behavior: 'smooth' })
+                     }
+                   }}
+                   className="group relative px-10 py-5 bg-white text-blue-600 font-bold text-lg rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-300"
+                   whileHover={{ 
+                     scale: 1.05, 
+                     y: -5,
+                     boxShadow: "0 25px 50px rgba(0,0,0,0.3)"
+                   }}
+                   whileTap={{ scale: 0.95 }}
+                   suppressHydrationWarning
+                 >
                   <span className="relative z-10 flex items-center gap-3">
                     <motion.div
                       animate={{ rotate: [0, 360] }}
@@ -333,7 +339,7 @@ export function ProjectsClient() {
                     whileHover={{ x: "0%" }}
                     transition={{ duration: 0.3 }}
                   />
-                </motion.a>
+                </motion.button>
                 
                 <motion.a
                   href="#projects"
@@ -454,14 +460,20 @@ export function ProjectsClient() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
-                <motion.a
-                  href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
+                                 <motion.button
+                   onClick={() => {
+                     const element = document.querySelector('#booking')
+                     if (element) {
+                       element.scrollIntoView({ behavior: 'smooth' })
+                     }
+                   }}
+                   className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                   whileHover={{ y: -2 }}
+                   whileTap={{ scale: 0.98 }}
+                   suppressHydrationWarning
+                 >
                   לקביעת שיחת ייעוץ חינם
-                </motion.a>
+                </motion.button>
                 <motion.a
                   href="/"
                   className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
