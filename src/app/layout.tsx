@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Heebo } from "next/font/google";
+import { Heebo, Poppins } from "next/font/google";
 import "./globals.css";
 import "@/components/hero/HeroSimeyCard.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -8,6 +8,12 @@ import { Header } from "@/components/Header";
 const heebo = Heebo({ 
   subsets: ["hebrew", "latin"],
   variable: "--font-heebo",
+});
+
+const poppins = Poppins({ 
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
 });
 
 export const metadata: Metadata = {
@@ -57,7 +63,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="he" dir="rtl" suppressHydrationWarning>
-      <body className={`${heebo.variable} font-hebrew antialiased`}>
+      <body className={`${heebo.variable} ${poppins.variable} font-hebrew antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

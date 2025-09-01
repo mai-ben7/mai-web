@@ -88,7 +88,7 @@ export default function PortfolioHero({
           <h1 className="mt-3 text-4xl md:text-6xl font-extrabold leading-[1.05]">
             שלום, אני <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-[rgba(17,214,196,0.85)]">{name}</span>
           </h1>
-          <h2 className="mt-3 text-2xl md:text-3xl text-white/90">{title}</h2>
+          <h2 className="mt-3 pt-2 text-2xl md:text-3xl text-white/90">{title}</h2>
           <p className="mt-5 text-lg text-white/80 max-w-[60ch]">{subtitle}</p>
 
           <div className="mt-8 flex flex-wrap gap-3">

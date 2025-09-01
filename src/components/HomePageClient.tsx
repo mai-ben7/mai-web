@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import HeroSimeyCard from "@/components/hero/HeroSimeyCard"
+import HomeProjectsPreview from "@/components/home/HomeProjectsPreview"
 import AdvancedSection from "@/components/AdvancedSection"
 import { Packages } from "@/components/Packages"
 import TestimonialsSection from "@/components/TestimonialsSection"
@@ -48,8 +49,8 @@ export function HomePageClient() {
         <EnableSectionParallax />
         <div id="hero">
           <HeroSimeyCard
-            name="Mai Ben Sheva"
-            role="Web Developer • Creative Engineer"
+            name="מאי בן שבע"
+            role="כלים"
             blurb="I build advanced, animated web experiences that convert and feel premium."
             imageSrc="/images/mai.jpg"
             imageAlt="Mai Ben Sheva portrait"
@@ -57,12 +58,37 @@ export function HomePageClient() {
           />
         </div>
         
-
-        <div id="advanced">
-          <AdvancedSection />
+        {/* Projects Preview — directly after hero */}
+        <div id="projects-preview">
+          <HomeProjectsPreview 
+            items={[
+              {
+                id: "fitmama",
+                title: "FitMama Pregnancy Fitness",
+                oneLiner: "אתר כושר להריון עם חווית משתמש מותאמת לנשים בהריון.",
+                cover: "/projects/fitmama-pregnancy-fitness.png",
+                outcomes: ["עיצוב מותאם להריון", "ממשק ידידותי"],
+                href: "/projects/fitmama",
+              },
+              {
+                id: "tal-portfolio",
+                title: "טל בן שבע - פורטפוליו",
+                oneLiner: "פורטפוליו אישי עם עיצוב מודרני ואנימציות מתקדמות.",
+                cover: "/projects/tal-ben-sheva-portfolio.png",
+                outcomes: ["עיצוב ייחודי", "אנימציות מתקדמות"],
+                href: "/projects/tal-portfolio",
+              },
+            ]} 
+            ctaHref="/projects" 
+            ctaLabel="צפו בכל הפרויקטים" 
+          />
         </div>
+
         <div id="packages">
           <Packages />
+        </div>
+        <div id="advanced">
+          <AdvancedSection />
         </div>
         <div id="testimonials">
           <TestimonialsSection />

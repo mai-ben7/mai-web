@@ -32,8 +32,6 @@ export default function EnableSectionParallax() {
       panel.style.setProperty("view-timeline-axis", "block");
       panel.style.position ||= "relative";
       panel.style.overflow ||= "hidden";
-      // If you want each to be full screen like the Pen, uncomment:
-      // panel.style.height ||= "100vh";
 
       // Hook all media inside this panel
       const mediaEls = panel.querySelectorAll<HTMLElement>("[data-parallax]");
@@ -43,6 +41,10 @@ export default function EnableSectionParallax() {
         el.style.inset ||= "0";
         el.style.zIndex ||= "-1";
         el.style.willChange ||= "transform";
+        
+        // Set initial position to prevent flash
+        el.style.transform = "translateY(0)";
+        el.style.opacity = "1"; // Start with full opacity to prevent flash
 
         if (!reduce && supported) {
           // Keyframes name is 'section-parallax' (we'll inject it globally below)
@@ -59,6 +61,7 @@ export default function EnableSectionParallax() {
           el.style.removeProperty("animation-timeline");
           el.style.removeProperty("animation-range");
           el.style.transform = "translateY(0)";
+          el.style.opacity = "1";
         }
       });
     });

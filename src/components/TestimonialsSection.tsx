@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star } from "lucide-react";
 
 interface TestimonialSliderProps {
   children: React.ReactNode;
@@ -15,6 +15,7 @@ const TestimonialSlider = ({
   className = "",
 }: TestimonialSliderProps) => {
   const [isPaused, setIsPaused] = useState(false);
+  const [currentPosition, setCurrentPosition] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const childrenArray = Array.isArray(children) ? children : [children];
   const totalSlides = childrenArray.length;
@@ -32,9 +33,10 @@ const TestimonialSlider = ({
         onMouseLeave={() => setIsPaused(false)}
       >
         <div
-          className={`flex gap-4 ${isPaused ? 'marquee-paused' : ''}`}
+          className={`flex gap-4 marquee-container ${isPaused ? 'marquee-paused' : ''}`}
           style={{
-            animation: `scroll-left ${animationDuration}s linear infinite`,
+            animation: isPaused ? 'none' : `scroll-right ${animationDuration}s linear infinite`,
+            transform: isPaused ? `translateX(${currentPosition}%)` : 'none',
           }}
         >
           {/* First set of testimonials */}
@@ -63,33 +65,19 @@ const TestimonialSlider = ({
               </div>
             ))}
           </div>
+          
+          {/* Fourth set to complete the circle */}
+          <div className="flex gap-4 shrink-0">
+            {childrenArray.map((child, index) => (
+              <div key={`fourth-${index}`} className="flex-shrink-0 w-80">
+                {child}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Navigation Arrows (Optional Manual Control) */}
-      <button
-        onClick={() => {
-          setIsPaused(true);
-          setTimeout(() => setIsPaused(false), 5000);
-        }}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-10"
-        aria-label="Pause auto-scroll"
-        suppressHydrationWarning
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
 
-      <button
-        onClick={() => {
-          setIsPaused(true);
-          setTimeout(() => setIsPaused(false), 5000);
-        }}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-10"
-        aria-label="Pause auto-scroll"
-        suppressHydrationWarning
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
 
       {/* Dots to show current position */}
       <div className="flex justify-center mt-6 space-x-2">
@@ -105,13 +93,19 @@ const TestimonialSlider = ({
 
       <style>
         {`
-          @keyframes scroll-left {
+          @keyframes scroll-right {
             from { transform: translateX(0); }
-            to { transform: translateX(-33.333%); }
+            to { transform: translateX(25%); }
           }
           
           .marquee-paused {
             animation-play-state: paused !important;
+          }
+          
+          /* Ensure smooth circular loop */
+          .marquee-container {
+            will-change: transform;
+            transition: transform 0.5s ease-in-out;
           }
         `}
       </style>

@@ -37,16 +37,7 @@ export function FAQSection() {
   }
 
   return (
-    <section data-parallax-panel className="py-24 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
-      {/* Parallax background */}
-      <img
-        data-parallax
-        src="/images/design.png"
-        alt=""
-        className="parallax-media"
-        aria-hidden="true"
-      />
-      
+    <section className="py-24 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />

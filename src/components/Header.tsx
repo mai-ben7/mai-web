@@ -22,11 +22,20 @@ const navigation = [
 export function Header() {
   const [mounted, setMounted] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
+    
+    const handleScroll = () => {
+      const scrollTop = window.scrollY
+      setIsScrolled(scrollTop > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   if (!mounted) {
@@ -35,7 +44,12 @@ export function Header() {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-[9999] bg-background/80 backdrop-blur-md border-b border-border/40"
+      className={cn(
+        "fixed top-0 left-0 right-0 z-[9999] transition-all duration-300",
+        isScrolled 
+          ? "bg-background/80 backdrop-blur-md border-b border-border/40" 
+          : "bg-transparent border-b border-transparent"
+      )}
       variants={slideInFromTop}
       initial="initial"
       animate="animate"
@@ -59,6 +73,10 @@ export function Header() {
           <Button
             variant="ghost"
             onClick={() => setMobileMenuOpen(true)}
+            className={cn(
+              "transition-colors",
+              isScrolled ? "text-foreground" : "text-white hover:text-white/80"
+            )}
             suppressHydrationWarning
           >
             <span className="sr-only">פתח תפריט</span>
@@ -75,7 +93,7 @@ export function Header() {
                 "text-base font-semibold leading-6 transition-colors hover:bg-gradient-to-r hover:from-blue-500 hover:to-pink-500 hover:bg-clip-text hover:text-transparent cursor-pointer",
                 pathname === item.href
                   ? "bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent"
-                  : "text-foreground"
+                  : isScrolled ? "text-foreground" : "text-white"
               )}
               onClick={(e) => {
                 if (item.href.startsWith('#')) {
@@ -97,6 +115,10 @@ export function Header() {
           <Button
             variant="ghost"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className={cn(
+              "transition-colors",
+              isScrolled ? "text-foreground" : "text-white hover:text-white/80"
+            )}
             suppressHydrationWarning
           >
             <span className="sr-only">החלף ערכת נושא</span>

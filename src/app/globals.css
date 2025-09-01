@@ -146,6 +146,10 @@ a-rays .a__scene path {
   .btn-primary {
     @apply inline-flex items-center justify-center px-6 py-3 font-semibold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600;
   }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold border-2 border-white/20 bg-white/10 text-white rounded-full transition-all duration-300 hover:bg-white/20 hover:border-white/30 hover:scale-105;
+  }
 }
 
 @layer base {
@@ -259,4 +263,56 @@ a-rays .a__scene path {
   z-index: -1;
   object-fit: cover;
   will-change: transform;
+  opacity: 1;
+}
+
+/* Prevent flash on initial load */
+[data-parallax] {
+  opacity: 1;
+}
+
+/* Hide scrollbars on horizontal strip */
+.no-scrollbar::-webkit-scrollbar { 
+  display: none; 
+}
+.no-scrollbar { 
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+/* Projects Preview specific styles */
+#projects-preview {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* Animation delays for portfolio elements */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+/* Spin animations for portfolio */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-slow-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-slow-reverse {
+  animation: spin-slow-reverse 25s linear infinite;
 }

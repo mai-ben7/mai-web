@@ -16,7 +16,7 @@
   font-family: "Raleway", sans-serif;
   font-weight: bold;
   font-size: 16px;
-  transform: translateX(-400px);
+  transform: translateX(-400px) translateY(80px);
 }
 
 .animatedButton:hover {

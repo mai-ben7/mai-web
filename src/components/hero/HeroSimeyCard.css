@@ -59,17 +59,17 @@
   z-index: 1;
 }
 
-/* Image layer */
+/* Image layer - more prominent */
 .simey-card__media{
   position:absolute; inset:3px;
   border-radius: 25px;
   overflow: hidden;
-  background: rgba(255,255,255,.03);
-  backdrop-filter: blur(2px);
+  background: rgba(255,255,255,.01);
+  backdrop-filter: blur(1px);
   z-index: 2;
 }
 
-/* Shine / glare (moves with --mx/--my) - using a different pseudo-element */
+/* Shine / glare (moves with --mx/--my) - subtle effect */
 .simey-card .shine-effect{
   content:"";
   position:absolute; inset:0;
@@ -78,22 +78,22 @@
   background:
     radial-gradient(
       200px 200px at calc(var(--mx,50%) * 1px) calc(var(--my,50%) * 1px),
-      rgba(255,255,255,.18),
-      transparent 60%
+      rgba(255,255,255,.12),
+      transparent 70%
     ),
-    linear-gradient(180deg, rgba(255,255,255,.07), transparent 40%);
+    linear-gradient(180deg, rgba(255,255,255,.05), transparent 50%);
   mix-blend-mode: screen;
   z-index: 4;
 }
 
-/* Inner glass content */
+/* Inner glass content - minimal overlay */
 .simey-card__content{
   position:absolute; inset:3px;
   display:flex; flex-direction:column; gap:.25rem;
   justify-content:flex-end;
   padding: 1rem 1rem 1.25rem 1rem;
   color:#fff;
-  background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.35) 100%);
+  background: linear-gradient(180deg, transparent 70%, rgba(0,0,0,.25) 100%);
   border-radius: 25px;
   z-index: 3;
 }
@@ -104,15 +104,26 @@
   padding: .38rem .55rem;
   border-radius: 999px;
   color: #000;
-  background: #fff;
-  box-shadow: 0 6px 16px rgba(0,0,0,.25);
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
   transform: translateZ(24px);
+  backdrop-filter: blur(4px);
 }
 
 .simey-card__title{
-  font: 800 22px/1.15 system-ui, sans-serif;
-  letter-spacing:.2px;
+  font: 900 24px/1.1 var(--font-poppins), 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+  letter-spacing:.3px;
   transform: translateZ(22px);
+  text-shadow: 
+    0 0 10px rgba(0,255,255,0.8),
+    0 0 20px rgba(0,255,255,0.6),
+    0 2px 8px rgba(0,0,0,0.9);
+  color: #00ffff;
+  background: linear-gradient(45deg, #00ffff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
 }
 
 .simey-card__subtitle{

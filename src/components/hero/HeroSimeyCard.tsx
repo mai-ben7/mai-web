@@ -79,10 +79,10 @@ export default function HeroSimeyCard({
     >
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-200 via-blue-100 to-purple-200">
-        {/* Animated gradient orbs */}
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob"></div>
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob animation-delay-4000"></div>
+        {/* Static gradient orbs */}
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-60"></div>
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-60"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-60"></div>
       </div>
       <div className="mx-auto w-full max-w-[1200px] grid gap-10 md:grid-cols-[1.05fr,.95fr] items-center">
         {/* Copy */}
@@ -97,6 +97,8 @@ export default function HeroSimeyCard({
           </h1>
           <h2 className="mt-3 text-2xl md:text-3xl text-slate-700 font-bold">מפתחת אתרים • מהנדסת יצירתית</h2>
           <p className="mt-5 text-lg text-slate-600 max-w-[60ch] font-medium">אני בונה חוויות אתרים מתקדמות ואנימציות שממירות ומרגישות פרימיום.</p>
+          <p className="mt-4 text-xl text-slate-700 font-bold italic">על איכות לא מתפשרים</p>
+          
           <div className="mt-8 flex flex-wrap gap-3">
             <AnimatedButton onClick={() => {
               const element = document.querySelector('#booking');
@@ -137,11 +139,18 @@ export default function HeroSimeyCard({
                 {/* shine effect */}
                 <div className="shine-effect"></div>
 
-                {/* overlay content */}
+                {/* overlay content - minimal and clean */}
                 <div className="simey-card__content">
-                  <div className="simey-card__chip">Available for Hire</div>
-                  <div className="simey-card__title">{name}</div>
-                  <div className="simey-card__subtitle">{role}</div>
+                  <div className="simey-card__chip">זמינה לעבודה</div>
+                  
+                  {/* שפות ומערכות - רק שורה אחת קומפקטית */}
+                  <div className="mt-3">
+                    <div className="flex flex-wrap gap-1.5 justify-center">
+                      <span className="px-2 py-1 bg-blue-100/90 text-blue-800 text-xs font-medium rounded-full">React</span>
+                      <span className="px-2 py-1 bg-purple-100/90 text-purple-800 text-xs font-medium rounded-full">Next.js</span>
+                      <span className="px-2 py-1 bg-pink-100/90 text-pink-800 text-xs font-medium rounded-full">TypeScript</span>
+                    </div>
+                  </div>
                 </div>
 
                 {/* decorative glare/shine handled in CSS ::before/::after */}
