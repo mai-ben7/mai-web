@@ -12,25 +12,6 @@ export default function ProjectsHero({ featured }: { featured: Project[] }) {
 
   return (
     <section className="min-h-screen py-20 px-8 xl:px-0 flex flex-col justify-center relative overflow-hidden">
-      {/* Colorful animated background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
-        {/* Static gradient orbs */}
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-60"></div>
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-60"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-60"></div>
-        
-        {/* Additional floating elements */}
-        <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-blue-400/30 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-1/3 left-1/3 w-24 h-24 bg-cyan-400/30 rounded-full animate-pulse animation-delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-16 h-16 bg-emerald-400/30 rounded-full animate-pulse animation-delay-2000"></div>
-      </div>
-      
-      {/* Subtle grid pattern overlay */}
-      <div className="absolute inset-0 opacity-40">
-        <div className="w-full h-full" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }}></div>
-      </div>
       
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Headline block */}
@@ -51,9 +32,6 @@ export default function ProjectsHero({ featured }: { featured: Project[] }) {
 
         {/* Peek strip */}
         <div className="relative max-w-6xl mx-auto">
-          {/* gradient edges */}
-          <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-indigo-900 to-transparent z-10" />
-          <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-pink-900 to-transparent z-10" />
 
           {/* arrows (desktop) */}
           <div className="hidden md:flex absolute right-4 -top-12 items-center gap-2 z-20">

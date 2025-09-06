@@ -18,14 +18,7 @@ export default function BookingSection() {
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
     >
-      {/* Parallax background */}
-      <img
-        data-parallax
-        src="/images/seo.png"
-        alt=""
-        className="parallax-media"
-        aria-hidden="true"
-      />
+      {/* Background image removed to prevent unwanted pop-up animation */}
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div

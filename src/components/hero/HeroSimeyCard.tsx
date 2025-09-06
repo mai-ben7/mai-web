@@ -100,7 +100,9 @@ export default function HeroSimeyCard({
           <p className="mt-4 text-xl text-slate-700 font-bold italic">על איכות לא מתפשרים</p>
           
           <div className="mt-8 flex flex-wrap gap-3">
-            <AnimatedButton onClick={() => {
+            <AnimatedButton 
+              style={{ transform: 'translateX(-380px) translateY(40px)' }}
+              onClick={() => {
               const element = document.querySelector('#booking');
               if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
@@ -149,6 +151,11 @@ export default function HeroSimeyCard({
                       <span className="px-2 py-1 bg-blue-100/90 text-blue-800 text-xs font-medium rounded-full">React</span>
                       <span className="px-2 py-1 bg-purple-100/90 text-purple-800 text-xs font-medium rounded-full">Next.js</span>
                       <span className="px-2 py-1 bg-pink-100/90 text-pink-800 text-xs font-medium rounded-full">TypeScript</span>
+                      <span className="px-2 py-1 bg-teal-100/90 text-teal-800 text-xs font-medium rounded-full">Tailwind CSS</span>
+                      <span className="px-2 py-1 bg-blue-100/90 text-blue-800 text-xs font-medium rounded-full">CSS3</span>
+                      <span className="px-2 py-1 bg-orange-100/90 text-orange-800 text-xs font-medium rounded-full">HTML5</span>
+                      <span className="px-2 py-1 bg-rose-100/90 text-rose-800 text-xs font-medium rounded-full">Framer Motion</span>
+                      <span className="px-2 py-1 bg-emerald-100/90 text-emerald-800 text-xs font-medium rounded-full">Three.js</span>
                     </div>
                   </div>
                 </div>

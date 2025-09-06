@@ -34,7 +34,7 @@ export default function ProjectsGrid({ items }: { items: Project[] }) {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {items.map(p => (
             <article key={p.id}
-              className="group rounded-2xl border border-white/20 bg-white/10 overflow-hidden hover:bg-white/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 backdrop-blur-sm">
+              className="group rounded-2xl border border-white/20 bg-transparent overflow-hidden hover:bg-white/5 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/25 backdrop-blur-sm">
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image 
                   src={p.cover} 
@@ -42,23 +42,22 @@ export default function ProjectsGrid({ items }: { items: Project[] }) {
                   fill 
                   className="object-cover transition-transform duration-500 group-hover:scale-110" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   {p.tags?.slice(0, 2).map(tag => (
-                    <span key={tag} className="text-xs px-3 py-1 rounded-full bg-blue-600/30 border border-blue-500/50 text-blue-200 font-medium">
+                    <span key={tag} className="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/25 text-white/90 font-medium">
                       {tag}
                     </span>
                   ))}
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">{p.title}</h3>
-                <p className="text-blue-100 mb-4">{p.oneLiner}</p>
+                <p className="text-white/90 mb-4">{p.oneLiner}</p>
                 {p.outcomes?.length ? (
-                  <ul className="space-y-2 text-blue-200 text-sm mb-6">
+                  <ul className="space-y-2 text-white/85 text-sm mb-6">
                     {p.outcomes.slice(0,3).map(x => (
                       <li key={x} className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-cyan-400" />
+                        <div className="w-2 h-2 rounded-full bg-white/70" />
                         {x}
                       </li>
                     ))}
