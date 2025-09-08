@@ -4,6 +4,8 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
+import RevealText from "@/components/RevealText";
+import BackgroundVibe from "@/components/BackgroundVibe";
 
 export default function HomeProjectsPreview({
   items,
@@ -24,23 +26,27 @@ export default function HomeProjectsPreview({
 }) {
   const scrollerRef = React.useRef<HTMLDivElement | null>(null);
   const scrollBy = (dx: number) => scrollerRef.current?.scrollBy({ left: dx, behavior: "smooth" });
+  const [hoveredId, setHoveredId] = React.useState<string | null>(null);
+  const [cursorPos, setCursorPos] = React.useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   return (
-    <section id={id} className="min-h-screen py-20 px-8 xl:px-0 flex flex-col justify-center relative overflow-hidden" dir={rtl ? "rtl" : "ltr"}>
+    <section id={id} className="min-h-screen py-20 px-8 xl:px-0 flex flex-col justify-center relative" dir={rtl ? "rtl" : "ltr"}>
+      {/* Mirrored background for the next section after hero */}
+      <BackgroundVibe variant="mirror" />
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Headline block */}
         <header className="max-w-2xl mx-auto text-center mb-16">
-          <span className="text-indigo-200 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 justify-center">
+          <span className="text-indigo-700 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 justify-center">
             {title}
             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
             </svg>
           </span>
-          <h1 className="text-white text-4xl md:text-5xl xl:text-6xl font-extrabold max-w-3xl mx-auto mb-6 leading-snug bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent">
-            פרויקטים שמדברים בעד עצמם
-          </h1>
-          <p className="text-cyan-100 text-lg md:text-xl max-w-2xl mx-auto">
+          <RevealText as="h1" className="text-slate-900 text-4xl md:text-5xl xl:text-6xl font-extrabold max-w-3xl mx-auto mb-6 leading-snug" splitBy="word" stagger={0.06}>
+            פרויקטים שמדברים <span className="text-gradient">בעד עצמם</span>
+          </RevealText>
+          <p className="text-slate-700 text-lg md:text-xl max-w-2xl mx-auto">
             תציצו בכמה עבודות — פחות קוד, יותר תוצאות: מהירות, בהירות חוויית משתמש ואסתטיקה.
           </p>
         </header>
@@ -75,70 +81,92 @@ export default function HomeProjectsPreview({
 
           <div
             ref={scrollerRef}
-            className="snap-x snap-mandatory overflow-x-auto no-scrollbar flex gap-6 pr-6"
+            className="snap-x snap-mandatory overflow-x-auto no-scrollbar flex gap-4 pr-4"
           >
             {items.map((p) => (
               <article
                 key={p.id}
-                className="group relative w-[85vw] sm:w-[65vw] lg:w-[500px] xl:w-[540px] aspect-[16/10]
-                           snap-start shrink-0 overflow-hidden rounded-3xl border border-white/20 bg-transparent
-                           transition-all duration-500 ease-out backdrop-blur-sm
-                           hover:-translate-y-3 hover:shadow-2xl hover:shadow-black/25"
+                className={`group relative w-[75vw] sm:w-[55vw] lg:w-[420px] xl:w-[460px]
+                           snap-start shrink-0 overflow-hidden rounded-3xl p-[2px] bg-gradient-to-b from-pink-500 via-rose-500 to-purple-600
+                           ${hoveredId === String(p.id) ? "cursor-none" : "cursor-pointer"}`}
+                onMouseEnter={() => setHoveredId(String(p.id))}
+                onMouseLeave={() => setHoveredId(null)}
+                onMouseMove={(e) => {
+                  const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
+                  setCursorPos({ x: e.clientX - r.left, y: e.clientY - r.top });
+                }}
+                style={{ cursor: hoveredId === String(p.id) ? "none" as const : "pointer" as const }}
               >
-                {/* Enhanced Cover Image */}
-                <div className="absolute inset-0 -z-10">
-                  <Image
-                    src={p.cover}
-                    alt={p.title}
-                    fill
-                    sizes="(min-width:1280px) 540px, (min-width:1024px) 500px, 65vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    priority={false}
-                  />
-                  {/* No overlays to keep cover fully visible */}
-                </div>
-
-                {/* Content under image, neutral style */}
-                <div className="relative h-full p-8 flex flex-col justify-end">
-                  <div className="flex items-center gap-3 mb-4">
-                    {p.tags?.slice(0, 2).map(tag => (
-                      <span key={tag} className="px-3 py-1 rounded-full bg-white/10 border border-white/25 text-white/90 text-sm font-medium backdrop-blur-sm">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="text-3xl font-black text-white mb-3">
-                    {p.title}
-                  </h3>
-                  <p className="text-lg text-white/90 mb-6 leading-relaxed">
-                    {p.oneLiner}
-                  </p>
-                  {p.outcomes && (
-                    <ul className="mb-8 space-y-3">
-                      {p.outcomes.slice(0, 3).map((x) => (
-                        <li key={x} className="flex items-center gap-3 text-white/85 text-base font-medium">
-                          <div className="w-3 h-3 rounded-full bg-white/70 flex-shrink-0" />
-                          {x}
-                        </li>
+                {p.href ? (
+                  <Link href={p.href} aria-label={`צפו בפרויקט: ${p.title}`} className="absolute inset-0 z-20" style={{ cursor: hoveredId === String(p.id) ? "none" : "pointer" }} />
+                ) : null}
+                {/* Force hide cursor on all children while hovered */}
+                {hoveredId === String(p.id) && (
+                  <style>{`.cursor-none *{ cursor: none !important }`}</style>
+                )}
+                {/* Inner card surface */}
+                <div className="relative rounded-[22px] bg-white/90 backdrop-blur-sm">
+                  {/* Content on top */}
+                  <div className="p-5 pb-4">
+                    <div className="flex items-center gap-3 mb-4">
+                      {p.tags?.slice(0, 2).map(tag => (
+                        <span key={tag} className="px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-300 text-slate-700 text-xs font-medium">
+                          {tag}
+                        </span>
                       ))}
-                    </ul>
-                  )}
-                  <div className="flex items-center gap-4">
-                    {p.href && (
-                      <Link 
-                        href={p.href} 
-                        className="btn-primary rounded-2xl px-6 py-3 text-base font-bold"
-                      >
-                        צפו בפרויקט
-                      </Link>
-                    )}
-                    <Link
-                      href="/projects"
-                      className="btn-secondary rounded-2xl px-6 py-3 text-base font-bold"
-                    >
-                      עוד פרויקטים
-                    </Link>
+                    </div>
+                    <h3 className="text-2xl font-black text-slate-900 mb-2">
+                      {p.title}
+                    </h3>
+                    <p className="text-base text-slate-700 mb-4 leading-relaxed">
+                      {p.oneLiner}
+                    </p>
+                    {/* Outcomes removed per request (no extra dots/explanations) */}
+                    <div className="flex items-center gap-3">
+                      {p.href && (
+                        <Link 
+                          href={p.href} 
+                          className="btn-primary rounded-2xl px-5 py-2.5 text-sm font-bold"
+                        >
+                          צפו בפרויקט
+                        </Link>
+                      )}
+                    </div>
                   </div>
+
+                  {/* Framed device-style preview */}
+                  <div className="px-4 pb-5 relative">
+                    <div className="relative rounded-3xl bg-gradient-to-b from-pink-500 via-rose-500 to-purple-600 p-[2px] shadow-xl transform-gpu transition-transform duration-500 ease-out group-hover:scale-[1.06] group-hover:rotate-[-2deg]">
+                      <div className="rounded-[22px] bg-black p-3">
+                        <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden">
+                          <Image
+                            src={p.cover}
+                            alt={p.title}
+                            fill
+                            sizes="(min-width:1280px) 540px, (min-width:1024px) 500px, 65vw"
+                            className="object-cover"
+                            priority={false}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Custom playful hover cursor (applies to entire card) */}
+                    {hoveredId === String(p.id) && (
+                      <div
+                        className="pointer-events-none absolute z-30 -translate-x-1/2 -translate-y-1/2 select-none"
+                        style={{ left: cursorPos.x, top: cursorPos.y }}
+                      >
+                        <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-pink-500/90 to-purple-600/90 text-white flex items-center justify-center shadow-2xl ring-2 ring-white/30 backdrop-blur-md">
+                          <span className="text-[11px] font-extrabold tracking-wider">לפרטים ↗</span>
+                          <div className="absolute inset-0 rounded-full border-2 border-white/40 border-dashed animate-spin-slow" />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Subtle finish highlight */}
+                  <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[22px] bg-gradient-to-b from-white/30 via-transparent to-white/25" />
                 </div>
               </article>
             ))}
@@ -149,7 +177,7 @@ export default function HomeProjectsPreview({
         <div className="mt-12 text-center">
           <Link 
             href={ctaHref} 
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-bold rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25"
           >
             {ctaLabel}
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Check, Code, FileText, ArrowRight, Sparkles } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import BackgroundVibe from "@/components/BackgroundVibe"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { fadeInUp, staggerContainer } from "@/lib/animations"
 
@@ -60,15 +61,9 @@ export function Packages() {
   const [hoveredPackage, setHoveredPackage] = useState<string | null>(null)
 
   return (
-    <section id="packages" data-parallax-panel className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
-      {/* Parallax background */}
-      <img
-        data-parallax
-        src="/images/animation.png"
-        alt=""
-        className="parallax-media"
-        aria-hidden="true"
-      />
+    <section id="packages" className="py-24 relative overflow-hidden">
+      <BackgroundVibe />
+      {/* Background decorations removed for uniform background */}
       
       {/* Unique Animated Background */}
       <div className="absolute inset-0">
@@ -117,9 +112,7 @@ export function Packages() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
-              חבילות שירות
-            </span>
+            חבילות <span className="text-gradient">שירות</span>
           </motion.h2>
 
           <motion.p
@@ -160,7 +153,7 @@ export function Packages() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 shadow-lg border-2 border-white/20 backdrop-blur-sm">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 shadow-lg border-2 border-white/20 backdrop-blur-sm">
                     <span className="text-sm font-bold text-white">מתאים לעסקים קטנים</span>
                     <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                   </div>
@@ -215,7 +208,7 @@ export function Packages() {
                           className="flex-shrink-0"
                           whileHover={{ scale: 1.2 }}
                         >
-                          <Check className="h-5 w-5 text-green-400 mt-0.5" />
+                          <Check className="h-5 w-5 text-pink-500 mt-0.5" />
                         </motion.div>
                         <span className="text-sm text-white">{feature}</span>
                       </motion.li>
@@ -263,7 +256,7 @@ export function Packages() {
           >
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold px-8 py-4 text-lg shadow-lg"
+              className="btn-primary px-8 py-4 text-lg shadow-lg"
               onClick={() => {
                 const element = document.querySelector('#booking')
                 if (element) {

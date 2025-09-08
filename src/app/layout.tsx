@@ -71,6 +71,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
+          {/* Section-level backgrounds will handle their own vibe */}
           <main id="main" className="overflow-hidden">{children}</main>
         </ThemeProvider>
       </body>

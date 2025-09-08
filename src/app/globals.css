@@ -8,6 +8,9 @@
   .text-balance {
     text-wrap: balance;
   }
+  .text-gradient {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-blue-600;
+  }
 }
 
 /* Custom energy particle animations */
@@ -106,10 +109,29 @@ a-rays .a__scene path {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     
+    /* Brand palette variables */
+    --blue-600: #2563eb;
+    --blue-700: #1d4ed8;
+    --purple-500: #8b5cf6;
+    --purple-600: #7c3aed;
+    --pink-500: #ec4899;
+    --pink-600: #db2777;
+    --indigo-600: #4f46e5;
+    --indigo-900: #312e81;
+    --purple-900: #581c87;
+    --pink-900: #831843;
+    /* Neutrals */
+    --neutral-50: #f8fafc;
+    --neutral-100: #f1f5f9;
+    --neutral-200: #e2e8f0;
+    --neutral-300: #cbd5e1;
+    --neutral-700: #334155;
+    --neutral-900: #0f172a;
+
     /* Portfolio Hero specific variables */
     --brand-bg: #0f172a;
     --ease-emphasis: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    --hero-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 25%, #8b5cf6 50%, #ec4899 75%, #f97316 100%);
+    --hero-gradient: linear-gradient(135deg, var(--blue-600) 0%, var(--purple-500) 50%, var(--pink-500) 100%);
   }
 
   .dark {
@@ -144,7 +166,8 @@ a-rays .a__scene path {
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 font-semibold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600;
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold text-white rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg;
+    background: linear-gradient(90deg, var(--purple-500), var(--purple-600));
   }
   
   .btn-secondary {
@@ -159,7 +182,7 @@ a-rays .a__scene path {
   }
   
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
   }

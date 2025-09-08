@@ -10,15 +10,14 @@ export default function BookingSection() {
   return (
     <motion.section
       id="booking"
-      data-parallax-panel
       dir="rtl"
-      className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden"
+      className="py-20 relative"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
     >
-      {/* Background image removed to prevent unwanted pop-up animation */}
+      {/* Global background renders behind; section stays transparent */}
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div

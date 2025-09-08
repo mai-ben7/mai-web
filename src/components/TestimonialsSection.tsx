@@ -1,3 +1,4 @@
+import RevealText from "@/components/RevealText";
 import { useEffect, useRef, useState } from "react";
 import { Star } from "lucide-react";
 
@@ -214,22 +215,16 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section id="testimonials" data-parallax-panel className="py-24 bg-gradient-to-br from-slate-50 to-blue-50 overflow-hidden relative">
-      {/* Parallax background */}
-      <img
-        data-parallax
-        src="/images/performance.png"
-        alt=""
-        className="parallax-media"
-        aria-hidden="true"
-      />
+    <section id="testimonials" className="py-24 relative">
       
       <div className="container mx-auto px-8 relative z-10">
         <div className="w-full max-w-6xl mx-auto space-y-8">
           <div className="space-y-2">
-            <h2 className="text-2xl font-semibold text-center text-foreground mb-6">
-              מה הלקוחות אומרים
-            </h2>
+            <div className="text-center">
+              <RevealText as="h2" className="text-2xl font-semibold text-foreground mb-6 text-center" splitBy="word" stagger={0.06}>
+                מה הלקוחות <span className="text-gradient">אומרים</span>
+              </RevealText>
+            </div>
             <TestimonialSlider 
               autoPlay={true} 
               interval={4000} 

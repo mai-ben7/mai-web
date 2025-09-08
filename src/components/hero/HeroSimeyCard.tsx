@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import { AnimatedButton } from "@/components/AnimatedButton";
+import BackgroundVibe from "@/components/BackgroundVibe";
 
 type HeroSimeyCardProps = {
   name?: string;
@@ -77,23 +78,15 @@ export default function HeroSimeyCard({
       dir={rtl ? "rtl" : "ltr"}
       aria-label="Intro"
     >
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-200 via-blue-100 to-purple-200">
-        {/* Static gradient orbs */}
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-60"></div>
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-60"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-60"></div>
-      </div>
+      {/* Blue -> Pink vibe for hero; pink dot on the left as before */}
+      <BackgroundVibe variant="mirror" pinkSide="left" />
       <div className="mx-auto w-full max-w-[1200px] grid gap-10 md:grid-cols-[1.05fr,.95fr] items-center">
         {/* Copy */}
         <div className="order-2 md:order-1 relative z-10">
           <p className="text-sm tracking-widest uppercase text-slate-700 font-semibold">תיק עבודות</p>
           <h1 className="mt-3 text-4xl md:text-6xl font-extrabold leading-[1.05] text-slate-800">
             שלום, אני{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500">
-              מאי בן שבע
-            </span>
-            .
+            <span className="text-gradient">מאי בן שבע</span>.
           </h1>
           <h2 className="mt-3 text-2xl md:text-3xl text-slate-700 font-bold">מפתחת אתרים • מהנדסת יצירתית</h2>
           <p className="mt-5 text-lg text-slate-600 max-w-[60ch] font-medium">אני בונה חוויות אתרים מתקדמות ואנימציות שממירות ומרגישות פרימיום.</p>

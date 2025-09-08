@@ -28,29 +28,20 @@ export default function ServicesGrid({
 }: ServicesGridProps) {
   return (
     <section
-      data-parallax-panel
       className={clsx(
-        "min-h-screen bg-gray-900 py-20 px-8 xl:px-0 flex flex-col justify-center relative overflow-hidden",
+        "min-h-screen py-20 px-8 xl:px-0 flex flex-col justify-center relative",
         className
       )}
     >
-      {/* Parallax background */}
-      <img
-        data-parallax
-        src="/images/design.png"
-        alt=""
-        className="parallax-media"
-        aria-hidden="true"
-      />
-      <span className="text-gray-400 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 text-center">
+      <span className="text-slate-700 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 text-center">
         {eyebrow}
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
         </svg>
       </span>
 
-      <h1 className="text-white text-4xl md:text-5xl xl:text-6xl font-semibold max-w-3xl mx-auto mb-16 leading-snug text-center">
-        {heading}
+      <h1 className="text-slate-900 text-4xl md:text-5xl xl:text-6xl font-semibold max-w-3xl mx-auto mb-16 leading-snug text-center">
+        שירותים שנבנו במיוחד עבור <span className="text-gradient">העסק שלך</span>
       </h1>
 
              <div className="grid text-left grid-cols-1 sm:grid-cols-2 gap-5 max-w-5xl mx-auto">
@@ -73,6 +64,7 @@ export default function ServicesGrid({
           z-index: 0;
           transition: clip-path 0.6s ease, transform 0.6s ease, background-color 0.3s ease;
           background-color: var(--overlay, #4f46e5); /* indigo-600 */
+          opacity: 0.12;
         }
         /* Initial small circles from the four corners, like nth-child rules in the Pen */
         .svc-card.br .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%); }

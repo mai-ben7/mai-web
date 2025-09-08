@@ -3,7 +3,7 @@
   display: inline-block;
   padding: 25px 30px;
   margin: 40px 0;
-  color: #ec4899;
+  color: var(--pink-500);
   text-decoration: none;
   text-transform: uppercase;
   transition: 0.5s;
@@ -18,12 +18,11 @@
   font-size: 16px;
   transform: translateX(-400px) translateY(80px);
 }
-
 .animatedButton:hover {
-  background: #ec4899;
+  background: var(--pink-500);
   color: #ffffff;
-  box-shadow: 0 0 5px #ec4899, 0 0 25px #ec4899, 0 0 50px #ec4899,
-    0 0 200px #ec4899;
+  box-shadow: 0 0 5px var(--pink-500), 0 0 25px var(--pink-500), 0 0 50px var(--pink-500),
+    0 0 200px var(--pink-500);
   -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
 }
 
@@ -46,7 +45,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #ec4899);
+  background: linear-gradient(90deg, transparent, var(--pink-500));
   animation: animate1 1s linear infinite;
 }
 
@@ -65,7 +64,7 @@
   right: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, #ec4899);
+  background: linear-gradient(180deg, transparent, var(--pink-500));
   animation: animate2 1s linear infinite;
   animation-delay: 0.25s;
 }
@@ -85,7 +84,7 @@
   right: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(270deg, transparent, #ec4899);
+  background: linear-gradient(270deg, transparent, var(--pink-500));
   animation: animate3 1s linear infinite;
   animation-delay: 0.5s;
 }
@@ -105,7 +104,7 @@
   left: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(360deg, transparent, #ec4899);
+  background: linear-gradient(360deg, transparent, var(--pink-500));
   animation: animate4 1s linear infinite;
   animation-delay: 0.75s;
 }

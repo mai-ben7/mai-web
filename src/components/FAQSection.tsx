@@ -37,7 +37,7 @@ export function FAQSection() {
   }
 
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />
@@ -53,7 +53,7 @@ export function FAQSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            שאלות נפוצות
+            שאלות <span className="text-gradient">נפוצות</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             תשובות לשאלות שמעסיקות אותנו

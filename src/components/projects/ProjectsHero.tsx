@@ -1,4 +1,5 @@
 "use client";
+import RevealText from "@/components/RevealText";
 import * as React from "react";
 import ProjectPeekCard from "./ProjectPeekCard";
 import type { Project } from "@/data/projects";
@@ -11,7 +12,7 @@ export default function ProjectsHero({ featured }: { featured: Project[] }) {
   };
 
   return (
-    <section className="min-h-screen py-20 px-8 xl:px-0 flex flex-col justify-center relative overflow-hidden">
+    <section className="min-h-screen py-20 px-8 xl:px-0 flex flex-col justify-center relative">
       
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Headline block */}
@@ -22,9 +23,9 @@ export default function ProjectsHero({ featured }: { featured: Project[] }) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
             </svg>
           </span>
-          <h1 className="text-white text-4xl md:text-5xl xl:text-6xl font-extrabold max-w-3xl mx-auto mb-6 leading-snug bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent">
+          <RevealText as="h1" className="text-white text-4xl md:text-5xl xl:text-6xl font-extrabold max-w-3xl mx-auto mb-6 leading-snug bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent" splitBy="word" stagger={0.06}>
             פרויקטים שמדברים בעד עצמם
-          </h1>
+          </RevealText>
           <p className="text-cyan-100 text-lg md:text-xl max-w-2xl mx-auto">
             תציצו בכמה עבודות — פחות קוד, יותר תוצאות: מהירות, בהירות חוויית משתמש ואסתטיקה.
           </p>
@@ -65,7 +66,7 @@ export default function ProjectsHero({ featured }: { featured: Project[] }) {
 
         {/* Secondary CTA */}
         <div className="mt-12 text-center">
-          <a href="#all-projects" className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25">
+          <a href="#all-projects" className="btn-primary inline-flex items-center px-8 py-4 rounded-full text-lg">
             כל הפרויקטים
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
