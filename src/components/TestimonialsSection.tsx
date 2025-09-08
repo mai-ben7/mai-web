@@ -215,7 +215,7 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section id="testimonials" className="py-24 relative">
+    <section id="testimonials" data-theme data-stop1="#bfdbfe" data-stop2="#dbeafe" data-stop3="#fbcfe8" data-o1-x="18%" data-o1-y="120rem" data-o1-size="38rem" data-o1-color="rgba(96,165,250,.45)" data-o1-alpha="1" data-o2-x="76%" data-o2-y="150rem" data-o2-size="40rem" data-o2-color="rgba(167,139,250,.35)" data-o2-alpha=".9" className="py-24 relative">
       
       <div className="container mx-auto px-8 relative z-10">
         <div className="w-full max-w-6xl mx-auto space-y-8">

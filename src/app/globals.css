@@ -162,6 +162,28 @@ a-rays .a__scene path {
   }
 }
 
+/* Global background variables and helpers */
+:root{
+  --ease-standard: cubic-bezier(.2,0,0,1);
+  --ease-emphasis: cubic-bezier(.22,1,.36,1);
+
+  /* Match hero BackgroundVibe (blue->pink) */
+  --bg-stop-1: #bfdbfe; /* blue-200 */
+  --bg-stop-2: #dbeafe; /* blue-100 */
+  --bg-stop-3: #fbcfe8; /* pink-200 */
+
+  --o1-x: 70%; --o1-y: 18rem; --o1-size: 42rem; --o1-color: rgba(96,165,250,.45);  --o1-alpha: 1;    /* blue-400 */
+  --o2-x: 15%; --o2-y: 46rem; --o2-size: 36rem; --o2-color: rgba(167,139,250,.35); --o2-alpha: .9;  /* purple-400 */
+  --o3-x: 85%; --o3-y: 80rem; --o3-size: 46rem; --o3-color: rgba(244,114,182,.25); --o3-alpha: .8;  /* pink-400 */
+}
+
+@media (prefers-reduced-motion: reduce){
+  .orb { transition: none !important; }
+}
+
+.section-mx { max-width: 1440px; margin-inline: auto; }
+.safe-x { padding-inline: max(1rem, env(safe-area-inset-left)); padding-inline-end: max(1rem, env(safe-area-inset-right)); }
+
 
 
 @layer components {

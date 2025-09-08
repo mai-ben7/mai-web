@@ -11,6 +11,11 @@ export default function BookingSection() {
     <motion.section
       id="booking"
       dir="rtl"
+      data-theme
+      data-stop1="#e7efff" data-stop2="#ead7ff" data-stop3="#ffe3f2"
+      data-o1-x="20%" data-o1-y="68rem" data-o1-size="40rem" data-o1-color="rgba(111,140,255,.45)" data-o1-alpha="1"
+      data-o2-x="78%" data-o2-y="92rem" data-o2-size="36rem" data-o2-color="rgba(180,120,255,.35)" data-o2-alpha=".9"
+      data-o3-x="60%" data-o3-y="120rem" data-o3-size="44rem" data-o3-color="rgba(255,120,200,.28)" data-o3-alpha=".85"
       className="py-20 relative"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}

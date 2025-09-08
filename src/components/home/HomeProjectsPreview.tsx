@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
 import RevealText from "@/components/RevealText";
-import BackgroundVibe from "@/components/BackgroundVibe";
 
 export default function HomeProjectsPreview({
   items,
@@ -31,8 +30,6 @@ export default function HomeProjectsPreview({
 
   return (
     <section id={id} className="min-h-screen py-20 px-8 xl:px-0 flex flex-col justify-center relative" dir={rtl ? "rtl" : "ltr"}>
-      {/* Mirrored background for the next section after hero */}
-      <BackgroundVibe variant="mirror" />
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Headline block */}

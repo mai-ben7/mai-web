@@ -78,8 +78,7 @@ export default function HeroSimeyCard({
       dir={rtl ? "rtl" : "ltr"}
       aria-label="Intro"
     >
-      {/* Blue -> Pink vibe for hero; pink dot on the left as before */}
-      <BackgroundVibe variant="mirror" pinkSide="left" />
+      {/* Global background handles the gradient/orbs to avoid section seams */}
       <div className="mx-auto w-full max-w-[1200px] grid gap-10 md:grid-cols-[1.05fr,.95fr] items-center">
         {/* Copy */}
         <div className="order-2 md:order-1 relative z-10">

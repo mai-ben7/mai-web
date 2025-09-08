@@ -14,9 +14,11 @@ import { pageTransition } from "@/lib/animations"
 import BookingSection from "@/components/BookingSection"
 import { FAQSection } from "@/components/FAQSection"
 import EnableSectionParallax from "@/components/parallax/EnableSectionParallax"
+import { useSectionTheme } from "@/lib/useSectionTheme"
 
 
 export function HomePageClient() {
+  useSectionTheme()
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
@@ -47,7 +49,7 @@ export function HomePageClient() {
       
       <main>
         <EnableSectionParallax />
-        <div id="hero">
+        <div id="hero" data-theme data-stop1="#bfdbfe" data-stop2="#dbeafe" data-stop3="#fbcfe8" data-o1-x="70%" data-o1-y="20rem" data-o1-size="44rem" data-o1-color="rgba(96,165,250,.45)" data-o1-alpha="1" data-o2-x="18%" data-o2-y="50rem" data-o2-size="36rem" data-o2-color="rgba(167,139,250,.35)" data-o2-alpha=".9" className="relative">
           <HeroSimeyCard
             name="מאי בן שבע"
             role="כלים"
@@ -59,7 +61,7 @@ export function HomePageClient() {
         </div>
         
         {/* Projects Preview — directly after hero */}
-        <div id="projects-preview">
+        <div id="projects-preview" data-theme data-stop1="#bfdbfe" data-stop2="#dbeafe" data-stop3="#fbcfe8" data-o1-x="78%" data-o1-y="68rem" data-o1-size="38rem" data-o2-x="12%" data-o2-y="110rem" data-o2-size="42rem" className="relative">
           <HomeProjectsPreview 
             items={[
               {

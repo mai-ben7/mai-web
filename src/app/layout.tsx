@@ -4,6 +4,7 @@ import "./globals.css";
 import "@/components/hero/HeroSimeyCard.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/Header";
+import GlobalBackground from "@/components/background/GlobalBackground";
 
 const heebo = Heebo({ 
   subsets: ["hebrew", "latin"],
@@ -63,7 +64,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="he" dir="rtl" suppressHydrationWarning>
-      <body className={`${heebo.variable} ${poppins.variable} font-hebrew antialiased`}>
+      <body className={`${heebo.variable} ${poppins.variable} font-hebrew antialiased bg-transparent overflow-x-hidden`}>
+        <GlobalBackground />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

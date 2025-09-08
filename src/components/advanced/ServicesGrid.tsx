@@ -28,6 +28,12 @@ export default function ServicesGrid({
 }: ServicesGridProps) {
   return (
     <section
+      data-theme
+      data-stop1="#bfdbfe"
+      data-stop2="#dbeafe"
+      data-stop3="#fbcfe8"
+      data-o1-x="22%" data-o1-y="160rem" data-o1-size="36rem" data-o1-color="rgba(96,165,250,.45)" data-o1-alpha=".95"
+      data-o2-x="80%" data-o2-y="190rem" data-o2-size="44rem" data-o2-color="rgba(167,139,250,.35)" data-o2-alpha=".9"
       className={clsx(
         "min-h-screen py-20 px-8 xl:px-0 flex flex-col justify-center relative",
         className

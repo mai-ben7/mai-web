@@ -37,12 +37,13 @@ export function FAQSection() {
   }
 
   return (
-    <section className="py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
-      </div>
+    <section
+      data-theme
+      data-stop1="#bfdbfe" data-stop2="#dbeafe" data-stop3="#fbcfe8"
+      data-o1-x="20%" data-o1-y="290rem" data-o1-size="30rem" data-o1-color="rgba(96,165,250,.40)" data-o1-alpha=".9"
+      data-o2-x="82%" data-o2-y="330rem" data-o2-size="38rem" data-o2-color="rgba(167,139,250,.33)" data-o2-alpha=".85"
+      className="py-24 relative overflow-hidden"
+    >
 
       <div className="relative z-10 container mx-auto px-6 lg:px-8">
         <motion.div
