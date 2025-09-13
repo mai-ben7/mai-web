@@ -1,5 +1,6 @@
 "use client";
 import RevealText from "@/components/RevealText";
+import BlobButton from "@/components/ui/BlobButton";
 import * as React from "react";
 import ProjectPeekCard from "./ProjectPeekCard";
 import type { Project } from "@/data/projects";
@@ -66,12 +67,17 @@ export default function ProjectsHero({ featured }: { featured: Project[] }) {
 
         {/* Secondary CTA */}
         <div className="mt-12 text-center">
-          <a href="#all-projects" className="btn-primary inline-flex items-center px-8 py-4 rounded-full text-lg">
+          <BlobButton 
+            as="a"
+            href="#all-projects" 
+            variant="primary"
+            className="inline-flex items-center text-lg"
+          >
             כל הפרויקטים
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
-          </a>
+          </BlobButton>
         </div>
       </div>
     </section>

@@ -1,8 +1,14 @@
+"use client";
+
 import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import type { Project } from "@/data/projects";
 
 export default function ProjectsGrid({ items }: { items: Project[] }) {
+  const [hoveredId, setHoveredId] = React.useState<string | null>(null);
+  const [cursorPos, setCursorPos] = React.useState<{ x: number; y: number }>({ x: 0, y: 0 });
+
   return (
     <section id="all-projects" className="min-h-screen py-20 px-8 xl:px-0 relative">
       
@@ -21,47 +27,100 @@ export default function ProjectsGrid({ items }: { items: Project[] }) {
         
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {items.map(p => (
-            <article key={p.id}
-              className="group rounded-2xl border border-white/20 bg-transparent overflow-hidden transition-transform duration-500 ease-out">
-              <div className="relative aspect-[16/10] overflow-hidden transform-gpu transition-transform duration-500 ease-out group-hover:scale-[1.06] group-hover:rotate-[-2deg]">
-                <Image 
-                  src={p.cover} 
-                  alt={p.title} 
-                  fill 
-                  className="object-cover" 
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex items-center gap-2 mb-3">
-                  {p.tags?.slice(0, 2).map(tag => (
-                    <span key={tag} className="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/25 text-white/90 font-medium">
-                      {tag}
-                    </span>
-                  ))}
+            <article
+              key={p.id}
+              className={`group relative overflow-hidden rounded-3xl p-[2px] bg-gradient-to-b from-pink-500 via-rose-500 to-purple-600
+                         ${hoveredId === String(p.id) ? "cursor-none" : "cursor-pointer"}`}
+              onMouseEnter={() => setHoveredId(String(p.id))}
+              onMouseLeave={() => setHoveredId(null)}
+              onMouseMove={(e) => {
+                const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
+                setCursorPos({ x: e.clientX - r.left, y: e.clientY - r.top });
+              }}
+              style={{ cursor: hoveredId === String(p.id) ? "none" as const : "pointer" as const }}
+            >
+              {p.href ? (
+                <Link href={p.href} aria-label={`צפו בפרויקט: ${p.title}`} className="absolute inset-0 z-20" style={{ cursor: hoveredId === String(p.id) ? "none" : "pointer" }} />
+              ) : null}
+              
+              {/* Force hide cursor on all children while hovered */}
+              {hoveredId === String(p.id) && (
+                <style>{`.cursor-none *{ cursor: none !important }`}</style>
+              )}
+              
+              {/* Inner card surface */}
+              <div className="relative rounded-[22px] bg-white/90 backdrop-blur-sm">
+                {/* Framed device-style preview */}
+                <div className="px-4 pt-5">
+                  <div className="relative rounded-3xl bg-gradient-to-b from-pink-500 via-rose-500 to-purple-600 p-[2px] shadow-xl transform-gpu transition-transform duration-500 ease-out group-hover:scale-[1.06] group-hover:rotate-[-2deg]">
+                    <div className="rounded-[22px] bg-black p-3">
+                      <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden">
+                        <Image
+                          src={p.cover}
+                          alt={p.title}
+                          fill
+                          sizes="(min-width:1280px) 420px, (min-width:1024px) 340px, (min-width:640px) 280px, 90vw"
+                          className="object-cover"
+                          priority={false}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">{p.title}</h3>
-                <p className="text-white/90 mb-4">{p.oneLiner}</p>
-                {p.outcomes?.length ? (
-                  <ul className="space-y-2 text-white/85 text-sm mb-6">
-                    {p.outcomes.slice(0,3).map(x => (
-                      <li key={x} className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-white/70" />
-                        {x}
-                      </li>
+
+                {/* Text content below image */}
+                <div className="p-5 pb-4">
+                  <div className="flex items-center gap-3 mb-4">
+                    {p.tags?.slice(0, 2).map(tag => (
+                      <span key={tag} className="px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-300 text-slate-700 text-xs font-medium">
+                        {tag}
+                      </span>
                     ))}
-                  </ul>
-                ) : null}
-                <div className="flex gap-3">
-                  {p.href && (
-                    <a href={p.href} className="btn-primary rounded-full flex-1 text-center">
-                      צפו בפרויקט
-                    </a>
-                  )}
-                  <a href="#contact" className="btn-secondary rounded-full flex-1 text-center">
-                    צור קשר
-                  </a>
+                  </div>
+                  <h3 className="text-2xl font-black text-slate-900 mb-2">
+                    {p.title}
+                  </h3>
+                  <p className="text-base text-slate-700 mb-4 leading-relaxed">
+                    {p.oneLiner}
+                  </p>
+                  {p.outcomes?.length ? (
+                    <ul className="space-y-1 text-slate-600 text-sm mb-4">
+                      {p.outcomes.slice(0,2).map(x => (
+                        <li key={x} className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pink-500 to-purple-600" />
+                          {x}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  <div className="flex items-center gap-3">
+                    {p.href && (
+                      <Link 
+                        href={p.href} 
+                        className="btn-primary rounded-2xl px-5 py-2.5 text-sm font-bold"
+                      >
+                        צפו בפרויקט
+                      </Link>
+                    )}
+                  </div>
                 </div>
+
+                {/* Subtle finish highlight */}
+                <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[22px] bg-gradient-to-b from-white/30 via-transparent to-white/25" />
               </div>
+              
+              {/* Custom playful hover cursor (applies to entire card area) */}
+              {hoveredId === String(p.id) && (
+                <div
+                  className="pointer-events-none absolute z-30 -translate-x-1/2 -translate-y-1/2 select-none"
+                  style={{ left: cursorPos.x, top: cursorPos.y }}
+                >
+                  <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-pink-500/90 to-purple-600/90 text-white flex items-center justify-center shadow-2xl ring-2 ring-white/30 backdrop-blur-md">
+                    <span className="text-[11px] font-extrabold tracking-wider">לפרטים ↗</span>
+                    <div className="absolute inset-0 rounded-full border-2 border-white/40 border-dashed animate-spin-slow" />
+                  </div>
+                </div>
+              )}
             </article>
           ))}
         </div>

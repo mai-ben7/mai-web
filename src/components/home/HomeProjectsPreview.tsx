@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import BlobButton from "@/components/ui/BlobButton";
 import type { Project } from "@/data/projects";
 import RevealText from "@/components/RevealText";
 
@@ -171,15 +172,17 @@ export default function HomeProjectsPreview({
 
         {/* Secondary CTA */}
         <div className="mt-12 text-center">
-          <Link 
+          <BlobButton 
+            as="a"
             href={ctaHref} 
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-bold rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25"
+            variant="primary"
+            className="inline-flex items-center text-lg"
           >
             {ctaLabel}
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
-          </Link>
+          </BlobButton>
         </div>
       </div>
     </section>

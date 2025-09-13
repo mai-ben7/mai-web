@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Check, Code, FileText, ArrowRight, Sparkles } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import BlobButton from "@/components/ui/BlobButton"
 import BackgroundVibe from "@/components/BackgroundVibe"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { fadeInUp, staggerContainer } from "@/lib/animations"
@@ -241,9 +242,9 @@ export function Packages() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button 
-              size="lg"
-              className="btn-primary px-8 py-4 text-lg shadow-lg"
+            <BlobButton 
+              variant="primary"
+              className="text-lg"
               onClick={() => {
                 const element = document.querySelector('#booking')
                 if (element) {
@@ -252,7 +253,7 @@ export function Packages() {
               }}
             >
               קבעו ייעוץ חינם
-            </Button>
+            </BlobButton>
           </motion.div>
         </motion.div>
       </div>

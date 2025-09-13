@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Heebo, Poppins } from "next/font/google";
 import "./globals.css";
 import "@/components/hero/HeroSimeyCard.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import "@/components/ui/blob-button.css";
 import { Header } from "@/components/Header";
 import GlobalBackground from "@/components/background/GlobalBackground";
 
@@ -66,16 +66,33 @@ export default function RootLayout({
     <html lang="he" dir="rtl" suppressHydrationWarning>
       <body className={`${heebo.variable} ${poppins.variable} font-hebrew antialiased bg-transparent overflow-x-hidden`}>
         <GlobalBackground />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
           <Header />
           {/* Section-level backgrounds will handle their own vibe */}
           <main id="main" className="overflow-hidden">{children}</main>
-        </ThemeProvider>
+          
+          {/* SVG Filter for Blob Button Animation */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            version="1.1"
+            style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}
+          >
+            <defs>
+              <filter id="goo">
+                <feGaussianBlur
+                  in="SourceGraphic"
+                  result="blur"
+                  stdDeviation="10"
+                />
+                <feColorMatrix
+                  in="blur"
+                  mode="matrix"
+                  values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
+                  result="goo"
+                />
+                <feBlend in2="goo" in="SourceGraphic" result="mix" />
+              </filter>
+            </defs>
+          </svg>
       </body>
     </html>
   );
