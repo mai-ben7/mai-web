@@ -27,10 +27,21 @@ export default function ServicesGrid({
   heading,
   className
 }: ServicesGridProps) {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
+  
+  // For Hebrew, switch the content between columns (swap items 0↔1 and 2↔3)
+  const isRTL = locale === "he";
+  const reorderedItems = isRTL ? [
+    items[1], // design (was index 1, now index 0)
+    items[0], // seo (was index 0, now index 1)
+    items[3], // performance (was index 3, now index 2)
+    items[2]  // motion (was index 2, now index 3)
+  ] : items;
+  
   return (
     <section
       data-theme
+      data-lang={locale}
       data-stop1="#bfdbfe"
       data-stop2="#dbeafe"
       data-stop3="#fbcfe8"
@@ -53,7 +64,7 @@ export default function ServicesGrid({
       </h1>
 
              <div className="grid text-left grid-cols-1 sm:grid-cols-2 gap-5 max-w-5xl mx-auto">
-         {items.map((item, idx) => {
+         {reorderedItems.map((item, idx) => {
            return <Card key={`${item.id}-${idx}`} idx={idx} {...item} />;
          })}
        </div>
@@ -73,15 +84,29 @@ export default function ServicesGrid({
  
         }
         /* Initial small circles from the four corners, like nth-child rules in the Pen */
-        .svc-card.br .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%); }
-        .svc-card.bl .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at   0% 100%); }
-        .svc-card.tr .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at 100%   0%); }
-        .svc-card.tl .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at   0%   0%); }
+        /* English version - original positions */
+        [data-lang="en"] .svc-card.br .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%); }
+        [data-lang="en"] .svc-card.bl .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at   0% 100%); }
+        [data-lang="en"] .svc-card.tr .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at 100%   0%); }
+        [data-lang="en"] .svc-card.tl .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at   0%   0%); }
+        
+        /* Hebrew version - switched positions */
+        [data-lang="he"] .svc-card.br .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at   0% 100%); }
+        [data-lang="he"] .svc-card.bl .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%); }
+        [data-lang="he"] .svc-card.tr .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at   0%   0%); }
+        [data-lang="he"] .svc-card.tl .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at 100%   0%); }
 
         /* On hover/focus-within, expand to (almost) full card */
-        .svc-card:hover .overlay,
-        .svc-card:focus-within .overlay {
+        /* English version hover - expand from bottom right */
+        [data-lang="en"] .svc-card:hover .overlay,
+        [data-lang="en"] .svc-card:focus-within .overlay {
           clip-path: circle(110vw at 100% 100%); /* large enough to cover */
+        }
+        
+        /* Hebrew version hover - expand from center to cover all corners */
+        [data-lang="he"] .svc-card:hover .overlay,
+        [data-lang="he"] .svc-card:focus-within .overlay {
+          clip-path: circle(110vw at 50% 50%); /* large enough to cover from center */
         }
 
         /* Desktop-only circular image layer that matches the corner & size */
@@ -94,12 +119,23 @@ export default function ServicesGrid({
             background-position: 50% 50%;
             background-size: cover;
           }
-          .svc-card.br .bgCircle { clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%); }
-          .svc-card.bl .bgCircle { clip-path: circle(calc(6.25rem + 7.5vw) at   0% 100%); }
-          .svc-card.tr .bgCircle { clip-path: circle(calc(6.25rem + 7.5vw) at 100%   0%); }
-          .svc-card.tl .bgCircle { 
+          
+          /* English version - original positions */
+          [data-lang="en"] .svc-card.br .bgCircle { clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%); }
+          [data-lang="en"] .svc-card.bl .bgCircle { clip-path: circle(calc(6.25rem + 7.5vw) at   0% 100%); }
+          [data-lang="en"] .svc-card.tr .bgCircle { clip-path: circle(calc(6.25rem + 7.5vw) at 100%   0%); }
+          [data-lang="en"] .svc-card.tl .bgCircle { 
             clip-path: circle(calc(6.25rem + 7.5vw) at   0%   0%); 
             background-position: top right;
+          }
+          
+          /* Hebrew version - switched positions */
+          [data-lang="he"] .svc-card.br .bgCircle { clip-path: circle(calc(6.25rem + 7.5vw) at   0% 100%); }
+          [data-lang="he"] .svc-card.bl .bgCircle { clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%); }
+          [data-lang="he"] .svc-card.tr .bgCircle { clip-path: circle(calc(6.25rem + 7.5vw) at   0%   0%); }
+          [data-lang="he"] .svc-card.tl .bgCircle { 
+            clip-path: circle(calc(6.25rem + 7.5vw) at 100%   0%); 
+            background-position: top left;
           }
         }
       `}</style>
@@ -117,14 +153,21 @@ function Card({
   accent
 }: ServiceCard & { idx: number }) {
   const { t, locale } = useI18n();
-  const cornerClass =
-    corner === "br" ? "br" :
-    corner === "bl" ? "bl" :
-    corner === "tr" ? "tr" : "tl";
   
-  // Ensure consistent text positioning regardless of language direction
+  // For Hebrew, flip the image corner positions but keep text positioning as is
   const isRTL = locale === "he";
-  const effectiveTextSide = isRTL ? (textSide === "left" ? "right" : "left") : textSide;
+  const effectiveCorner = isRTL ? 
+    (corner === "br" ? "bl" : 
+     corner === "bl" ? "br" : 
+     corner === "tr" ? "tl" : "tr") : corner;
+  
+  const cornerClass =
+    effectiveCorner === "br" ? "br" :
+    effectiveCorner === "bl" ? "bl" :
+    effectiveCorner === "tr" ? "tr" : "tl";
+  
+  // Keep text positioning as originally defined
+  const effectiveTextSide = textSide;
 
   return (
     <div
