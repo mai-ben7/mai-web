@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { User, Mail, Phone, MessageSquare } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useI18n } from "@/components/i18n/I18nProvider";
 
 interface BookingFormData {
   name: string;
@@ -20,6 +21,8 @@ interface BookingFormProps {
 }
 
 export default function BookingForm({ formData, onChange, errors }: BookingFormProps) {
+  const { t } = useI18n();
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -39,7 +42,7 @@ export default function BookingForm({ formData, onChange, errors }: BookingFormP
           value={formData.name}
           onChange={(e) => onChange('name', e.target.value)}
           className="border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 text-right"
-          placeholder="הכנס/י את שמך המלא"
+          placeholder={t("booking.bookNow.namePlaceholder")}
           suppressHydrationWarning
         />
         {errors.name && (
@@ -58,7 +61,7 @@ export default function BookingForm({ formData, onChange, errors }: BookingFormP
           value={formData.email}
           onChange={(e) => onChange('email', e.target.value)}
           className="border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 text-right"
-          placeholder="הכנס/י את כתובת האימייל שלך"
+          placeholder={t("booking.bookNow.emailPlaceholder")}
           suppressHydrationWarning
         />
         {errors.email && (
@@ -77,7 +80,7 @@ export default function BookingForm({ formData, onChange, errors }: BookingFormP
           value={formData.phone}
           onChange={(e) => onChange('phone', e.target.value)}
           className="border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 text-right"
-          placeholder="הכנס/י את מספר הטלפון שלך"
+          placeholder={t("booking.bookNow.phonePlaceholder")}
           suppressHydrationWarning
         />
         {errors.phone && (
@@ -95,7 +98,7 @@ export default function BookingForm({ formData, onChange, errors }: BookingFormP
           value={formData.note}
           onChange={(e) => onChange('note', e.target.value)}
           className="border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 text-right"
-          placeholder="הערות נוספות, מטרות או שאלות..."
+          placeholder={t("booking.bookNow.notePlaceholder")}
           rows={3}
           suppressHydrationWarning
         />

@@ -88,7 +88,7 @@ export default function ContactPage() {
                   <CardTitle className="text-lg">{t("contact.location")}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription>ישראל</CardDescription>
+                  <CardDescription>{t("contact.israel")}</CardDescription>
                 </CardContent>
               </Card>
             </motion.div>

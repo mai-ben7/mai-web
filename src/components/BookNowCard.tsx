@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SERVICES, type Service } from '@/config/services';
 import SlotGrid from './SlotGrid';
 import BookingForm from './BookingForm';
+import { useI18n } from '@/components/i18n/I18nProvider';
 
 interface TimeSlot {
   start: string;
@@ -31,6 +32,7 @@ interface BookingSuccess {
 }
 
 export default function BookNowCard() {
+  const { t } = useI18n();
   const [selectedService, setSelectedService] = useState<Service>(SERVICES[0]);
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedSlot, setSelectedSlot] = useState<TimeSlot | null>(null);
@@ -280,8 +282,8 @@ export default function BookNowCard() {
   return (
     <Card className="h-full border-2 border-primary/20">
       <CardHeader className="text-center pb-4">
-        <CardTitle className="text-xl font-bold text-gray-900">קבע/י פגישה עכשיו</CardTitle>
-        <p className="text-gray-600 text-sm">בחר/י שירות, תאריך ושעה מתאימים</p>
+        <CardTitle className="text-xl font-bold text-gray-900">{t("booking.bookNow.title")}</CardTitle>
+        <p className="text-gray-600 text-sm">{t("booking.bookNow.subtitle")}</p>
       </CardHeader>
       
       <CardContent className="space-y-6">
@@ -289,7 +291,7 @@ export default function BookNowCard() {
           {/* Service Selection */}
           <div>
             <label className="block text-sm font-medium text-gray-700 text-right mb-2">
-              סוג השירות
+              {t("booking.bookNow.serviceType")}
             </label>
             <Select value={selectedService.id} onValueChange={(value) => {
               const service = SERVICES.find(s => s.id === value);
@@ -312,7 +314,7 @@ export default function BookNowCard() {
           <div>
             <label className="block text-sm font-medium text-gray-700 text-right mb-2">
               <Calendar className="h-4 w-4 inline ml-2" />
-              תאריך הפגישה
+              {t("booking.bookNow.appointmentDate")}
             </label>
             <Input
               type="date"
@@ -389,7 +391,7 @@ export default function BookNowCard() {
               ) : (
                 <>
                   <Calendar className="h-5 w-5 ml-2" />
-                  קבע/י פגישה
+                  {t("booking.bookNow.bookAppointment")}
                 </>
               )}
             </Button>

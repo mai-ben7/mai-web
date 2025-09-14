@@ -59,7 +59,7 @@ export function Footer() {
                />
              </div>
             <p className="text-sm leading-6 opacity-80">
-              בונה אתרים חיים שמזיזים אנשים. אנימציות חכמות, עיצוב מודרני, ותוצאות אמיתיות.
+              {t("footer.description")}
             </p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
@@ -78,7 +78,7 @@ export function Footer() {
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold leading-6">ניווט</h3>
+                <h3 className="text-sm font-semibold leading-6">{t("footer.navigation")}</h3>
                 <ul className="mt-6 space-y-4">
                   {navigation.main.map((item) => (
                     <li key={item.name}>
@@ -103,7 +103,7 @@ export function Footer() {
               </div>
               
               <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6">צור קשר</h3>
+                <h3 className="text-sm font-semibold leading-6">{t("footer.contact")}</h3>
                 <ul className="mt-6 space-y-4">
                   <li className="flex items-center gap-3 text-sm opacity-60">
                     <Mail className="h-4 w-4" />
@@ -119,7 +119,7 @@ export function Footer() {
                   </li>
                   <li className="flex items-center gap-3 text-sm opacity-60">
                     <MapPin className="h-4 w-4" />
-                    <span>גבעתיים, ישראל</span>
+                    <span>{t("footer.location")}</span>
                   </li>
                 </ul>
               </div>
@@ -136,7 +136,7 @@ export function Footer() {
         >
           <div className="flex justify-center">
             <p className="text-sm leading-5 opacity-60">
-              &copy; 2025 mai web. כל הזכויות שמורות למאי בן שבע.
+              {t("footer.copyright")}
             </p>
           </div>
         </motion.div>

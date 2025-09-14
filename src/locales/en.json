@@ -5,7 +5,19 @@
     "subtitle": "Elegant, fast, accessible.",
     "name": "Mai Ben Sheva",
     "role": "Tools",
-    "blurb": "I build advanced, animated web experiences that convert and feel premium."
+    "blurb": "I build advanced, animated web experiences that convert and feel premium.",
+    "portfolio": "Portfolio",
+    "greeting": "Hello, I'm",
+    "animatedText": {
+      "living": "Living Websites",
+      "smart": "Smart Websites", 
+      "amazing": "Amazing Websites",
+      "advanced": "Advanced Websites"
+    },
+    "viewPackages": "View Packages",
+    "contact": "Contact",
+    "quality": "We don't compromise on quality",
+    "availableForWork": "Available for work"
   },
   "services": {
     "title": "Services built specifically for your business",
@@ -82,6 +94,11 @@
     },
     "role": "Design + Development"
   },
+  "footer": {
+    "description": "Building living websites that move people. Smart animations, modern design, and real results.",
+    "navigation": "Navigation",
+    "contact": "Contact"
+  },
   "cta": {
     "bookConsultation": "Book Free Consultation",
     "backToHome": "Back to Home"
@@ -89,6 +106,8 @@
   "packages": {
     "title": "Choose Your Package",
     "subtitle": "Professional web solutions tailored to your needs and budget",
+    "unsure": "Not sure which package is right for you?",
+    "consultation": "Let's schedule a free consultation and help you choose the most suitable package.",
     "custom": {
       "name": "Custom Full-Code Website",
       "price": "Starting from 4,999 ₪",
@@ -128,7 +147,7 @@
     "title": "About Me",
     "subtitle": "Passionate about creating exceptional digital experiences",
     "description": "I'm a web developer and designer who loves creating beautiful, functional websites that help businesses grow and succeed online.",
-    "workflow": {
+    "workflowSteps": {
       "discovery": {
         "title": "Discovery",
         "description": "Understanding needs, business goals and target audience"
@@ -305,8 +324,124 @@
     },
     "contact": {
       "title": "Contact",
-      "description": "Send details and we'll get back to you soon. Perfect for questions or initial consultation."
+      "description": "Send details and we'll get back to you soon. Perfect for questions or initial consultation.",
+      "fullName": "Full Name *",
+      "email": "Email *",
+      "phone": "Phone",
+      "message": "Message *",
+      "agreeToTerms": "I agree to the terms of use and privacy policy",
+      "sendMessage": "Send Message",
+      "namePlaceholder": "Enter your full name",
+      "emailPlaceholder": "Enter your email address",
+      "phonePlaceholder": "Enter your phone number",
+      "messagePlaceholder": "Tell us about your goals, questions or anything else you'd like to share"
+    },
+    "bookNow": {
+      "title": "Book an Appointment Now",
+      "subtitle": "Choose service, date and suitable time",
+      "serviceType": "Service Type",
+      "appointmentDate": "Appointment Date",
+      "bookAppointment": "Book Appointment",
+      "namePlaceholder": "Enter your full name",
+      "emailPlaceholder": "Enter your email address",
+      "phonePlaceholder": "Enter your phone number",
+      "notePlaceholder": "Additional notes, goals or questions..."
     },
     "popular": "Popular"
+  },
+  "servicesPage": {
+    "title": "Services built specifically for your business",
+    "subtitle": "Professional web solutions tailored to your needs and budget",
+    "faqTitle": "Frequently Asked Questions",
+    "faqSubtitle": "Answers to questions that concern us",
+    "faq": {
+      "0": {
+        "question": "How long does it take to build a website?",
+        "answer": "Build time depends on the package chosen. Basic takes 2-3 weeks, Basic Plus 3-4 weeks, Extra 4-6 weeks, and Extra Plus 6-8 weeks."
+      },
+      "1": {
+        "question": "Will the website be mobile-friendly?",
+        "answer": "Yes! All our websites are built with full responsive design and adapted to all devices - computer, tablet and phone."
+      },
+      "2": {
+        "question": "Do you provide support after launch?",
+        "answer": "Yes, all packages include technical support. Basic and Basic Plus include basic support, Extra and Extra Plus include full support."
+      },
+      "3": {
+        "question": "Will the website include SEO?",
+        "answer": "Yes, all our websites are built with basic search engine optimization. In the more advanced packages we add advanced optimization."
+      },
+      "4": {
+        "question": "Can the design be changed after launch?",
+        "answer": "Yes, changes and updates can be made. In the more advanced packages monthly updates are included."
+      },
+      "5": {
+        "question": "Will the website include animations?",
+        "answer": "Yes! All websites include basic animations. In Extra and Extra Plus packages we add advanced animations and WebGL."
+      }
+    },
+    "packages": {
+      "basic": {
+        "name": "Basic",
+        "price": "Starting from 2,999 ₪",
+        "description": "Perfect for small businesses and startups looking for a professional online presence.",
+        "features": [
+          "Responsive design",
+          "Basic SEO optimization",
+          "Contact form",
+          "Social media integration",
+          "Basic support"
+        ],
+        "cta": "Choose Basic"
+      },
+      "basicPlus": {
+        "name": "Basic Plus",
+        "price": "Starting from 3,999 ₪",
+        "description": "Enhanced features for growing businesses that need more functionality.",
+        "features": [
+          "Everything in Basic",
+          "Advanced SEO",
+          "Blog system",
+          "Analytics integration",
+          "Priority support"
+        ],
+        "cta": "Choose Basic Plus"
+      },
+      "extra": {
+        "name": "Extra",
+        "price": "Starting from 4,999 ₪",
+        "description": "Advanced features for established businesses looking for premium solutions.",
+        "features": [
+          "Everything in Basic Plus",
+          "Custom animations",
+          "Advanced integrations",
+          "Monthly updates",
+          "Full support"
+        ],
+        "cta": "Choose Extra"
+      },
+      "extraPlus": {
+        "name": "Extra Plus",
+        "price": "Starting from 6,999 ₪",
+        "description": "Premium solution with cutting-edge features for large businesses.",
+        "features": [
+          "Everything in Extra",
+          "WebGL animations",
+          "Custom development",
+          "Advanced analytics",
+          "Dedicated support"
+        ],
+        "cta": "Choose Extra Plus"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch for a free consultation",
+    "email": "Email Us",
+    "phone": "Call Us",
+    "location": "Location",
+    "israel": "Israel",
+    "backToHome": "Back to Home"
   }
 }

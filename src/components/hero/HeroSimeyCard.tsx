@@ -4,6 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import { AnimatedButton } from "@/components/AnimatedButton";
 import BackgroundVibe from "@/components/BackgroundVibe";
+import { useI18n } from "@/components/i18n/I18nProvider";
 
 type HeroSimeyCardProps = {
   name?: string;
@@ -24,6 +25,7 @@ export default function HeroSimeyCard({
   className = "",
   rtl = false,
 }: HeroSimeyCardProps) {
+  const { t } = useI18n();
   const cardRef = React.useRef<HTMLDivElement | null>(null);
   const [coarse, setCoarse] = React.useState(false);
   const [reduced, setReduced] = React.useState(false);
@@ -82,14 +84,14 @@ export default function HeroSimeyCard({
       <div className="mx-auto w-full max-w-[1200px] grid gap-10 md:grid-cols-[1.05fr,.95fr] items-center">
         {/* Copy */}
         <div className="order-2 md:order-1 relative z-10">
-          <p className="text-sm tracking-widest uppercase text-slate-700 font-semibold">תיק עבודות</p>
+          <p className="text-sm tracking-widest uppercase text-slate-700 font-semibold">{t("hero.portfolio")}</p>
           <h1 className="mt-3 text-4xl md:text-6xl font-extrabold leading-[1.05] text-slate-800">
-            שלום, אני{" "}
-            <span className="text-gradient">מאי בן שבע</span>.
+            {t("hero.greeting")}{" "}
+            <span className="text-gradient">{name}</span>.
           </h1>
-          <h2 className="mt-3 text-2xl md:text-3xl text-slate-700 font-bold">מפתחת אתרים • מהנדסת יצירתית</h2>
-          <p className="mt-5 text-lg text-slate-600 max-w-[60ch] font-medium">אני בונה חוויות אתרים מתקדמות ואנימציות שממירות ומרגישות פרימיום.</p>
-          <p className="mt-4 text-xl text-slate-700 font-bold italic">על איכות לא מתפשרים</p>
+          <h2 className="mt-3 text-2xl md:text-3xl text-slate-700 font-bold">{role}</h2>
+          <p className="mt-5 text-lg text-slate-600 max-w-[60ch] font-medium">{blurb}</p>
+          <p className="mt-4 text-xl text-slate-700 font-bold italic">{t("hero.quality")}</p>
           
           <div className="mt-8 flex flex-wrap gap-3">
             <AnimatedButton 
@@ -100,7 +102,7 @@ export default function HeroSimeyCard({
                 element.scrollIntoView({ behavior: 'smooth' });
               }
             }}>
-              צור קשר
+              {t("hero.contact")}
             </AnimatedButton>
           </div>
         </div>
@@ -135,7 +137,7 @@ export default function HeroSimeyCard({
 
                 {/* overlay content - minimal and clean */}
                 <div className="simey-card__content">
-                  <div className="simey-card__chip">זמינה לעבודה</div>
+                  <div className="simey-card__chip">{t("hero.availableForWork")}</div>
                   
                   {/* שפות ומערכות - רק שורה אחת קומפקטית */}
                   <div className="mt-3">

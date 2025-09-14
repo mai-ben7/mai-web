@@ -5,9 +5,11 @@ import { useState, useRef, useMemo, useEffect, Suspense } from 'react'
 import { FloatingModal } from './FloatingModal'
 import { Play, ArrowRight, Sparkles } from 'lucide-react'
 import { AnimatedButton } from './AnimatedButton'
+import { useI18n } from "@/components/i18n/I18nProvider"
 
 export function AnimatedHero() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
+  const { t } = useI18n()
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -65,7 +67,7 @@ export function AnimatedHero() {
                 }}
               >
                 <Sparkles className="w-4 h-4 text-yellow-400" />
-                <span className="text-sm font-medium text-white/90">תיק עבודות</span>
+                <span className="text-sm font-medium text-white/90">{t("hero.portfolio")}</span>
               </motion.div>
 
               <motion.h1
@@ -73,7 +75,7 @@ export function AnimatedHero() {
                 variants={itemVariants}
               >
                 <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  שלום, אני
+                  {t("hero.greeting")}
                 </span>
                 <br />
                 <span className="text-white">Mai Ben Sheva</span>
@@ -100,7 +102,7 @@ export function AnimatedHero() {
                     element.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}>
-                  צפה בחבילות
+                  {t("hero.viewPackages")}
                 </AnimatedButton>
                 <AnimatedButton onClick={() => {
                   const element = document.querySelector('#booking');
@@ -108,7 +110,7 @@ export function AnimatedHero() {
                     element.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}>
-                  צור קשר
+                  {t("hero.contact")}
                 </AnimatedButton>
               </motion.div>
             </div>

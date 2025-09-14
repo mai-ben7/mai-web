@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { useI18n } from "@/components/i18n/I18nProvider"
 
 interface AnimatedTextProps {
   text: string
@@ -100,11 +101,12 @@ export function AnimatedText({ text, className = "", delay = 0, duration = 0.5 }
 // Special animated text for the hero section
 export function HeroAnimatedText() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const { t } = useI18n()
   const texts = [
-    "אתרים חיים",
-    "אתרים חכמים", 
-    "אתרים מדהימים",
-    "אתרים מתקדמים"
+    t("hero.animatedText.living"),
+    t("hero.animatedText.smart"), 
+    t("hero.animatedText.amazing"),
+    t("hero.animatedText.advanced")
   ]
 
   useEffect(() => {

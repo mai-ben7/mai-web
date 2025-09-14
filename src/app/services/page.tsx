@@ -70,36 +70,37 @@ const getPackages = (t: (key: string) => string) => [
   }
 ]
 
-const faqs = [
+const getFAQs = (t: (key: string) => string) => [
   {
-    question: "כמה זמן לוקח לבנות אתר?",
-    answer: "זמן הבנייה תלוי בחבילה שנבחרת. Basic לוקח 2-3 שבועות, Basic Plus 3-4 שבועות, Extra 4-6 שבועות, ו-Extra Plus 6-8 שבועות."
+    question: t("servicesPage.faq.0.question"),
+    answer: t("servicesPage.faq.0.answer")
   },
   {
-    question: "האם האתר יהיה מותאם למובייל?",
-    answer: "כן! כל האתרים שלנו נבנים עם עיצוב רספונסיבי מלא ומותאמים לכל המכשירים - מחשב, טאבלט וטלפון."
+    question: t("servicesPage.faq.1.question"),
+    answer: t("servicesPage.faq.1.answer")
   },
   {
-    question: "האם אתם מספקים תמיכה לאחר השקה?",
-    answer: "כן, כל החבילות כוללות תמיכה טכנית. Basic ו-Basic Plus כוללים תמיכה בסיסית, Extra ו-Extra Plus כוללים תמיכה מלאה."
+    question: t("servicesPage.faq.2.question"),
+    answer: t("servicesPage.faq.2.answer")
   },
   {
-    question: "האם האתר יכלול SEO?",
-    answer: "כן, כל האתרים שלנו נבנים עם אופטימיזציה למנועי חיפוש בסיסית. בחבילות המתקדמות יותר נוסיף אופטימיזציה מתקדמת."
+    question: t("servicesPage.faq.3.question"),
+    answer: t("servicesPage.faq.3.answer")
   },
   {
-    question: "האם אפשר לשנות את העיצוב אחרי השקה?",
-    answer: "כן, אפשר לבצע שינויים ועדכונים. בחבילות המתקדמות יותר כלולים עדכונים חודשיים."
+    question: t("servicesPage.faq.4.question"),
+    answer: t("servicesPage.faq.4.answer")
   },
   {
-    question: "האם האתר יכלול אנימציות?",
-    answer: "כן! כל האתרים כוללים אנימציות בסיסיות. בחבילות Extra ו-Extra Plus נוסיף אנימציות מתקדמות ו-WebGL."
+    question: t("servicesPage.faq.5.question"),
+    answer: t("servicesPage.faq.5.answer")
   }
 ]
 
 export default function ServicesPage() {
   const { t } = useI18n()
   const packages = getPackages(t)
+  const faqs = getFAQs(t)
   
   return (
     <div>
@@ -201,10 +202,10 @@ export default function ServicesPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                שאלות נפוצות
+                {t("servicesPage.faqTitle")}
               </h2>
               <p className="mt-4 text-lg leading-8 text-muted-foreground">
-                תשובות לשאלות שמעסיקות אותנו
+                {t("servicesPage.faqSubtitle")}
               </p>
             </motion.div>
 
@@ -242,12 +243,18 @@ export default function ServicesPage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                לא בטוחים איזו חבילה מתאימה לכם?
+                {t("packages.unsure")}
               </h2>
               <p className="mt-4 text-lg leading-8 opacity-90">
-                נקבע שיחת ייעוץ חינם ונעזור לכם לבחור את החבילה המתאימה ביותר.
+                {t("packages.consultation")}
               </p>
               <div className="mt-10 flex items-center justify-center gap-4">
+                <Button asChild size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold">
+                  <Link href="/">
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    {t("cta.backToHome")}
+                  </Link>
+                </Button>
                 <BlobButton 
                   variant="primary"
                   className="text-lg"
@@ -258,14 +265,8 @@ export default function ServicesPage() {
                     }
                   }}
                 >
-                  קבעו ייעוץ חינם
+                  {t("cta.bookConsultation")}
                 </BlobButton>
-                <Button asChild size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold">
-                  <Link href="/">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    חזרה לדף הבית
-                  </Link>
-                </Button>
               </div>
             </motion.div>
           </div>

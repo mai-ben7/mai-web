@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useI18n } from '@/components/i18n/I18nProvider';
 
 interface ContactFormData {
   name: string;
@@ -26,6 +27,7 @@ interface ContactFormErrors {
 }
 
 export default function ContactOnlyCard() {
+  const { t } = useI18n();
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
@@ -155,8 +157,8 @@ export default function ContactOnlyCard() {
   return (
     <Card className="h-full border-2 border-blue-200">
       <CardHeader className="text-center pb-4">
-        <CardTitle className="text-xl font-bold text-gray-900">יצירת קשר</CardTitle>
-        <p className="text-gray-600 text-sm">שלח/י פרטים ונחזור אליך בהקדם</p>
+        <CardTitle className="text-xl font-bold text-gray-900">{t("booking.contact.title")}</CardTitle>
+        <p className="text-gray-600 text-sm">{t("booking.contact.description")}</p>
       </CardHeader>
       
       <CardContent className="space-y-6">
@@ -164,14 +166,14 @@ export default function ContactOnlyCard() {
           {/* Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700 text-right mb-2">
-              שם מלא *
+              {t("booking.contact.fullName")}
             </label>
             <Input
               type="text"
               value={formData.name}
               onChange={(e) => handleFormChange('name', e.target.value)}
               className="border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-right"
-              placeholder="הכנס/י את שמך המלא"
+              placeholder={t("booking.contact.namePlaceholder")}
               suppressHydrationWarning
             />
             {errors.name && (
@@ -182,14 +184,14 @@ export default function ContactOnlyCard() {
           {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700 text-right mb-2">
-              אימייל *
+              {t("booking.contact.email")}
             </label>
             <Input
               type="email"
               value={formData.email}
               onChange={(e) => handleFormChange('email', e.target.value)}
               className="border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-right"
-              placeholder="הכנס/י את כתובת האימייל שלך"
+              placeholder={t("booking.contact.emailPlaceholder")}
               suppressHydrationWarning
             />
             {errors.email && (
@@ -200,14 +202,14 @@ export default function ContactOnlyCard() {
           {/* Phone */}
           <div>
             <label className="block text-sm font-medium text-gray-700 text-right mb-2">
-              טלפון
+              {t("booking.contact.phone")}
             </label>
             <Input
               type="tel"
               value={formData.phone}
               onChange={(e) => handleFormChange('phone', e.target.value)}
               className="border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-right"
-              placeholder="הכנס/י את מספר הטלפון שלך"
+              placeholder={t("booking.contact.phonePlaceholder")}
               suppressHydrationWarning
             />
             {errors.phone && (
@@ -218,13 +220,13 @@ export default function ContactOnlyCard() {
           {/* Message */}
           <div>
             <label className="block text-sm font-medium text-gray-700 text-right mb-2">
-              הודעה *
+              {t("booking.contact.message")}
             </label>
             <Textarea
               value={formData.message}
               onChange={(e) => handleFormChange('message', e.target.value)}
               className="border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-right min-h-[120px]"
-              placeholder="ספר/י לנו על המטרות שלך, שאלות או כל דבר אחר שתרצה/י לשתף"
+              placeholder={t("booking.contact.messagePlaceholder")}
               suppressHydrationWarning
             />
             {errors.message && (
@@ -241,7 +243,7 @@ export default function ContactOnlyCard() {
               suppressHydrationWarning
             />
             <label htmlFor="terms" className="text-sm text-gray-600 text-right leading-relaxed">
-              אני מסכים/ה לתנאי השימוש ומדיניות הפרטיות
+              {t("booking.contact.agreeToTerms")}
             </label>
           </div>
           {errors.agreeToTerms && (
@@ -267,7 +269,7 @@ export default function ContactOnlyCard() {
               ) : (
                 <>
                   <Send className="h-5 w-5 ml-2" />
-                  שלח הודעה
+                  {t("booking.contact.sendMessage")}
                 </>
               )}
             </Button>

@@ -23,28 +23,28 @@ const skills = [
 const getWorkflow = (t: (key: string) => string) => [
   {
     icon: Code,
-    title: t("about.workflow.discovery.title"),
-    description: t("about.workflow.discovery.description")
+    title: t("about.workflowSteps.discovery.title"),
+    description: t("about.workflowSteps.discovery.description")
   },
   {
     icon: Palette,
-    title: t("about.workflow.design.title"),
-    description: t("about.workflow.design.description")
+    title: t("about.workflowSteps.design.title"),
+    description: t("about.workflowSteps.design.description")
   },
   {
     icon: Zap,
-    title: t("about.workflow.build.title"),
-    description: t("about.workflow.build.description")
+    title: t("about.workflowSteps.build.title"),
+    description: t("about.workflowSteps.build.description")
   },
   {
     icon: Rocket,
-    title: t("about.workflow.launch.title"),
-    description: t("about.workflow.launch.description")
+    title: t("about.workflowSteps.launch.title"),
+    description: t("about.workflowSteps.launch.description")
   },
   {
     icon: TrendingUp,
-    title: t("about.workflow.grow.title"),
-    description: t("about.workflow.grow.description")
+    title: t("about.workflowSteps.grow.title"),
+    description: t("about.workflowSteps.grow.description")
   }
 ]
 
@@ -229,6 +229,12 @@ export default function AboutPage() {
                 {t("about.cta.description")}
               </p>
               <div className="mt-10 flex items-center justify-center gap-4">
+                <Button asChild size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold">
+                  <Link href="/">
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    {t("cta.backToHome")}
+                  </Link>
+                </Button>
                 <BlobButton 
                   variant="primary"
                   className="text-lg"
@@ -241,12 +247,6 @@ export default function AboutPage() {
                 >
                   {t("about.cta.button")}
                 </BlobButton>
-                <Button asChild size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold">
-                  <Link href="/">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    {t("cta.backToHome")}
-                  </Link>
-                </Button>
               </div>
             </motion.div>
           </div>

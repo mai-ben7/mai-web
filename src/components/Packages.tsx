@@ -239,7 +239,7 @@ export function Packages() {
             className="text-slate-600 mb-6 text-lg"
             whileHover={{ scale: 1.05 }}
           >
-            לא בטוחים איזו חבילה מתאימה לכם?
+            {t("packages.unsure")}
           </motion.p>
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -255,7 +255,7 @@ export function Packages() {
                 }
               }}
             >
-              קבעו ייעוץ חינם
+              {t("cta.bookConsultation")}
             </BlobButton>
           </motion.div>
         </motion.div>
