@@ -1,6 +1,7 @@
 import RevealText from "@/components/RevealText";
 import { useEffect, useRef, useState } from "react";
 import { Star } from "lucide-react";
+import { useI18n } from "@/components/i18n/I18nProvider";
 
 interface TestimonialSliderProps {
   children: React.ReactNode;
@@ -146,73 +147,68 @@ const ReviewCard = ({ avatar, name, rating, review }: ReviewCardProps) => (
   </div>
 );
 
+const getTestimonials = (t: (key: string) => string) => [
+  {
+    id: 1,
+    name: t("testimonials.items.0.name"),
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=sarah",
+    rating: 5,
+    review: t("testimonials.items.0.text"),
+  },
+  {
+    id: 2,
+    name: t("testimonials.items.1.name"),
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=michael",
+    rating: 5,
+    review: t("testimonials.items.1.text"),
+  },
+  {
+    id: 3,
+    name: t("testimonials.items.2.name"),
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=emma",
+    rating: 5,
+    review: t("testimonials.items.2.text"),
+  },
+  {
+    id: 4,
+    name: t("testimonials.items.3.name"),
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=james",
+    rating: 4,
+    review: t("testimonials.items.3.text"),
+  },
+  {
+    id: 5,
+    name: t("testimonials.items.4.name"),
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=dana",
+    rating: 5,
+    review: t("testimonials.items.4.text"),
+  },
+  {
+    id: 6,
+    name: t("testimonials.items.5.name"),
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=alon",
+    rating: 5,
+    review: t("testimonials.items.5.text"),
+  },
+  {
+    id: 7,
+    name: t("testimonials.items.6.name"),
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=michal",
+    rating: 4,
+    review: t("testimonials.items.6.text"),
+  },
+  {
+    id: 8,
+    name: t("testimonials.items.7.name"),
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=daniel",
+    rating: 5,
+    review: t("testimonials.items.7.text"),
+  },
+];
+
 export default function TestimonialsSection() {
-  const reviews = [
-    {
-      id: 1,
-      name: "שרה כהן",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=sarah",
-      rating: 5,
-      review:
-        "האתר שעשית לי עולה על כל הציפיות! העיצוב מרהיב והאנימציות מדהימות. הלקוחות שלי כל הזמן אומרים כמה האתר נראה מקצועי.",
-    },
-    {
-      id: 2,
-      name: "מיכאל לוי",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=michael",
-      rating: 5,
-      review:
-        "מאי עשה עבודה מעולה! האתר לא רק נראה טוב, אלא גם עובד בצורה מושלמת על כל המכשירים. המחיר היה הוגן והשירות מקצועי.",
-    },
-    {
-      id: 3,
-      name: "עמליה דוד",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=emma",
-      rating: 5,
-      review:
-        "אני אוהבת את האתר החדש שלי! מאי הבין בדיוק מה שאני רציתי ועשה את זה אפילו יותר טוב. האנימציות מוסיפות המון ערך.",
-    },
-    {
-      id: 4,
-      name: "יעקב וייס",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=james",
-      rating: 4,
-      review:
-        "מאוד מרוצה מהאיכות והקפדה על הפרטים. האתר נראה מקצועי ומתפקד בצורה מושלמת.",
-    },
-    {
-      id: 5,
-      name: "דנה אברהם",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=dana",
-      rating: 5,
-      review:
-        "מאי עשה עבודה מדהימה! האתר שלי עכשיו נראה כמו של חברה גדולה. האנימציות מושכות את העין והמשתמשים נשארים יותר זמן.",
-    },
-    {
-      id: 6,
-      name: "אלון ברק",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=alon",
-      rating: 5,
-      review:
-        "האתר החדש הביא לי הרבה יותר לקוחות! העיצוב המודרני והאנימציות החכמות גורמות לאנשים להתעניין יותר בעסק שלי.",
-    },
-    {
-      id: 7,
-      name: "מיכל רוזן",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=michal",
-      rating: 4,
-      review:
-        "שירות מעולה ומקצועי. מאי עשה את האתר בדיוק כמו שרציתי, עם הרבה רעיונות יצירתיים שכללתי.",
-    },
-    {
-      id: 8,
-      name: "דניאל כהן",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=daniel",
-      rating: 5,
-      review:
-        "האתר שעשית לי נראה מדהים! האנימציות מוסיפות המון ערך והמשתמשים אוהבים את החוויה. בהחלט אמליץ עליך!",
-    },
-  ];
+  const { t } = useI18n();
+  const reviews = getTestimonials(t);
 
   return (
     <section id="testimonials" data-theme data-stop1="#bfdbfe" data-stop2="#dbeafe" data-stop3="#fbcfe8" data-o1-x="18%" data-o1-y="120rem" data-o1-size="38rem" data-o1-color="rgba(96,165,250,.45)" data-o1-alpha="1" data-o2-x="76%" data-o2-y="150rem" data-o2-size="40rem" data-o2-color="rgba(167,139,250,.35)" data-o2-alpha=".9" className="py-24 relative">
@@ -222,7 +218,7 @@ export default function TestimonialsSection() {
           <div className="space-y-2">
             <div className="text-center">
               <RevealText as="h2" className="text-2xl font-semibold text-foreground mb-6 text-center" splitBy="word" stagger={0.06}>
-                מה הלקוחות <span className="text-gradient">אומרים</span>
+                {t("testimonials.title")} <span className="text-gradient">{t("testimonials.titleHighlight")}</span>
               </RevealText>
             </div>
             <TestimonialSlider 

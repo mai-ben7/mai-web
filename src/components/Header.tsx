@@ -9,13 +9,15 @@ import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { slideInFromTop } from "@/lib/animations"
+import { useI18n } from "@/components/i18n/I18nProvider"
+import LanguageToggle from "@/components/navigation/LanguageToggle"
 
-const navigation = [
-  { name: "בית", href: "/" },
-  { name: "פרויקטים", href: "/projects" },
-  { name: "שירותים", href: "/services" },
-  { name: "אודות", href: "/about" },
-  { name: "צור קשר", href: "/contact" },
+const getNavigation = (t: (key: string) => string) => [
+  { name: t("nav.home"), href: "/" },
+  { name: t("nav.projects"), href: "/projects" },
+  { name: t("nav.services"), href: "/services" },
+  { name: t("nav.about"), href: "/about" },
+  { name: t("nav.contact"), href: "/contact" },
 ]
 
 export function Header() {
@@ -23,6 +25,8 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
+  const { t } = useI18n()
+  const navigation = getNavigation(t)
 
   useEffect(() => {
     setMounted(true)
@@ -110,7 +114,7 @@ export function Header() {
         </div>
         
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
-          
+          <LanguageToggle />
           <Button 
             className="bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
             onClick={() => {
@@ -120,7 +124,7 @@ export function Header() {
               }
             }}
           >
-            קבעו ייעוץ חינם
+            {t("cta.bookConsultation")}
           </Button>
         </div>
       </nav>
@@ -194,18 +198,19 @@ export function Header() {
                   </div>
                   <div className="py-6">
                     <div className="flex items-center gap-4">
-                                             <Button 
-                                               className="w-full bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
-                                               onClick={() => {
-                                                 const element = document.querySelector('#booking')
-                                                 if (element) {
-                                                   element.scrollIntoView({ behavior: 'smooth' })
-                                                 }
-                                                 setMobileMenuOpen(false)
-                                               }}
-                                             >
-                                               קבעו ייעוץ חינם
-                                             </Button>
+                      <LanguageToggle />
+                      <Button 
+                        className="flex-1 bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+                        onClick={() => {
+                          const element = document.querySelector('#booking')
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth' })
+                          }
+                          setMobileMenuOpen(false)
+                        }}
+                      >
+                        {t("cta.bookConsultation")}
+                      </Button>
                     </div>
                   </div>
                 </div>

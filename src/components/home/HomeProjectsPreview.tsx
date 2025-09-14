@@ -6,13 +6,14 @@ import Link from "next/link";
 import BlobButton from "@/components/ui/BlobButton";
 import type { Project } from "@/data/projects";
 import RevealText from "@/components/RevealText";
+import { useI18n } from "@/components/i18n/I18nProvider";
 
 export default function HomeProjectsPreview({
   items,
-  title = "פרויקטים נבחרים",
-  subtitle = "קטעים קצרים, תוצאות ברורות — בלי טכני מסובך.",
+  title,
+  subtitle,
   ctaHref = "/projects",
-  ctaLabel = "צפו בכל הפרויקטים",
+  ctaLabel,
   id = "projects-preview",
   rtl = true,
 }: {
@@ -24,6 +25,7 @@ export default function HomeProjectsPreview({
   id?: string;
   rtl?: boolean;
 }) {
+  const { t } = useI18n();
   const scrollerRef = React.useRef<HTMLDivElement | null>(null);
   const scrollBy = (dx: number) => scrollerRef.current?.scrollBy({ left: dx, behavior: "smooth" });
   const [hoveredId, setHoveredId] = React.useState<string | null>(null);
@@ -36,16 +38,16 @@ export default function HomeProjectsPreview({
         {/* Headline block */}
         <header className="max-w-2xl mx-auto text-center mb-16">
           <span className="text-indigo-700 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 justify-center">
-            {title}
+            {title || t("projects.title")}
             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
             </svg>
           </span>
           <RevealText as="h1" className="text-white text-4xl md:text-5xl xl:text-6xl font-extrabold max-w-3xl mx-auto mb-6 leading-snug" splitBy="word" stagger={0.06}>
-            פרויקטים שמדברים <span className="text-gradient">בעד עצמם</span>
+            {t("projects.title")}
           </RevealText>
           <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto">
-            תציצו בכמה עבודות — פחות קוד, יותר תוצאות: מהירות, בהירות חוויית משתמש ואסתטיקה.
+            {subtitle || t("projects.subtitle")}
           </p>
         </header>
 
@@ -57,7 +59,7 @@ export default function HomeProjectsPreview({
             <button 
               onClick={() => scrollBy(rtl ? +480 : -480)} 
               className="rounded-full border border-cyan-400/30 bg-cyan-400/10 p-3 hover:bg-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300 backdrop-blur-sm" 
-              aria-label="גלול שמאלה"
+              aria-label={t("projects.scrollLeft")}
               suppressHydrationWarning
             >
               <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -68,7 +70,7 @@ export default function HomeProjectsPreview({
             <button 
               onClick={() => scrollBy(rtl ? -480 : +480)} 
               className="rounded-full border border-pink-400/30 bg-pink-400/10 p-3 hover:bg-pink-400/20 hover:border-pink-400/50 transition-all duration-300 backdrop-blur-sm" 
-              aria-label="גלול ימינה"
+              aria-label={t("projects.scrollRight")}
               suppressHydrationWarning
             >
               <svg className="w-5 h-5 text-pink-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,7 +98,7 @@ export default function HomeProjectsPreview({
                 style={{ cursor: hoveredId === String(p.id) ? "none" as const : "pointer" as const }}
               >
                 {p.href ? (
-                  <Link href={p.href} aria-label={`צפו בפרויקט: ${p.title}`} className="absolute inset-0 z-20" style={{ cursor: hoveredId === String(p.id) ? "none" : "pointer" }} />
+                  <Link href={p.href} aria-label={`${t("projects.viewProject")}: ${p.title}`} className="absolute inset-0 z-20" style={{ cursor: hoveredId === String(p.id) ? "none" : "pointer" }} />
                 ) : null}
                 {/* Force hide cursor on all children while hovered */}
                 {hoveredId === String(p.id) && (
@@ -144,7 +146,7 @@ export default function HomeProjectsPreview({
                           href={p.href} 
                           className="btn-primary rounded-2xl px-5 py-2.5 text-sm font-bold"
                         >
-                          צפו בפרויקט
+                          {t("projects.viewProject")}
                         </Link>
                       )}
                     </div>
@@ -160,7 +162,7 @@ export default function HomeProjectsPreview({
                     style={{ left: cursorPos.x, top: cursorPos.y }}
                   >
                     <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-pink-500/90 to-purple-600/90 text-white flex items-center justify-center shadow-2xl ring-2 ring-white/30 backdrop-blur-md">
-                      <span className="text-[11px] font-extrabold tracking-wider">לפרטים ↗</span>
+                      <span className="text-[11px] font-extrabold tracking-wider">{t("projects.viewProject")} ↗</span>
                       <div className="absolute inset-0 rounded-full border-2 border-white/40 border-dashed animate-spin-slow" />
                     </div>
                   </div>
@@ -178,7 +180,7 @@ export default function HomeProjectsPreview({
             variant="primary"
             className="inline-flex items-center text-lg"
           >
-            {ctaLabel}
+            {ctaLabel || t("projects.viewAllProjects")}
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>

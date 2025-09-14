@@ -9,13 +9,12 @@ import { Button } from "@/components/ui/button"
 import BlobButton from "@/components/ui/BlobButton"
 import { fadeInUp, staggerContainer } from "@/lib/animations"
 import EnableSectionParallax from "@/components/parallax/EnableSectionParallax"
+import { useI18n } from "@/components/i18n/I18nProvider"
 
-export const metadata = {
-  title: "צור קשר - mai web",
-  description: "צרו קשר עם mai web לפיתוח אתרים מתקדמים עם אנימציות חכמות. ייעוץ חינם ופתרונות דיגיטליים מותאמים אישית.",
-}
 
 export default function ContactPage() {
+  const { t } = useI18n()
+  
   return (
     <div>
       <main dir="rtl">
@@ -27,16 +26,16 @@ export default function ContactPage() {
           {/* Headline block */}
           <header className="max-w-2xl mx-auto text-center">
             <span className="text-slate-700 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 justify-center">
-              צור קשר
+              {t("contact.title")}
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-pink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
               </svg>
             </span>
             <h1 className="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 sm:text-6xl">
-              בואו נבנה משהו מדהים ביחד
+              {t("contact.subtitle")}
             </h1>
             <p className="mt-6 text-lg leading-8 text-slate-600 max-w-2xl mx-auto">
-              מוכנים להתחיל את הפרויקט הבא שלכם? צרו קשר עכשיו לקבלת ייעוץ חינם ופתרון מותאם אישית.
+              {t("contact.description")}
             </p>
           </header>
         </div>
@@ -58,7 +57,7 @@ export default function ContactPage() {
                   <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-pink-100">
                     <Mail className="h-6 w-6 text-pink-600" />
                   </div>
-                  <CardTitle className="text-lg">אימייל</CardTitle>
+                  <CardTitle className="text-lg">{t("contact.email")}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription>mai@maiweb.co.il</CardDescription>
@@ -72,7 +71,7 @@ export default function ContactPage() {
                   <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-pink-100">
                     <Phone className="h-6 w-6 text-pink-600" />
                   </div>
-                  <CardTitle className="text-lg">טלפון</CardTitle>
+                  <CardTitle className="text-lg">{t("contact.phone")}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription>050-123-4567</CardDescription>
@@ -86,7 +85,7 @@ export default function ContactPage() {
                   <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-pink-100">
                     <MapPin className="h-6 w-6 text-pink-600" />
                   </div>
-                  <CardTitle className="text-lg">מיקום</CardTitle>
+                  <CardTitle className="text-lg">{t("contact.location")}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription>ישראל</CardDescription>
@@ -100,7 +99,7 @@ export default function ContactPage() {
                   <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-pink-100">
                     <Clock className="h-6 w-6 text-pink-600" />
                   </div>
-                  <CardTitle className="text-lg">שעות עבודה</CardTitle>
+                  <CardTitle className="text-lg">{t("contact.hours")}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription>א׳-ה׳ 9:00-18:00</CardDescription>
@@ -122,10 +121,10 @@ export default function ContactPage() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              מוכנים להתחיל?
+              {t("contact.subtitle")}
             </h2>
             <p className="mt-4 text-lg leading-8 opacity-90">
-              בואו נדבר על הפרויקט שלכם ונבנה משהו מדהים ביחד.
+              {t("contact.description")}
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <BlobButton 
@@ -135,12 +134,12 @@ export default function ContactPage() {
                   window.location.href = "mailto:mai@maiweb.co.il"
                 }}
               >
-                שלחו אימייל
+                {t("contact.email")}
               </BlobButton>
               <Button asChild size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold">
                 <Link href="/">
                   <ArrowLeft className="mr-2 h-4 w-4" />
-                  חזרה לדף הבית
+                  {t("contact.backToHome")}
                 </Link>
               </Button>
             </div>

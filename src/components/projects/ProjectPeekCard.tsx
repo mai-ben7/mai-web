@@ -3,8 +3,10 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
+import { useI18n } from "@/components/i18n/I18nProvider";
 
 export default function ProjectPeekCard({ p }: { p: Project }) {
+  const { t } = useI18n();
   const [isHovered, setIsHovered] = React.useState(false);
   const [cursorPos, setCursorPos] = React.useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
@@ -22,7 +24,7 @@ export default function ProjectPeekCard({ p }: { p: Project }) {
       style={{ cursor: isHovered ? "none" as const : "pointer" as const }}
     >
       {p.href ? (
-        <Link href={p.href} aria-label={`צפו בפרויקט: ${p.title}`} className="absolute inset-0 z-20" style={{ cursor: isHovered ? "none" : "pointer" }} />
+        <Link href={p.href} aria-label={`${t("projects.viewProject")}: ${p.title}`} className="absolute inset-0 z-20" style={{ cursor: isHovered ? "none" : "pointer" }} />
       ) : null}
       
       {/* Force hide cursor on all children while hovered */}
@@ -60,17 +62,17 @@ export default function ProjectPeekCard({ p }: { p: Project }) {
             ))}
           </div>
           <h3 className="text-2xl font-black text-slate-900 mb-2">
-            {p.title}
+            {t(p.title)}
           </h3>
           <p className="text-base text-slate-700 mb-4 leading-relaxed">
-            {p.oneLiner}
+            {t(p.oneLiner)}
           </p>
           {p.outcomes?.length ? (
             <ul className="space-y-1 text-slate-600 text-sm mb-4">
               {p.outcomes.slice(0,2).map(x => (
                 <li key={x} className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pink-500 to-purple-600" />
-                  {x}
+                  {t(x)}
                 </li>
               ))}
             </ul>
@@ -81,7 +83,7 @@ export default function ProjectPeekCard({ p }: { p: Project }) {
                 href={p.href} 
                 className="btn-primary rounded-2xl px-5 py-2.5 text-sm font-bold"
               >
-                צפו בפרויקט
+                {t("projects.viewProject")}
               </Link>
             )}
           </div>
@@ -98,7 +100,7 @@ export default function ProjectPeekCard({ p }: { p: Project }) {
           style={{ left: cursorPos.x, top: cursorPos.y }}
         >
           <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-pink-500/90 to-purple-600/90 text-white flex items-center justify-center shadow-2xl ring-2 ring-white/30 backdrop-blur-md">
-            <span className="text-[11px] font-extrabold tracking-wider">לפרטים ↗</span>
+            <span className="text-[11px] font-extrabold tracking-wider">{t("projects.viewProject")} ↗</span>
             <div className="absolute inset-0 rounded-full border-2 border-white/40 border-dashed animate-spin-slow" />
           </div>
         </div>

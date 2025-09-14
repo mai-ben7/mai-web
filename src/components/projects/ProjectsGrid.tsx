@@ -4,8 +4,10 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
+import { useI18n } from "@/components/i18n/I18nProvider";
 
 export default function ProjectsGrid({ items }: { items: Project[] }) {
+  const { t } = useI18n();
   const [hoveredId, setHoveredId] = React.useState<string | null>(null);
   const [cursorPos, setCursorPos] = React.useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
@@ -15,13 +17,13 @@ export default function ProjectsGrid({ items }: { items: Project[] }) {
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <span className="text-blue-200 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 justify-center">
-            עוד עבודות
+            {t("projects.moreWork")}
             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
             </svg>
           </span>
           <h2 className="text-white text-4xl md:text-5xl xl:text-6xl font-extrabold max-w-3xl mx-auto leading-snug bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent">
-            עוד עבודות
+            {t("projects.moreWork")}
           </h2>
         </div>
         
@@ -40,7 +42,7 @@ export default function ProjectsGrid({ items }: { items: Project[] }) {
               style={{ cursor: hoveredId === String(p.id) ? "none" as const : "pointer" as const }}
             >
               {p.href ? (
-                <Link href={p.href} aria-label={`צפו בפרויקט: ${p.title}`} className="absolute inset-0 z-20" style={{ cursor: hoveredId === String(p.id) ? "none" : "pointer" }} />
+                <Link href={p.href} aria-label={`${t("projects.viewProject")}: ${p.title}`} className="absolute inset-0 z-20" style={{ cursor: hoveredId === String(p.id) ? "none" : "pointer" }} />
               ) : null}
               
               {/* Force hide cursor on all children while hovered */}
@@ -78,17 +80,17 @@ export default function ProjectsGrid({ items }: { items: Project[] }) {
                     ))}
                   </div>
                   <h3 className="text-2xl font-black text-slate-900 mb-2">
-                    {p.title}
+                    {t(p.title)}
                   </h3>
                   <p className="text-base text-slate-700 mb-4 leading-relaxed">
-                    {p.oneLiner}
+                    {t(p.oneLiner)}
                   </p>
                   {p.outcomes?.length ? (
                     <ul className="space-y-1 text-slate-600 text-sm mb-4">
                       {p.outcomes.slice(0,2).map(x => (
                         <li key={x} className="flex items-center gap-2">
                           <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pink-500 to-purple-600" />
-                          {x}
+                          {t(x)}
                         </li>
                       ))}
                     </ul>
@@ -99,7 +101,7 @@ export default function ProjectsGrid({ items }: { items: Project[] }) {
                         href={p.href} 
                         className="btn-primary rounded-2xl px-5 py-2.5 text-sm font-bold"
                       >
-                        צפו בפרויקט
+                        {t("projects.viewProject")}
                       </Link>
                     )}
                   </div>
@@ -116,7 +118,7 @@ export default function ProjectsGrid({ items }: { items: Project[] }) {
                   style={{ left: cursorPos.x, top: cursorPos.y }}
                 >
                   <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-pink-500/90 to-purple-600/90 text-white flex items-center justify-center shadow-2xl ring-2 ring-white/30 backdrop-blur-md">
-                    <span className="text-[11px] font-extrabold tracking-wider">לפרטים ↗</span>
+                    <span className="text-[11px] font-extrabold tracking-wider">{t("projects.viewProject")} ↗</span>
                     <div className="absolute inset-0 rounded-full border-2 border-white/40 border-dashed animate-spin-slow" />
                   </div>
                 </div>

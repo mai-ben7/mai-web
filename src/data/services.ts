@@ -4,12 +4,12 @@ import type { ServiceCard } from "@/components/advanced/ServicesGrid";
 export const SERVICES: ServiceCard[] = [
   {
     id: "seo",
-    title: "SEO מתקדם ותוכן שמנצח",
+    title: "services.seo.title",
     description: [
-      "ארכיטקטורה וסכמות מתקדמות",
-      "מחקר מילות מפתח מקצועי",
-      "Schema.org ו-Lighthouse SEO ≥ 95",
-      "מבנה URL נקי ומהירות טעינה"
+      "services.seo.points.0",
+      "services.seo.points.1",
+      "services.seo.points.2",
+      "services.seo.points.3"
     ],
     corner: "br",
     textSide: "right", // עיגול בפינה ימנית תחתונה, טקסט בצד ימין
@@ -19,12 +19,12 @@ export const SERVICES: ServiceCard[] = [
   },
   {
     id: "design",
-    title: "עיצוב מרהיב שמרגיש פרמיום",
+    title: "services.design.title",
     description: [
-      "טיפוגרפיה מוקפדת וצבעוניות חכמה",
-      "מיקרו-אינטראקציות שמוכרות",
-      "Design system עקבי",
-      "אנימציות עדינות וגישה דו-לשונית"
+      "services.design.points.0",
+      "services.design.points.1",
+      "services.design.points.2",
+      "services.design.points.3"
     ],
     corner: "bl",
     textSide: "left", // עיגול בפינה שמאלית תחתונה, טקסט בצד שמאל
@@ -34,12 +34,12 @@ export const SERVICES: ServiceCard[] = [
   },
   {
     id: "motion",
-    title: "אנימציות ו-Scroll חכמים",
+    title: "services.motion.title",
     description: [
-      "אפקטים מתוזמנים שמספרים סיפור",
-      "Framer Motion ו-Parallax עדין",
-      "Reveal חלק ו-Reduced-motion נתמך",
-      "אנימציות שממירות בלי להסיח"
+      "services.motion.points.0",
+      "services.motion.points.1",
+      "services.motion.points.2",
+      "services.motion.points.3"
     ],
     corner: "tr",
     textSide: "right", // עיגול בפינה ימנית עליונה, טקסט בצד ימין
@@ -49,12 +49,12 @@ export const SERVICES: ServiceCard[] = [
   },
   {
     id: "perf",
-    title: "ביצועים ואינטגרציות מתקדמות",
+    title: "services.performance.title",
     description: [
-      "זמן טעינה מהיר ו-Lighthouse Performance ≥ 90",
-      "next/image, SSR/SSG ו-Edge routing",
-      "תשלומים: Stripe ואינטגרציות",
-      "אנליטיקות: Meta Pixel, GA4 ו-CRM"
+      "services.performance.points.0",
+      "services.performance.points.1",
+      "services.performance.points.2",
+      "services.performance.points.3"
     ],
     corner: "tl",
     textSide: "left", // עיגול בפינה שמאלית עליונה, טקסט בצד שמאל

@@ -2,8 +2,8 @@ import { Metadata } from "next"
 import { HomePageClient } from "@/components/HomePageClient"
 
 export const metadata: Metadata = {
-  title: "mai web - אתרים חיים שמזיזים אנשים",
-  description: "אני מאי בן שבע, בונה אתרים מרהיבים עם אנימציות חכמות שמבליטות את העסק שלך וממירות מבקרים ללקוחות.",
+  title: "mai web - Live websites that move people",
+  description: "I'm Mai Ben Sheva, building stunning websites with smart animations that highlight your business and convert visitors into customers.",
 }
 
 export default function HomePage() {

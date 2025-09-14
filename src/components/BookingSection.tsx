@@ -5,8 +5,11 @@ import { motion } from 'framer-motion';
 import { Calendar, MessageSquare } from 'lucide-react';
 import BookNowCard from './BookNowCard';
 import ContactOnlyCard from './ContactOnlyCard';
+import { useI18n } from '@/components/i18n/I18nProvider';
 
 export default function BookingSection() {
+  const { t } = useI18n();
+  
   return (
     <motion.section
       id="booking"
@@ -32,9 +35,9 @@ export default function BookingSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">איך תרצו להתקדם?</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">{t("booking.title")}</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            בחרו באחת מהאפשרויות הבאות כדי להתחיל את המסע שלכם לכושר טוב יותר
+            {t("booking.subtitle")}
           </p>
         </motion.div>
 
@@ -52,9 +55,9 @@ export default function BookingSection() {
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4">
                   <Calendar className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">הזמנה מהירה</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{t("booking.quickBooking.title")}</h3>
                 <p className="text-gray-600">
-                  קבעו פגישה תוך דקות עם Google Calendar. קבלו אישור מיידי.
+                  {t("booking.quickBooking.description")}
                 </p>
               </div>
               
@@ -62,9 +65,9 @@ export default function BookingSection() {
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-500/10 rounded-full mb-4">
                   <MessageSquare className="h-6 w-6 text-blue-500" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">יצירת קשר</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{t("booking.contact.title")}</h3>
                 <p className="text-gray-600">
-                  שלחו פרטים ונחזור אליכם בהקדם. מושלם לשאלות או ייעוץ ראשוני.
+                  {t("booking.contact.description")}
                 </p>
               </div>
             </div>
@@ -84,7 +87,7 @@ export default function BookingSection() {
             {/* Popular Badge */}
             <div className="absolute -top-3 -right-3 z-10">
               <span className="bg-gradient-to-r from-primary to-primary/80 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                פופולרי
+                {t("booking.popular")}
               </span>
             </div>
             

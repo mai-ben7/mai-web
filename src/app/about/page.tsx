@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import BlobButton from "@/components/ui/BlobButton"
 import { fadeInUp, staggerContainer } from "@/lib/animations"
 import EnableSectionParallax from "@/components/parallax/EnableSectionParallax"
+import { useI18n } from "@/components/i18n/I18nProvider"
 
 const skills = [
   { name: "React & Next.js", level: 95 },
@@ -19,35 +20,38 @@ const skills = [
   { name: "Node.js", level: 85 },
 ]
 
-const workflow = [
+const getWorkflow = (t: (key: string) => string) => [
   {
     icon: Code,
-    title: "Discovery",
-    description: "הבנת הצרכים, מטרות העסק והקהל היעד"
+    title: t("about.workflow.discovery.title"),
+    description: t("about.workflow.discovery.description")
   },
   {
     icon: Palette,
-    title: "Design",
-    description: "עיצוב ממשק משתמש מרהיב עם אנימציות"
+    title: t("about.workflow.design.title"),
+    description: t("about.workflow.design.description")
   },
   {
     icon: Zap,
-    title: "Build",
-    description: "פיתוח האתר עם טכנולוגיות מתקדמות"
+    title: t("about.workflow.build.title"),
+    description: t("about.workflow.build.description")
   },
   {
     icon: Rocket,
-    title: "Launch",
-    description: "השקה והטמעה עם אופטימיזציה מלאה"
+    title: t("about.workflow.launch.title"),
+    description: t("about.workflow.launch.description")
   },
   {
     icon: TrendingUp,
-    title: "Grow",
-    description: "מעקב, עדכונים ושיפור מתמיד"
+    title: t("about.workflow.grow.title"),
+    description: t("about.workflow.grow.description")
   }
 ]
 
 export default function AboutPage() {
+  const { t } = useI18n()
+  const workflow = getWorkflow(t)
+  
   return (
     <div>
       <main dir="rtl">
@@ -59,16 +63,16 @@ export default function AboutPage() {
           {/* Headline block */}
           <header className="max-w-2xl mx-auto text-center">
             <span className="text-slate-700 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 justify-center">
-              About mai web
+              {t("about.title")}
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-pink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
               </svg>
             </span>
             <h1 className="text-slate-900 text-4xl md:text-5xl xl:text-6xl font-extrabold max-w-3xl mx-auto mb-6 leading-snug bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
-              אודות mai web
+              {t("about.title")}
             </h1>
             <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto">
-              למדו על מאי בן שבע והגישה שלנו לבניית אתרים חיים שמזיזים אנשים
+              {t("about.description")}
             </p>
           </header>
         </div>
@@ -85,19 +89,16 @@ export default function AboutPage() {
                 viewport={{ once: true }}
               >
                 <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl mb-6">
-                  שלום, אני מאי בן שבע
+                  {t("about.intro.greeting")}
                 </h2>
                 <p className="text-lg leading-8 text-muted-foreground mb-6">
-                  מפתחת אתרים יצירתית עם תשוקה לבניית חוויות דיגיטליות מרהיבות. 
-                  אני מאמינה שאתרים צריכים להיות לא רק פונקציונליים, אלא גם מרתקים ויזואלית.
+                  {t("about.intro.paragraph1")}
                 </p>
                 <p className="text-lg leading-8 text-muted-foreground mb-6">
-                  עם יותר מ-3 שנות ניסיון בפיתוח אתרים מתקדמים, אני מתמחה בשילוב 
-                  טכנולוגיות מודרניות עם עיצוב יצירתי ליצירת אתרים שמביאים תוצאות אמיתיות.
+                  {t("about.intro.paragraph2")}
                 </p>
                 <p className="text-lg leading-8 text-muted-foreground">
-                  הגישה שלי משלבת אנימציות חכמות, ביצועים מעולים, ונגישות מלאה 
-                  כדי ליצור אתרים שלא רק נראים טוב, אלא גם עובדים מצוין.
+                  {t("about.intro.paragraph3")}
                 </p>
               </motion.div>
               
@@ -129,10 +130,10 @@ export default function AboutPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                המיומנויות שלי
+                {t("about.skills.title")}
               </h2>
               <p className="mt-4 text-lg leading-8 text-muted-foreground">
-                טכנולוגיות וכלים שאני משתמשת בהם לבניית אתרים מרהיבים
+                {t("about.skills.subtitle")}
               </p>
             </motion.div>
 
@@ -176,10 +177,10 @@ export default function AboutPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                תהליך העבודה שלנו
+                {t("about.workflow.title")}
               </h2>
               <p className="mt-4 text-lg leading-8 text-muted-foreground">
-                גישה מסודרת ומקצועית לבניית אתרים מוצלחים
+                {t("about.workflow.subtitle")}
               </p>
             </motion.div>
 
@@ -222,10 +223,10 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                מוכנים לעבוד יחד?
+                {t("about.cta.title")}
               </h2>
               <p className="mt-4 text-lg leading-8 opacity-90">
-                בואו נבנה יחד אתר שיזיז אנשים ויביא תוצאות אמיתיות לעסק שלכם.
+                {t("about.cta.description")}
               </p>
               <div className="mt-10 flex items-center justify-center gap-4">
                 <BlobButton 
@@ -238,12 +239,12 @@ export default function AboutPage() {
                     }
                   }}
                 >
-                  קבעו ייעוץ חינם
+                  {t("about.cta.button")}
                 </BlobButton>
                 <Button asChild size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold">
                   <Link href="/">
                     <ArrowLeft className="mr-2 h-4 w-4" />
-                    חזרה לדף הבית
+                    {t("cta.backToHome")}
                   </Link>
                 </Button>
               </div>

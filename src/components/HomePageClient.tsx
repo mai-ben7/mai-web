@@ -14,10 +14,12 @@ import BookingSection from "@/components/BookingSection"
 import { FAQSection } from "@/components/FAQSection"
 import EnableSectionParallax from "@/components/parallax/EnableSectionParallax"
 import { useSectionTheme } from "@/lib/useSectionTheme"
+import { useI18n } from "@/components/i18n/I18nProvider"
 
 
 export function HomePageClient() {
   useSectionTheme()
+  const { t } = useI18n()
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
@@ -50,9 +52,9 @@ export function HomePageClient() {
         <EnableSectionParallax />
         <div id="hero" data-theme data-stop1="#bfdbfe" data-stop2="#dbeafe" data-stop3="#fbcfe8" data-o1-x="70%" data-o1-y="20rem" data-o1-size="44rem" data-o1-color="rgba(96,165,250,.45)" data-o1-alpha="1" data-o2-x="18%" data-o2-y="50rem" data-o2-size="36rem" data-o2-color="rgba(167,139,250,.35)" data-o2-alpha=".9" className="relative">
           <HeroSimeyCard
-            name="מאי בן שבע"
-            role="כלים"
-            blurb="I build advanced, animated web experiences that convert and feel premium."
+            name={t("hero.name")}
+            role={t("hero.role")}
+            blurb={t("hero.blurb")}
             imageSrc="/images/mai.jpg"
             imageAlt="Mai Ben Sheva portrait"
             rtl={true}
@@ -65,23 +67,23 @@ export function HomePageClient() {
             items={[
               {
                 id: "fitmama",
-                title: "FitMama Pregnancy Fitness",
-                oneLiner: "אתר כושר להריון עם חווית משתמש מותאמת לנשים בהריון.",
+                title: t("projects.fitmama.title"),
+                oneLiner: t("projects.fitmama.oneLiner"),
                 cover: "/projects/fitmama-pregnancy-fitness.png",
-                outcomes: ["עיצוב מותאם להריון", "ממשק ידידותי"],
+                outcomes: [t("projects.fitmama.outcomes.0"), t("projects.fitmama.outcomes.1")],
                 href: "/projects/fitmama",
               },
               {
                 id: "tal-portfolio",
-                title: "טל בן שבע - פורטפוליו",
-                oneLiner: "פורטפוליו אישי עם עיצוב מודרני ואנימציות מתקדמות.",
+                title: t("projects.talPortfolio.title"),
+                oneLiner: t("projects.talPortfolio.oneLiner"),
                 cover: "/projects/tal-ben-sheva-portfolio.png",
-                outcomes: ["עיצוב ייחודי", "אנימציות מתקדמות"],
+                outcomes: [t("projects.talPortfolio.outcomes.0"), t("projects.talPortfolio.outcomes.1")],
                 href: "/projects/tal-portfolio",
               },
             ]} 
             ctaHref="/projects" 
-            ctaLabel="צפו בכל הפרויקטים" 
+            ctaLabel={t("projects.viewAllProjects")} 
           />
         </div>
 

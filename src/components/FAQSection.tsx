@@ -4,33 +4,36 @@ import { motion } from "framer-motion"
 import { useState } from "react"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import { fadeInUp, staggerContainer } from "@/lib/animations"
+import { useI18n } from "@/components/i18n/I18nProvider"
 
 interface FAQItem {
   question: string
   answer: string
 }
 
-const faqData: FAQItem[] = [
+const getFAQData = (t: (key: string) => string): FAQItem[] => [
   {
-    question: "כמה זמן לוקח לבנות אתר?",
-    answer: "זמן הבנייה תלוי בחבילה שנבחרת. Basic לוקח 2-3 שבועות, Basic Plus 3-4 שבועות, Extra 4-6 שבועות, ו-Extra Plus 6-8 שבועות."
+    question: t("faq.items.0.question"),
+    answer: t("faq.items.0.answer")
   },
   {
-    question: "האם האתר יהיה מותאם למובייל?",
-    answer: "כן! כל האתרים שלנו נבנים עם עיצוב רספונסיבי מלא ומותאמים לכל המכשירים - מחשב, טאבלט וטלפון."
+    question: t("faq.items.1.question"),
+    answer: t("faq.items.1.answer")
   },
   {
-    question: "האם אתם מספקים תמיכה לאחר השקה?",
-    answer: "כן, כל החבילות כוללות תמיכה טכנית. Basic ו-Basic Plus כוללים תמיכה בסיסית, Extra ו-Extra Plus כוללים תמיכה מלאה."
+    question: t("faq.items.2.question"),
+    answer: t("faq.items.2.answer")
   },
   {
-    question: "האם האתר יכלול SEO?",
-    answer: "כן, כל האתרים שלנו נבנים עם אופטימיזציה למנועי חיפוש בסיסית. בחבילות המתקדמות יותר נוסיף אופטימיזציה מתקדמת."
+    question: t("faq.items.3.question"),
+    answer: t("faq.items.3.answer")
   }
 ]
 
 export function FAQSection() {
+  const { t } = useI18n();
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const faqData = getFAQData(t);
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index)
@@ -54,10 +57,10 @@ export function FAQSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            שאלות <span className="text-gradient">נפוצות</span>
+            {t("faq.title")} <span className="text-gradient">{t("faq.titleHighlight")}</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            תשובות לשאלות שמעסיקות אותנו
+            {t("faq.subtitle")}
           </p>
         </motion.div>
 
@@ -128,7 +131,7 @@ export function FAQSection() {
           className="text-center mt-12"
         >
           <p className="text-gray-500 text-lg">
-            יש לך שאלה נוספת? 
+            {t("faq.additionalQuestion")} 
             <button 
               onClick={() => {
                 const element = document.querySelector('#booking')
@@ -139,9 +142,9 @@ export function FAQSection() {
               className="text-blue-600 hover:text-blue-700 font-semibold mr-2 cursor-pointer"
               suppressHydrationWarning
             >
-              צור קשר איתנו
+              {t("faq.contactUs")}
             </button>
-            ונשמח לעזור!
+            {t("faq.happyToHelp")}
           </p>
         </motion.div>
       </div>

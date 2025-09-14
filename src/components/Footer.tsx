@@ -6,14 +6,15 @@ import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram, Facebook } f
 
 import { Button } from "@/components/ui/button"
 import { fadeInUp } from "@/lib/animations"
+import { useI18n } from "@/components/i18n/I18nProvider"
 
-const navigation = {
+const getNavigation = (t: (key: string) => string) => ({
   main: [
-    { name: "בית", href: "/" },
-    { name: "פרויקטים", href: "/projects" },
-    { name: "שירותים", href: "/services" },
-    { name: "אודות", href: "/about" },
-    { name: "צור קשר", href: "#booking" },
+    { name: t("nav.home"), href: "/" },
+    { name: t("nav.projects"), href: "/projects" },
+    { name: t("nav.services"), href: "/services" },
+    { name: t("nav.about"), href: "/about" },
+    { name: t("nav.contact"), href: "#booking" },
   ],
   social: [
     {
@@ -32,9 +33,12 @@ const navigation = {
       icon: Facebook,
     },
   ],
-}
+})
 
 export function Footer() {
+  const { t } = useI18n()
+  const navigation = getNavigation(t)
+  
   return (
     <footer className="bg-background text-foreground border-t border-border">
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">

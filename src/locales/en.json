@@ -1,0 +1,312 @@
+{
+  "nav": { "home": "Home", "services": "Services", "contact": "Contact", "projects": "Projects", "about": "About" },
+  "hero": { 
+    "title": "Web Designer", 
+    "subtitle": "Elegant, fast, accessible.",
+    "name": "Mai Ben Sheva",
+    "role": "Tools",
+    "blurb": "I build advanced, animated web experiences that convert and feel premium."
+  },
+  "services": {
+    "title": "Services built specifically for your business",
+    "eyebrow": "What I offer",
+    "seo": {
+      "title": "Advanced SEO and winning content",
+      "points": [
+        "Advanced architecture and schemas",
+        "Professional keyword research", 
+        "Schema.org and Lighthouse SEO ≥ 95",
+        "Clean URL structure and loading speed"
+      ]
+    },
+    "design": {
+      "title": "Stunning design that feels premium",
+      "points": [
+        "Meticulous typography and smart color schemes",
+        "Micro-interactions that sell",
+        "Consistent design system",
+        "Subtle animations and bilingual approach"
+      ]
+    },
+    "motion": {
+      "title": "Smart animations and scroll effects",
+      "points": [
+        "Timed effects that tell a story",
+        "Framer Motion and subtle Parallax",
+        "Smooth Reveal and Reduced-motion support",
+        "Animations that convert without distraction"
+      ]
+    },
+    "performance": {
+      "title": "Performance and advanced integrations",
+      "points": [
+        "Fast loading and Lighthouse Performance ≥ 90",
+        "next/image, SSR/SSG and Edge routing",
+        "Payments: Stripe and integrations",
+        "Analytics: Meta Pixel, GA4 and CRM"
+      ]
+    }
+  },
+  "projects": {
+    "title": "Projects that speak for themselves",
+    "subtitle": "Take a look at some work — less code, more results: speed, clarity, user experience",
+    "moreWork": "More Work",
+    "viewProject": "View Project",
+    "viewAllProjects": "View All Projects",
+    "scrollLeft": "Scroll left",
+    "scrollRight": "Scroll right",
+    "fitmama": {
+      "title": "FitMama Pregnancy Fitness",
+      "oneLiner": "Pregnancy fitness website with user experience tailored for pregnant women.",
+      "outcomes": {
+        "0": "Pregnancy-adapted design",
+        "1": "User-friendly interface",
+        "2": "Professional content"
+      }
+    },
+    "talPortfolio": {
+      "title": "Tal Ben Sheva - Portfolio",
+      "oneLiner": "Personal portfolio with modern design and advanced animations.",
+      "outcomes": {
+        "0": "Unique design",
+        "1": "Advanced animations",
+        "2": "Excellent user experience"
+      }
+    },
+    "placeholder": {
+      "title": "Additional Project",
+      "oneLiner": "Additional project coming soon.",
+      "outcomes": {
+        "0": "Coming Soon"
+      }
+    },
+    "role": "Design + Development"
+  },
+  "cta": {
+    "bookConsultation": "Book Free Consultation",
+    "backToHome": "Back to Home"
+  },
+  "packages": {
+    "title": "Choose Your Package",
+    "subtitle": "Professional web solutions tailored to your needs and budget",
+    "custom": {
+      "name": "Custom Full-Code Website",
+      "price": "Starting from 4,999 ₪",
+      "description": "Building a custom full-code website with advanced animations and interactive 3D models. The perfect solution for businesses that want a unique and innovative website.",
+      "features": [
+        "Full-code development with unlimited possibilities",
+        "Advanced animations and visual effects",
+        "Interactive 3D models (optional)",
+        "Completely interactive and innovative website"
+      ],
+      "cta": "Learn More"
+    },
+    "template": {
+      "name": "Ready Template with Customization",
+      "price": "Starting from 1,999 ₪",
+      "description": "Ready-to-purchase websites at a discounted price. Ideal solution when you need a quality website quickly and efficiently.",
+      "features": [
+        "Significant savings in time and costs",
+        "Professional and modern design",
+        "Easy adaptation to your needs",
+        "Ready within 7-14 working days"
+      ],
+      "cta": "Learn More"
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Let's build something amazing together",
+    "description": "Ready to start your next project? Contact us now for a free consultation and personalized solution.",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "hours": "Working Hours",
+    "backToHome": "Back to Home"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Passionate about creating exceptional digital experiences",
+    "description": "I'm a web developer and designer who loves creating beautiful, functional websites that help businesses grow and succeed online.",
+    "workflow": {
+      "discovery": {
+        "title": "Discovery",
+        "description": "Understanding needs, business goals and target audience"
+      },
+      "design": {
+        "title": "Design", 
+        "description": "Designing stunning user interface with animations"
+      },
+      "build": {
+        "title": "Build",
+        "description": "Developing the website with advanced technologies"
+      },
+      "launch": {
+        "title": "Launch",
+        "description": "Launch and implementation with full optimization"
+      },
+      "grow": {
+        "title": "Grow",
+        "description": "Monitoring, updates and continuous improvement"
+      }
+    },
+    "intro": {
+      "greeting": "Hello, I'm Mai Ben Sheva",
+      "paragraph1": "Creative web developer with a passion for building stunning digital experiences. I believe websites should be not only functional, but also visually captivating.",
+      "paragraph2": "With more than 3 years of experience in advanced web development, I specialize in combining modern technologies with creative design to create websites that deliver real results.",
+      "paragraph3": "My approach combines smart animations, excellent performance, and full accessibility to create websites that not only look good, but also work great."
+    },
+    "skills": {
+      "title": "My Skills",
+      "subtitle": "Technologies and tools I use to build stunning websites"
+    },
+    "workflow": {
+      "title": "Our Work Process",
+      "subtitle": "Organized and professional approach to building successful websites"
+    },
+    "cta": {
+      "title": "Ready to work together?",
+      "description": "Let's build together a website that moves people and brings real results to your business.",
+      "button": "Start Your Project"
+    }
+  },
+  "servicesPage": {
+    "title": "Our Services",
+    "subtitle": "Professional web solutions for every business",
+    "packages": {
+      "basic": {
+        "name": "Basic",
+        "price": "5,000 ₪",
+        "description": "Ideal for businesses starting out",
+        "features": [
+          "Home page + up to 3 pages",
+          "Clean design",
+          "Mobile adaptation",
+          "Contact forms",
+          "Basic analytics connection",
+          "Basic technical support"
+        ],
+        "cta": "Start with Basic"
+      },
+      "basicPlus": {
+        "name": "Basic Plus",
+        "price": "8,000 ₪",
+        "description": "Everything in Basic + basic user system",
+        "features": [
+          "Everything in Basic",
+          "Registration/Login",
+          "Simple personal area",
+          "Custom components",
+          "Technical support",
+          "Basic optimization"
+        ],
+        "cta": "Upgrade to Basic Plus"
+      },
+      "extra": {
+        "name": "Extra",
+        "price": "15,000 ₪",
+        "description": "Premium package with live website and advanced animations",
+        "features": [
+          "Everything in Basic Plus",
+          "Advanced scroll/transition animations",
+          "One WebGL section",
+          "Rich project pages",
+          "Advanced integrations",
+          "Priority support"
+        ],
+        "cta": "Choose Extra"
+      },
+      "extraPlus": {
+        "name": "Extra Plus",
+        "price": "25,000 ₪",
+        "description": "The full show: especially impressive live animated website",
+        "features": [
+          "Everything in Extra",
+          "Multiple WebGL scenes",
+          "Micro-interactions throughout the site",
+          "Cinematic case study pages",
+          "Full support + updates",
+          "Advanced optimization"
+        ],
+        "cta": "Choose Extra Plus"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "What clients",
+    "titleHighlight": "say",
+    "items": [
+      {
+        "name": "Sarah Cohen",
+        "text": "The website you made for me exceeds all expectations! The design is stunning and the animations are amazing. My clients constantly say how professional the website looks."
+      },
+      {
+        "name": "Michael Levi", 
+        "text": "Mai did an excellent job! The website not only looks good, but also works perfectly on all devices. The price was fair and the service was professional."
+      },
+      {
+        "name": "Amalia David",
+        "text": "I love my new website! Mai understood exactly what I wanted and made it even better. The animations add a lot of value."
+      },
+      {
+        "name": "Yaakov Weiss",
+        "text": "Very satisfied with the quality and attention to detail. The website looks professional and functions perfectly."
+      },
+      {
+        "name": "Dana Abraham",
+        "text": "Mai did an amazing job! My website now looks like a big company's. The animations catch the eye and users stay longer."
+      },
+      {
+        "name": "Alon Barak",
+        "text": "The new website brought me many more clients! The modern design and smart animations make people more interested in my business."
+      },
+      {
+        "name": "Michal Rosen",
+        "text": "Excellent and professional service. Mai made the website exactly as I wanted, with many creative ideas I included."
+      },
+      {
+        "name": "Daniel Cohen",
+        "text": "The website you made for me looks amazing! The animations add a lot of value and users love the experience. I definitely recommend you!"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked",
+    "titleHighlight": "questions",
+    "subtitle": "Answers to questions that concern us",
+    "additionalQuestion": "Have another question?",
+    "contactUs": "Contact us",
+    "happyToHelp": "and we'll be happy to help!",
+    "items": [
+      {
+        "question": "How long does it take to build a website?",
+        "answer": "Build time depends on the package chosen. Basic takes 2-3 weeks, Basic Plus 3-4 weeks, Extra 4-6 weeks, and Extra Plus 6-8 weeks."
+      },
+      {
+        "question": "Will the website be mobile-adapted?",
+        "answer": "Yes! All our websites are built with full responsive design and adapted to all devices - computer, tablet and phone."
+      },
+      {
+        "question": "Do you provide support after launch?",
+        "answer": "Yes, all packages include technical support. Basic and Basic Plus include basic support, Extra and Extra Plus include full support."
+      },
+      {
+        "question": "Will the website include SEO?",
+        "answer": "Yes, all our websites are built with basic search engine optimization. In the more advanced packages we'll add advanced optimization."
+      }
+    ]
+  },
+  "booking": {
+    "title": "How would you like to proceed?",
+    "subtitle": "Choose one of the following options to start your journey to better fitness",
+    "quickBooking": {
+      "title": "Quick Booking",
+      "description": "Schedule a meeting in minutes with Google Calendar. Get instant confirmation."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Send details and we'll get back to you soon. Perfect for questions or initial consultation."
+    },
+    "popular": "Popular"
+  }
+}

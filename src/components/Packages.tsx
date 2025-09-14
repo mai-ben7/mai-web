@@ -9,38 +9,39 @@ import BlobButton from "@/components/ui/BlobButton"
 import BackgroundVibe from "@/components/BackgroundVibe"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { fadeInUp, staggerContainer } from "@/lib/animations"
+import { useI18n } from "@/components/i18n/I18nProvider"
 
-const packages = [
+const getPackages = (t: (key: string) => string) => [
   {
-    name: "אתר מותאם אישית בקוד מלא",
-    price: "החל מ-4,999 ₪",
-    description: "בניית אתר מותאם אישית בקוד מלא עם אנימציות מתקדמות ומודלים תלת-ממדיים אינטראקטיביים. הפתרון המושלם לעסקים שרוצים אתר ייחודי וחדשני.",
+    name: t("packages.custom.name"),
+    price: t("packages.custom.price"),
+    description: t("packages.custom.description"),
     icon: Code,
     gradient: "from-blue-500 to-blue-600",
     bgGradient: "from-blue-500/10 to-blue-600/10",
     features: [
-      "פיתוח בקוד מלא עם אפשרויות בלתי מוגבלות",
-      "אנימציות מתקדמות ואפקטים ויזואליים",
-      "מודלים תלת-ממדיים אינטראקטיביים (אופציונלי)",
-      "אתר אינטראקטיבי וחדשני לחלוטין"
+      t("packages.custom.features.0"),
+      t("packages.custom.features.1"),
+      t("packages.custom.features.2"),
+      t("packages.custom.features.3")
     ],
-    cta: "למידע נוסף",
+    cta: t("packages.custom.cta"),
     animation: "slideInLeft"
   },
   {
-    name: "תבנית מוכנה בהתאמה אישית",
-    price: "החל מ-1,999 ₪",
-    description: "אתרים מוכנים לרכישה מהירה במחיר מוזל. פתרון אידיאלי כשאתה צריך אתר איכותי במהירות וביעילות.",
+    name: t("packages.template.name"),
+    price: t("packages.template.price"),
+    description: t("packages.template.description"),
     icon: FileText,
     gradient: "from-blue-700 to-blue-800",
     bgGradient: "from-blue-700/10 to-blue-800/10",
     features: [
-      "חיסכון משמעותי בזמן ובעלויות",
-      "עיצוב מקצועי ומודרני",
-      "התאמה קלה לצרכים שלך",
-      "מוכן תוך 7-14 ימי עבודה"
+      t("packages.template.features.0"),
+      t("packages.template.features.1"),
+      t("packages.template.features.2"),
+      t("packages.template.features.3")
     ],
-    cta: "למידע נוסף",
+    cta: t("packages.template.cta"),
     animation: "slideInRight"
   }
 ]
@@ -59,7 +60,9 @@ const animationVariants = {
 }
 
 export function Packages() {
+  const { t } = useI18n()
   const [hoveredPackage, setHoveredPackage] = useState<string | null>(null)
+  const packages = getPackages(t)
 
   return (
     <section
@@ -90,7 +93,7 @@ export function Packages() {
             transition={{ delay: 0.2 }}
           >
             <Sparkles className="w-4 h-4 text-blue-600" />
-            <span className="text-sm font-medium text-slate-700">בחרו את החבילה המתאימה</span>
+            <span className="text-sm font-medium text-slate-700">{t("packages.title")}</span>
           </motion.div>
 
           <motion.h2
@@ -100,7 +103,7 @@ export function Packages() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            חבילות <span className="text-gradient">שירות</span>
+            {t("packages.title")}
           </motion.h2>
 
           <motion.p
@@ -110,7 +113,7 @@ export function Packages() {
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
-            פתרונות מותאמים אישית לכל סוגי העסקים - מסטארט-אפים ועד חברות גדולות
+            {t("packages.subtitle")}
           </motion.p>
         </motion.div>
 

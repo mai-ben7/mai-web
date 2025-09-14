@@ -6,6 +6,8 @@ import "@/components/ui/blob-button.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import GlobalBackground from "@/components/background/GlobalBackground";
+import I18nProvider from "@/components/i18n/I18nProvider";
+import { cookies } from "next/headers";
 
 const heebo = Heebo({ 
   subsets: ["hebrew", "latin"],
@@ -63,10 +65,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieLang = (cookies().get("lang")?.value === "he") ? "he" : "en";
+  const dir = cookieLang === "he" ? "rtl" : "ltr";
+
   return (
-    <html lang="he" dir="rtl" suppressHydrationWarning>
+    <html lang={cookieLang} dir={dir} suppressHydrationWarning>
       <body className={`${heebo.variable} ${poppins.variable} font-hebrew antialiased bg-transparent overflow-x-hidden`}>
-        <GlobalBackground />
+        <I18nProvider initialLocale={cookieLang}>
+          <GlobalBackground />
           <Header />
           {/* Section-level backgrounds will handle their own vibe */}
           <main id="main" className="overflow-hidden">{children}</main>
@@ -95,6 +101,7 @@ export default function RootLayout({
               </filter>
             </defs>
           </svg>
+        </I18nProvider>
       </body>
     </html>
   );

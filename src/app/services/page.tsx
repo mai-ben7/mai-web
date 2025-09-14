@@ -9,63 +9,64 @@ import { Button } from "@/components/ui/button"
 import BlobButton from "@/components/ui/BlobButton"
 import { fadeInUp, staggerContainer } from "@/lib/animations"
 import EnableSectionParallax from "@/components/parallax/EnableSectionParallax"
+import { useI18n } from "@/components/i18n/I18nProvider"
 
-const packages = [
+const getPackages = (t: (key: string) => string) => [
   {
-    name: "Basic",
-    price: "5,000 ₪",
-    description: "אידיאלי לעסקים בתחילת הדרך",
+    name: t("servicesPage.packages.basic.name"),
+    price: t("servicesPage.packages.basic.price"),
+    description: t("servicesPage.packages.basic.description"),
     features: [
-      "דף בית + עד 3 עמודים",
-      "עיצוב נקי",
-      "התאמה למובייל",
-      "טפסי יצירת קשר",
-      "חיבור בסיסי לאנליטיקס",
-      "תמיכה טכנית בסיסית"
+      t("servicesPage.packages.basic.features.0"),
+      t("servicesPage.packages.basic.features.1"),
+      t("servicesPage.packages.basic.features.2"),
+      t("servicesPage.packages.basic.features.3"),
+      t("servicesPage.packages.basic.features.4"),
+      t("servicesPage.packages.basic.features.5")
     ],
-    cta: "התחילו עם Basic"
+    cta: t("servicesPage.packages.basic.cta")
   },
   {
-    name: "Basic Plus",
-    price: "8,000 ₪",
-    description: "כל מה שב-Basic + מערכת משתמשים בסיסית",
+    name: t("servicesPage.packages.basicPlus.name"),
+    price: t("servicesPage.packages.basicPlus.price"),
+    description: t("servicesPage.packages.basicPlus.description"),
     features: [
-      "כל מה שב-Basic",
-      "הרשמה/התחברות",
-      "אזור אישי פשוט",
-      "רכיבים מותאמים",
-      "תמיכה טכנית",
-      "אופטימיזציה בסיסית"
+      t("servicesPage.packages.basicPlus.features.0"),
+      t("servicesPage.packages.basicPlus.features.1"),
+      t("servicesPage.packages.basicPlus.features.2"),
+      t("servicesPage.packages.basicPlus.features.3"),
+      t("servicesPage.packages.basicPlus.features.4"),
+      t("servicesPage.packages.basicPlus.features.5")
     ],
-    cta: "שדרגו ל-Basic Plus"
+    cta: t("servicesPage.packages.basicPlus.cta")
   },
   {
-    name: "Extra",
-    price: "15,000 ₪",
-    description: "חבילת פרימיום עם אתר חי ואנימציות מתקדמות",
+    name: t("servicesPage.packages.extra.name"),
+    price: t("servicesPage.packages.extra.price"),
+    description: t("servicesPage.packages.extra.description"),
     features: [
-      "כל מה שב-Basic Plus",
-      "אנימציות גלילה/מעבר מתקדמות",
-      "מקטע WebGL אחד",
-      "עמודי פרויקט עשירים",
-      "אופטימיזציה מתקדמת",
-      "תמיכה מלאה"
+      t("servicesPage.packages.extra.features.0"),
+      t("servicesPage.packages.extra.features.1"),
+      t("servicesPage.packages.extra.features.2"),
+      t("servicesPage.packages.extra.features.3"),
+      t("servicesPage.packages.extra.features.4"),
+      t("servicesPage.packages.extra.features.5")
     ],
-    cta: "עברו ל-Extra"
+    cta: t("servicesPage.packages.extra.cta")
   },
   {
-    name: "Extra Plus",
-    price: "25,000 ₪",
-    description: "המופע המלא: אתר אנימטיבי חי מרשים במיוחד",
+    name: t("servicesPage.packages.extraPlus.name"),
+    price: t("servicesPage.packages.extraPlus.price"),
+    description: t("servicesPage.packages.extraPlus.description"),
     features: [
-      "כל מה שב-Extra",
-      "מספר סצנות WebGL",
-      "מיקרו-אינטראקציות בכל האתר",
-      "עמודי קייס-סטדי קולנועיים",
-      "תמיכה מלאה + עדכונים",
-      "אופטימיזציה מתקדמת"
+      t("servicesPage.packages.extraPlus.features.0"),
+      t("servicesPage.packages.extraPlus.features.1"),
+      t("servicesPage.packages.extraPlus.features.2"),
+      t("servicesPage.packages.extraPlus.features.3"),
+      t("servicesPage.packages.extraPlus.features.4"),
+      t("servicesPage.packages.extraPlus.features.5")
     ],
-    cta: "בחרו ב-Extra Plus"
+    cta: t("servicesPage.packages.extraPlus.cta")
   }
 ]
 
@@ -97,6 +98,9 @@ const faqs = [
 ]
 
 export default function ServicesPage() {
+  const { t } = useI18n()
+  const packages = getPackages(t)
+  
   return (
     <div>
       <main dir="rtl">
@@ -108,16 +112,16 @@ export default function ServicesPage() {
           {/* Headline block */}
           <header className="max-w-2xl mx-auto text-center">
             <span className="text-slate-700 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 justify-center">
-              Services & Packages
+              {t("servicesPage.title")}
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-pink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
               </svg>
             </span>
             <h1 className="text-slate-900 text-4xl md:text-5xl xl:text-6xl font-extrabold max-w-3xl mx-auto mb-6 leading-snug bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
-              שירותים וחבילות
+              {t("servicesPage.title")}
             </h1>
             <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto">
-              חבילות מותאמות אישית לבניית אתרים מרהיבים עם אנימציות מתקדמות
+              {t("servicesPage.subtitle")}
             </p>
           </header>
         </div>

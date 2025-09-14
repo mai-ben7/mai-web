@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import clsx from "clsx";
+import { useI18n } from "@/components/i18n/I18nProvider";
 
 export type ServiceCard = {
   id: string;
@@ -22,10 +23,11 @@ export interface ServicesGridProps {
 
 export default function ServicesGrid({
   items,
-  eyebrow = "מה אני מציעה",
-  heading = "שירותים שנבנו במיוחד עבור העסק שלך",
+  eyebrow,
+  heading,
   className
 }: ServicesGridProps) {
+  const { t } = useI18n();
   return (
     <section
       data-theme
@@ -40,22 +42,19 @@ export default function ServicesGrid({
       )}
     >
       <span className="text-slate-700 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 text-center">
-        {eyebrow}
+        {eyebrow || t("services.eyebrow")}
         <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
         </svg>
       </span>
 
       <h1 className="text-slate-900 text-4xl md:text-5xl xl:text-6xl font-semibold max-w-3xl mx-auto mb-16 leading-snug text-center">
-        שירותים שנבנו במיוחד עבור <span className="text-gradient">העסק שלך</span>
+        {heading || t("services.title")}
       </h1>
 
              <div className="grid text-left grid-cols-1 sm:grid-cols-2 gap-5 max-w-5xl mx-auto">
          {items.map((item, idx) => {
-           // Switch right and left columns by swapping even and odd indices
-           const adjustedIdx = idx % 2 === 0 ? idx + 1 : idx - 1;
-           const adjustedItem = items[adjustedIdx] || item;
-           return <Card key={adjustedItem.id} idx={adjustedIdx} {...adjustedItem} />;
+           return <Card key={`${item.id}-${idx}`} idx={idx} {...item} />;
          })}
        </div>
 
@@ -117,15 +116,20 @@ function Card({
   imageUrl,
   accent
 }: ServiceCard & { idx: number }) {
+  const { t, locale } = useI18n();
   const cornerClass =
     corner === "br" ? "br" :
     corner === "bl" ? "bl" :
     corner === "tr" ? "tr" : "tl";
+  
+  // Ensure consistent text positioning regardless of language direction
+  const isRTL = locale === "he";
+  const effectiveTextSide = isRTL ? (textSide === "left" ? "right" : "left") : textSide;
 
   return (
     <div
       className={clsx(
-        "svc-card group bg-gray-800 p-10 relative overflow-hidden rounded-lg h-80 flex flex-col",
+        "svc-card group bg-gray-800 p-10 relative overflow-hidden rounded-lg min-h-80 flex flex-col",
         cornerClass
       )}
       style={{ "--overlay": accent ?? "#4f46e5" } as React.CSSProperties}
@@ -143,15 +147,15 @@ function Card({
       ) : null}
 
              {/* content */}
-        <div className={clsx("relative z-10 flex flex-col justify-between h-full", textSide === "right" ? "lg:pr-40" : "lg:pl-40")}>
+        <div className={clsx("relative z-10 flex flex-col justify-between h-full", effectiveTextSide === "right" ? "lg:pr-40" : "lg:pl-40")}>
          <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl font-serif leading-tight">
-            {title}
+            {t(title)}
           </h2>
         <ul className="text-gray-400 transition-colors duration-700 group-hover:text-white space-y-2 text-right flex-1">
           {description.map((point, index) => (
             <li key={index} className="flex items-start gap-2">
               <span className="text-pink-500 mt-1">•</span>
-              <span>{point}</span>
+              <span>{t(point)}</span>
             </li>
           ))}
         </ul>
