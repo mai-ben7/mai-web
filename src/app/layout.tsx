@@ -4,6 +4,7 @@ import "./globals.css";
 import "@/components/hero/HeroSimeyCard.css";
 import "@/components/ui/blob-button.css";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import GlobalBackground from "@/components/background/GlobalBackground";
 
 const heebo = Heebo({ 
@@ -69,6 +70,7 @@ export default function RootLayout({
           <Header />
           {/* Section-level backgrounds will handle their own vibe */}
           <main id="main" className="overflow-hidden">{children}</main>
+          <Footer />
           
           {/* SVG Filter for Blob Button Animation */}
           <svg

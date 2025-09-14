@@ -16,7 +16,7 @@ const navigation = [
   { name: "פרויקטים", href: "/projects" },
   { name: "שירותים", href: "/services" },
   { name: "אודות", href: "/about" },
-  { name: "צור קשר", href: "#booking" },
+  { name: "צור קשר", href: "/contact" },
 ]
 
 export function Header() {

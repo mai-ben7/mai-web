@@ -4,11 +4,11 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { Check, ArrowLeft } from "lucide-react"
 
-import { Header } from "@/components/Header"
-import { Footer } from "@/components/Footer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import BlobButton from "@/components/ui/BlobButton"
 import { fadeInUp, staggerContainer } from "@/lib/animations"
+import EnableSectionParallax from "@/components/parallax/EnableSectionParallax"
 
 const packages = [
   {
@@ -99,27 +99,29 @@ const faqs = [
 export default function ServicesPage() {
   return (
     <div>
-      <Header />
-      
-      <main className="pt-24">
+      <main dir="rtl">
+        <EnableSectionParallax />
+        
         {/* Hero Section */}
-        <section className="py-24 bg-bg-soft">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <motion.div
-              className="mx-auto max-w-2xl text-center"
-              variants={fadeInUp}
-              initial="initial"
-              animate="animate"
-            >
-              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
-                שירותים וחבילות
-              </h1>
-              <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                חבילות מותאמות אישית לבניית אתרים מרהיבים עם אנימציות מתקדמות
-              </p>
-            </motion.div>
-          </div>
-        </section>
+      <section className="pt-32 px-8 xl:px-0 flex flex-col justify-center relative">
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
+          {/* Headline block */}
+          <header className="max-w-2xl mx-auto text-center">
+            <span className="text-slate-700 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 justify-center">
+              Services & Packages
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-pink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+              </svg>
+            </span>
+            <h1 className="text-slate-900 text-4xl md:text-5xl xl:text-6xl font-extrabold max-w-3xl mx-auto mb-6 leading-snug bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
+              שירותים וחבילות
+            </h1>
+            <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto">
+              חבילות מותאמות אישית לבניית אתרים מרהיבים עם אנימציות מתקדמות
+            </p>
+          </header>
+        </div>
+      </section>
 
         {/* Packages Section */}
         <section className="py-24">
@@ -241,32 +243,30 @@ export default function ServicesPage() {
               <p className="mt-4 text-lg leading-8 opacity-90">
                 נקבע שיחת ייעוץ חינם ונעזור לכם לבחור את החבילה המתאימה ביותר.
               </p>
-                             <div className="mt-10 flex items-center justify-center gap-4">
-                 <Button 
-                   size="lg" 
-                   className="bg-white text-purple-600 hover:bg-gray-100 border-2 border-white font-semibold"
-                   onClick={() => {
-                     const element = document.querySelector('#booking')
-                     if (element) {
-                       element.scrollIntoView({ behavior: 'smooth' })
-                     }
-                   }}
-                 >
-                   קבעו ייעוץ חינם
-                 </Button>
-                 <Button asChild size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold">
-                   <Link href="/">
-                     <ArrowLeft className="mr-2 h-4 w-4" />
-                     חזרה לדף הבית
-                   </Link>
-                 </Button>
-               </div>
+              <div className="mt-10 flex items-center justify-center gap-4">
+                <BlobButton 
+                  variant="primary"
+                  className="text-lg"
+                  onClick={() => {
+                    const element = document.querySelector('#booking')
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' })
+                    }
+                  }}
+                >
+                  קבעו ייעוץ חינם
+                </BlobButton>
+                <Button asChild size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold">
+                  <Link href="/">
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    חזרה לדף הבית
+                  </Link>
+                </Button>
+              </div>
             </motion.div>
           </div>
         </section>
       </main>
-      
-      <Footer />
     </div>
   )
 } 

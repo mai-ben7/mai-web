@@ -7,7 +7,6 @@ import HomeProjectsPreview from "@/components/home/HomeProjectsPreview"
 import AdvancedSection from "@/components/AdvancedSection"
 import { Packages } from "@/components/Packages"
 import TestimonialsSection from "@/components/TestimonialsSection"
-import { Footer } from "@/components/Footer"
 import { FloatingModal } from "@/components/FloatingModal"
 import { Play } from "lucide-react"
 import { pageTransition } from "@/lib/animations"
@@ -102,7 +101,6 @@ export function HomePageClient() {
           <FAQSection />
         </div>
       </main>
-      <Footer />
 
       {/* Global Video Modal */}
       <FloatingModal

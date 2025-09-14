@@ -70,7 +70,8 @@ export default function ServicesGrid({
           z-index: 0;
           transition: clip-path 0.6s ease, transform 0.6s ease, background-color 0.3s ease;
           background-color: var(--overlay, #4f46e5); /* indigo-600 */
-          opacity: 0.12;
+          opacity: 0.8;
+          mix-blend-mode: ovely;
         }
         /* Initial small circles from the four corners, like nth-child rules in the Pen */
         .svc-card.br .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%); }

@@ -18,16 +18,16 @@ export default function ProjectsHero({ featured }: { featured: Project[] }) {
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Headline block */}
         <header className="max-w-2xl mx-auto text-center mb-16">
-          <span className="text-indigo-200 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 justify-center">
+          <span className="text-slate-700 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 justify-center">
             Selected Work
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-pink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
             </svg>
           </span>
-          <RevealText as="h1" className="text-white text-4xl md:text-5xl xl:text-6xl font-extrabold max-w-3xl mx-auto mb-6 leading-snug bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent" splitBy="word" stagger={0.06}>
+          <h1 className="text-slate-900 text-4xl md:text-5xl xl:text-6xl font-extrabold max-w-3xl mx-auto mb-6 leading-snug bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
             פרויקטים שמדברים בעד עצמם
-          </RevealText>
-          <p className="text-cyan-100 text-lg md:text-xl max-w-2xl mx-auto">
+          </h1>
+          <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto">
             תציצו בכמה עבודות — פחות קוד, יותר תוצאות: מהירות, בהירות חוויית משתמש ואסתטיקה.
           </p>
         </header>
