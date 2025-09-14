@@ -6,7 +6,7 @@ import clsx from "clsx";
 export type ServiceCard = {
   id: string;
   title: string;        // e.g., "SEO מתקדם"
-  description: string;  // short paragraph
+  description: string[];  // array of bullet points
   corner: "br" | "bl" | "tr" | "tl"; // which corner the circle starts from (like the CodePen)
   textSide: "left" | "right"; // which side the text should be on (opposite to circle)
   imageUrl?: string;    // optional bg image for the circular layer (desktop only)
@@ -70,8 +70,8 @@ export default function ServicesGrid({
           z-index: 0;
           transition: clip-path 0.6s ease, transform 0.6s ease, background-color 0.3s ease;
           background-color: var(--overlay, #4f46e5); /* indigo-600 */
-          opacity: 0.8;
-          mix-blend-mode: ovely;
+          opacity: 0.9;
+ 
         }
         /* Initial small circles from the four corners, like nth-child rules in the Pen */
         .svc-card.br .overlay { clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%); }
@@ -98,7 +98,10 @@ export default function ServicesGrid({
           .svc-card.br .bgCircle { clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%); }
           .svc-card.bl .bgCircle { clip-path: circle(calc(6.25rem + 7.5vw) at   0% 100%); }
           .svc-card.tr .bgCircle { clip-path: circle(calc(6.25rem + 7.5vw) at 100%   0%); }
-          .svc-card.tl .bgCircle { clip-path: circle(calc(6.25rem + 7.5vw) at   0%   0%); }
+          .svc-card.tl .bgCircle { 
+            clip-path: circle(calc(6.25rem + 7.5vw) at   0%   0%); 
+            background-position: top right;
+          }
         }
       `}</style>
     </section>
@@ -122,7 +125,7 @@ function Card({
   return (
     <div
       className={clsx(
-        "svc-card group bg-gray-800 p-10 relative overflow-hidden rounded-lg",
+        "svc-card group bg-gray-800 p-10 relative overflow-hidden rounded-lg h-80 flex flex-col",
         cornerClass
       )}
       style={{ "--overlay": accent ?? "#4f46e5" } as React.CSSProperties}
@@ -140,13 +143,18 @@ function Card({
       ) : null}
 
              {/* content */}
-       <div className={clsx("relative z-10", textSide === "right" ? "lg:pr-52" : "lg:pl-48")}>
-        <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl font-serif">
-          {title}
-        </h2>
-        <p className="text-gray-400 transition-colors duration-700 group-hover:text-white">
-          {description}
-        </p>
+        <div className={clsx("relative z-10 flex flex-col justify-between h-full", textSide === "right" ? "lg:pr-40" : "lg:pl-40")}>
+         <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl font-serif leading-tight">
+            {title}
+          </h2>
+        <ul className="text-gray-400 transition-colors duration-700 group-hover:text-white space-y-2 text-right flex-1">
+          {description.map((point, index) => (
+            <li key={index} className="flex items-start gap-2">
+              <span className="text-pink-500 mt-1">•</span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/* subtle hover shadow like the pen */}

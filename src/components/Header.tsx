@@ -4,8 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, Sun, Moon } from "lucide-react"
-import { useTheme } from "next-themes"
+import { Menu, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -24,7 +23,6 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
-  const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
@@ -112,22 +110,6 @@ export function Header() {
         </div>
         
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
-          <Button
-            variant="ghost"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className={cn(
-              "transition-colors",
-              isScrolled ? "text-foreground" : "text-white hover:text-white/80"
-            )}
-            suppressHydrationWarning
-          >
-            <span className="sr-only">החלף ערכת נושא</span>
-            {theme === "dark" ? (
-              <Sun className="h-5 w-5" />
-            ) : (
-              <Moon className="h-5 w-5" />
-            )}
-          </Button>
           
           <Button 
             className="bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
@@ -212,18 +194,6 @@ export function Header() {
                   </div>
                   <div className="py-6">
                     <div className="flex items-center gap-4">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                        suppressHydrationWarning
-                      >
-                        {theme === "dark" ? (
-                          <Sun className="h-5 w-5" />
-                        ) : (
-                          <Moon className="h-5 w-5" />
-                        )}
-                      </Button>
                                              <Button 
                                                className="w-full bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
                                                onClick={() => {

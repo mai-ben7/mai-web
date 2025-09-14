@@ -5,8 +5,12 @@ export const SERVICES: ServiceCard[] = [
   {
     id: "seo",
     title: "SEO מתקדם ותוכן שמנצח",
-    description:
-      "ארכיטקטורה, סכמות, מהירות וקופי—כדי שתופיעי גבוה ותמירי טוב. מחקר מילות מפתח, Schema.org, מבנה URL נקי ו-Lighthouse SEO ≥ 95.",
+    description: [
+      "ארכיטקטורה וסכמות מתקדמות",
+      "מחקר מילות מפתח מקצועי",
+      "Schema.org ו-Lighthouse SEO ≥ 95",
+      "מבנה URL נקי ומהירות טעינה"
+    ],
     corner: "br",
     textSide: "right", // עיגול בפינה ימנית תחתונה, טקסט בצד ימין
     imageUrl:
@@ -16,8 +20,12 @@ export const SERVICES: ServiceCard[] = [
   {
     id: "design",
     title: "עיצוב מרהיב שמרגיש פרמיום",
-    description:
-      "טיפוגרפיה מוקפדת, צבעוניות חכמה ומיקרו-אינטראקציות שמוכרות. Design system עקבי עם אנימציות עדינות וגישה דו-לשונית.",
+    description: [
+      "טיפוגרפיה מוקפדת וצבעוניות חכמה",
+      "מיקרו-אינטראקציות שמוכרות",
+      "Design system עקבי",
+      "אנימציות עדינות וגישה דו-לשונית"
+    ],
     corner: "bl",
     textSide: "left", // עיגול בפינה שמאלית תחתונה, טקסט בצד שמאל
     imageUrl:
@@ -27,8 +35,12 @@ export const SERVICES: ServiceCard[] = [
   {
     id: "motion",
     title: "אנימציות ו-Scroll חכמים",
-    description:
-      "אפקטים מתוזמנים שמספרים סיפור—בלי להסיח, כן להמיר. Framer Motion, Parallax עדין, Reveal חלק ו-Reduced-motion נתמך.",
+    description: [
+      "אפקטים מתוזמנים שמספרים סיפור",
+      "Framer Motion ו-Parallax עדין",
+      "Reveal חלק ו-Reduced-motion נתמך",
+      "אנימציות שממירות בלי להסיח"
+    ],
     corner: "tr",
     textSide: "right", // עיגול בפינה ימנית עליונה, טקסט בצד ימין
     imageUrl:
@@ -38,8 +50,12 @@ export const SERVICES: ServiceCard[] = [
   {
     id: "perf",
     title: "ביצועים ואינטגרציות מתקדמות",
-    description:
-      "זמן טעינה מהיר, ציונים גבוהים, ועומסים מחושבים. next/image, SSR/SSG, Edge routing ו-Lighthouse Performance ≥ 90. תשלומים, אנליטיקות, טפסים, מערכת לקוחות ועוד. Stripe, Meta Pixel, GA4, מערכת טפסים + CRM ואוטומציות אימייל.",
+    description: [
+      "זמן טעינה מהיר ו-Lighthouse Performance ≥ 90",
+      "next/image, SSR/SSG ו-Edge routing",
+      "תשלומים: Stripe ואינטגרציות",
+      "אנליטיקות: Meta Pixel, GA4 ו-CRM"
+    ],
     corner: "tl",
     textSide: "left", // עיגול בפינה שמאלית עליונה, טקסט בצד שמאל
     imageUrl:
