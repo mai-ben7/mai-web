@@ -31,7 +31,7 @@ export default function LanguageToggle({ className = "" }: { className?: string 
       </span>
       {/* labels */}
       <span className="flex-1 text-xs font-semibold ps-3 pe-2 opacity-75">HE</span>
-      <span className="flex-1 text-xs font-semibold pe-3 ps-2 text-right opacity-75">EN</span>
+      <span className="flex-1 text-xs font-semibold pe-3 ps-2 text-end opacity-75">EN</span>
     </button>
   );
 }

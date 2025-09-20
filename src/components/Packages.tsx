@@ -10,6 +10,7 @@ import BackgroundVibe from "@/components/BackgroundVibe"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { fadeInUp, staggerContainer } from "@/lib/animations"
 import { useI18n } from "@/components/i18n/I18nProvider"
+import CurvedLoop from './advanced/CurvedLoop'
 
 const getPackages = (t: (key: string) => string) => [
   {
@@ -77,7 +78,25 @@ export function Packages() {
       
       {/* Background decorations removed to keep global background fully continuous */}
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="relative z-10 container">
+        {/* Curved Text Animation */}
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <CurvedLoop 
+            marqueeText="בחרו את החבילה שלכם ✦ Choose Your Package ✦ בחרו את החבילה שלכם ✦"
+            speed={1}
+            curveAmount={150}
+            direction="right"
+            interactive={false}
+            className="text-slate-700"
+          />
+        </motion.div>
+
         <motion.div
           className="mx-auto max-w-3xl text-center mb-20"
           variants={fadeInUp}
@@ -216,7 +235,7 @@ export function Packages() {
                         size="lg"
                       >
                         <span>{pkg.cta}</span>
-                        <ArrowRight className="w-4 h-4 ml-2" />
+                        <ArrowRight className="w-4 h-4 ms-2 flip-x-rtl" />
                       </Button>
                     </motion.div>
                   </div>

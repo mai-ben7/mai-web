@@ -50,7 +50,7 @@ export function Header() {
         "fixed top-0 left-0 right-0 z-[9999] transition-all duration-300",
         isScrolled 
           ? "bg-background/80 backdrop-blur-md border-b border-border/40" 
-          : "bg-transparent border-b border-transparent"
+          : "bg-white/20 backdrop-blur-sm border-b border-white/20"
       )}
       variants={slideInFromTop}
       initial="initial"
@@ -75,10 +75,7 @@ export function Header() {
           <Button
             variant="ghost"
             onClick={() => setMobileMenuOpen(true)}
-            className={cn(
-              "transition-colors",
-              isScrolled ? "text-foreground" : "text-white hover:text-white/80"
-            )}
+            className="transition-colors text-slate-800 hover:text-slate-600"
             suppressHydrationWarning
           >
             <span className="sr-only">פתח תפריט</span>
@@ -95,7 +92,7 @@ export function Header() {
                 "text-base font-semibold leading-6 transition-colors hover:bg-gradient-to-r hover:from-blue-500 hover:to-pink-500 hover:bg-clip-text hover:text-transparent cursor-pointer",
                 pathname === item.href
                   ? "bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent"
-                  : isScrolled ? "text-foreground" : "text-white"
+                  : "text-slate-800"
               )}
               onClick={(e) => {
                 if (item.href.startsWith('#')) {

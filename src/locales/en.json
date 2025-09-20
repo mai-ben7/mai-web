@@ -97,7 +97,9 @@
   "footer": {
     "description": "Building living websites that move people. Smart animations, modern design, and real results.",
     "navigation": "Navigation",
-    "contact": "Contact"
+    "contact": "Contact",
+    "copyright": "© 2025 mai web. All rights reserved to Mai Ben Sheva.",
+    "location": "Givatayim, Israel"
   },
   "cta": {
     "bookConsultation": "Book Free Consultation",

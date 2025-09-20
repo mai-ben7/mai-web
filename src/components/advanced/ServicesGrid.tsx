@@ -48,7 +48,7 @@ export default function ServicesGrid({
       data-o1-x="22%" data-o1-y="160rem" data-o1-size="36rem" data-o1-color="rgba(96,165,250,.45)" data-o1-alpha=".95"
       data-o2-x="80%" data-o2-y="190rem" data-o2-size="44rem" data-o2-color="rgba(167,139,250,.35)" data-o2-alpha=".9"
       className={clsx(
-        "min-h-screen py-20 px-8 xl:px-0 flex flex-col justify-center relative",
+        "min-h-screen py-20 flex flex-col justify-center relative",
         className
       )}
     >
@@ -59,15 +59,17 @@ export default function ServicesGrid({
         </svg>
       </span>
 
-      <h1 className="text-slate-900 text-4xl md:text-5xl xl:text-6xl font-semibold max-w-3xl mx-auto mb-16 leading-snug text-center">
-        {heading || t("services.title")}
-      </h1>
+      <div className="container">
+        <h1 className="text-slate-900 text-4xl md:text-5xl xl:text-6xl font-semibold max-w-3xl mx-auto mb-16 leading-snug text-center">
+          {heading || t("services.title")}
+        </h1>
 
-             <div className="grid text-left grid-cols-1 sm:grid-cols-2 gap-5 max-w-5xl mx-auto">
+        <div className="grid text-left grid-cols-1 sm:grid-cols-2 gap-5 max-w-5xl mx-auto">
          {reorderedItems.map((item, idx) => {
            return <Card key={`${item.id}-${idx}`} idx={idx} {...item} />;
          })}
        </div>
+      </div>
 
       {/* styled-jsx: pure CSS to replicate the CodePen circle/clip-path choreography */}
       <style jsx global>{`

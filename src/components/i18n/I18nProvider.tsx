@@ -9,6 +9,7 @@ type Dict = typeof en;
 
 type Ctx = {
   locale: Locale;
+  dir: "ltr" | "rtl";
   t: (path: string) => string;
   setLocale: (l: Locale) => void;
   toggle: () => void;
@@ -30,25 +31,27 @@ export default function I18nProvider({
 }) {
   const [locale, setLocale] = useState<Locale>(initialLocale);
   const router = useRouter();
+  const dir = locale === "he" ? "rtl" : "ltr";
 
   const dict: Dict = useMemo(() => (locale === "he" ? he : en), [locale]);
 
-  // update <html dir/lang> on locale change (client side safety)
+  // Keep <html> in sync client-side as well (SSR sets it initially)
   useEffect(() => {
     const root = document.documentElement;
     root.setAttribute("lang", locale);
-    root.setAttribute("dir", locale === "he" ? "rtl" : "ltr");
-  }, [locale]);
+    root.setAttribute("dir", dir);
+  }, [locale, dir]);
 
-  // persist to cookie + refresh server components
   const apply = (l: Locale) => {
     setLocale(l);
-    document.cookie = `lang=${l}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
+    document.cookie = `lang=${l}; path=/; max-age=${60*60*24*365}; samesite=lax`;
+    // refresh to update server components that read cookie for SSR direction
     router.refresh();
   };
 
   const value: Ctx = {
     locale,
+    dir,
     t: (path: string) => pick(dict, path),
     setLocale: apply,
     toggle: () => apply(locale === "he" ? "en" : "he")
@@ -59,6 +62,6 @@ export default function I18nProvider({
 
 export function useI18n() {
   const ctx = useContext(I18nCtx);
-  if (!ctx) throw new Error("useI18n must be used inside I18nProvider");
+  if (!ctx) throw new Error("useI18n must be used within I18nProvider");
   return ctx;
 }

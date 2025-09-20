@@ -15,7 +15,7 @@ import { FAQSection } from "@/components/FAQSection"
 import EnableSectionParallax from "@/components/parallax/EnableSectionParallax"
 import { useSectionTheme } from "@/lib/useSectionTheme"
 import { useI18n } from "@/components/i18n/I18nProvider"
-
+import CurvedLoop from './advanced/CurvedLoop';
 
 export function HomePageClient() {
   useSectionTheme()
@@ -55,7 +55,7 @@ export function HomePageClient() {
             name={t("hero.name")}
             role={t("hero.role")}
             blurb={t("hero.blurb")}
-            imageSrc="/images/mai.jpg"
+            imageSrc="/images/portrait.jpg"
             imageAlt="Mai Ben Sheva portrait"
             rtl={true}
           />

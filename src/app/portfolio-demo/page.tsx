@@ -7,7 +7,7 @@ export default function PortfolioDemoPage() {
         name="מאי בן שבע"
         title="Web Developer • Creative Engineer"
         subtitle="I craft advanced, animated sites for brands that need performance + polish."
-        avatarSrc="/images/mai.jpg"
+        avatarSrc="/images/portrait.jpg"
         ctaPrimaryHref="#work"
         ctaSecondaryHref="#contact"
       />

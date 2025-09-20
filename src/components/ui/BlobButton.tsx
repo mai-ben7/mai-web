@@ -3,11 +3,12 @@
 import React from "react";
 import "./blob-button.css";
 
-interface BlobButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface BlobButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary";
   href?: string;
-  as?: "button" | "a";
+  onClick?: () => void;
+  className?: string;
 }
 
 const BlobButton: React.FC<BlobButtonProps> = ({ 
@@ -16,22 +17,15 @@ const BlobButton: React.FC<BlobButtonProps> = ({
   className = "", 
   variant = "primary",
   href,
-  as = "button",
-  ...props 
 }) => {
-  const Component = as === "a" ? "a" : "button";
+  const Component = href ? "a" : "button";
   
-  const baseProps = {
-    className: `blob-btn ${className}`,
-    onClick,
-    suppressHydrationWarning: true,
-    ...props
-  };
-
-  const linkProps = href ? { href, ...baseProps } : baseProps;
+  const baseProps = href 
+    ? { href, className: `blob-btn ${className}`, suppressHydrationWarning: true }
+    : { onClick, className: `blob-btn ${className}`, suppressHydrationWarning: true };
 
   return (
-    <Component {...linkProps}>
+    <Component {...baseProps}>
       {children}
       <span className="blob-btn__inner">
         <span className="blob-btn__blobs">

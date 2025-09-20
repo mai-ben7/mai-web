@@ -84,14 +84,14 @@ export function FAQSection() {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-8 py-6 text-right flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full px-8 py-6 text-end flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
                   suppressHydrationWarning
                 >
                   <div className="flex items-center">
                     {openIndex === index ? (
-                      <ChevronUp className="w-6 h-6 text-blue-600 ml-4" />
+                      <ChevronUp className="w-6 h-6 text-blue-600 ms-4 flip-x-rtl" />
                     ) : (
-                      <ChevronDown className="w-6 h-6 text-gray-400 ml-4" />
+                      <ChevronDown className="w-6 h-6 text-gray-400 ms-4 flip-x-rtl" />
                     )}
                   </div>
                   <h3 className="text-lg lg:text-xl font-semibold text-gray-900 flex-1">
@@ -139,7 +139,7 @@ export function FAQSection() {
                   element.scrollIntoView({ behavior: 'smooth' })
                 }
               }}
-              className="text-blue-600 hover:text-blue-700 font-semibold mr-2 cursor-pointer"
+              className="text-blue-600 hover:text-blue-700 font-semibold me-2 cursor-pointer"
               suppressHydrationWarning
             >
               {t("faq.contactUs")}

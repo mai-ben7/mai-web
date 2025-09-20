@@ -60,12 +60,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieLang = (cookies().get("lang")?.value === "he") ? "he" : "en";
+  const cookieStore = await cookies();
+  const cookieLang = (cookieStore.get("lang")?.value === "he") ? "he" : "en";
   const dir = cookieLang === "he" ? "rtl" : "ltr";
 
   return (
@@ -75,7 +76,7 @@ export default function RootLayout({
           <GlobalBackground />
           <Header />
           {/* Section-level backgrounds will handle their own vibe */}
-          <main id="main" className="overflow-hidden">{children}</main>
+          <main id="main">{children}</main>
           <Footer />
           
           {/* SVG Filter for Blob Button Animation */}
@@ -106,3 +107,4 @@ export default function RootLayout({
     </html>
   );
 }
+

@@ -178,6 +178,11 @@ a-rays .a__scene path {
     box-sizing: border-box;
   }
   
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
   body {
     @apply text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
@@ -198,6 +203,32 @@ a-rays .a__scene path {
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+  }
+  
+  /* Layout system - container with 100px gutters (responsive) */
+  .container {
+    width: 100%;
+    max-width: min(1600px, 100%);
+    margin-inline: auto;
+    padding-inline: 100px;
+  }
+  
+  @media (max-width: 1024px) { 
+    .container { 
+      padding-inline: 48px; 
+    } 
+  }
+  
+  @media (max-width: 640px) { 
+    .container { 
+      padding-inline: 24px; 
+    } 
+  }
+  
+  /* Guardrails: prevent clipping on common wrappers */
+  main, section, .page, .wrapper {
+    max-width: none;
+    overflow: visible;
   }
   
   /* Reduced motion support */
@@ -231,6 +262,33 @@ a-rays .a__scene path {
 .animate-spin-slow-reverse {
   animation: spin-slow-reverse 25s linear infinite;
 }
+
+/* Logical direction helpers without external plugins */
+:root{ --nav-h:76px; }
+
+/* Base document background (already dark in your site) */
+html{ background:#0b1216; }
+
+/* Tailwind already has text-start/end, ms/me, ps/pe in recent versions.
+   Add a tiny set of utilities for icon mirroring and transforms that depend on dir. */
+@layer utilities {
+  /* Mirror an icon horizontally in RTL */
+  [dir="rtl"] .flip-x-rtl { transform: scaleX(-1); }
+  /* If an element already has transforms, compose with this helper: */
+  [dir="rtl"] .rtl-translate-x-1 { transform: translateX(-0.25rem); }
+  [dir="rtl"] .rtl-translate-x-2 { transform: translateX(-0.5rem); }
+
+  /* Force logical text alignment if older components used left/right */
+  .text-start { text-align: start; }
+  .text-end   { text-align: end; }
+
+  /* For scroll containers that should reverse direction on RTL */
+  [dir="rtl"] .dir-rtl { direction: rtl; }
+  [dir="ltr"] .dir-ltr { direction: ltr; }
+}
+
+/* Optional: make selection look good for both dirs */
+::selection{ background:#ff2d78; color:white; }
 
 /* Enhanced Portfolio Hero animations */
 @keyframes float-gentle {
@@ -336,3 +394,84 @@ a-rays .a__scene path {
 .animate-spin-slow-reverse {
   animation: spin-slow-reverse 25s linear infinite;
 }
+
+/* Logical direction helpers without external plugins */
+:root{ --nav-h:76px; }
+
+/* Base document background (already dark in your site) */
+html{ background:#0b1216; }
+
+/* Tailwind already has text-start/end, ms/me, ps/pe in recent versions.
+   Add a tiny set of utilities for icon mirroring and transforms that depend on dir. */
+@layer utilities {
+  /* Mirror an icon horizontally in RTL */
+  [dir="rtl"] .flip-x-rtl { transform: scaleX(-1); }
+  /* If an element already has transforms, compose with this helper: */
+  [dir="rtl"] .rtl-translate-x-1 { transform: translateX(-0.25rem); }
+  [dir="rtl"] .rtl-translate-x-2 { transform: translateX(-0.5rem); }
+
+  /* Force logical text alignment if older components used left/right */
+  .text-start { text-align: start; }
+  .text-end   { text-align: end; }
+
+  /* For scroll containers that should reverse direction on RTL */
+  [dir="rtl"] .dir-rtl { direction: rtl; }
+  [dir="ltr"] .dir-ltr { direction: ltr; }
+}
+
+/* Optional: make selection look good for both dirs */
+::selection{ background:#ff2d78; color:white; }
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+/* Spin animations for portfolio */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-slow-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-slow-reverse {
+  animation: spin-slow-reverse 25s linear infinite;
+}
+
+/* Logical direction helpers without external plugins */
+:root{ --nav-h:76px; }
+
+/* Base document background (already dark in your site) */
+html{ background:#0b1216; }
+
+/* Tailwind already has text-start/end, ms/me, ps/pe in recent versions.
+   Add a tiny set of utilities for icon mirroring and transforms that depend on dir. */
+@layer utilities {
+  /* Mirror an icon horizontally in RTL */
+  [dir="rtl"] .flip-x-rtl { transform: scaleX(-1); }
+  /* If an element already has transforms, compose with this helper: */
+  [dir="rtl"] .rtl-translate-x-1 { transform: translateX(-0.25rem); }
+  [dir="rtl"] .rtl-translate-x-2 { transform: translateX(-0.5rem); }
+
+  /* Force logical text alignment if older components used left/right */
+  .text-start { text-align: start; }
+  .text-end   { text-align: end; }
+
+  /* For scroll containers that should reverse direction on RTL */
+  [dir="rtl"] .dir-rtl { direction: rtl; }
+  [dir="ltr"] .dir-ltr { direction: ltr; }
+}
+
+/* Optional: make selection look good for both dirs */
+::selection{ background:#ff2d78; color:white; }

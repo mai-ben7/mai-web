@@ -8,10 +8,10 @@ import { useI18n } from "@/components/i18n/I18nProvider";
 
 export default function ProjectsHero({ featured }: { featured: Project[] }) {
   const scrollerRef = React.useRef<HTMLDivElement | null>(null);
-  const { t } = useI18n();
-
+  const { t, dir } = useI18n();
   const scrollBy = (dx: number) => {
-    scrollerRef.current?.scrollBy({ left: dx, behavior: "smooth" });
+    const step = dx * (dir === "rtl" ? -1 : 1);
+    scrollerRef.current?.scrollBy({ left: step, behavior: "smooth" });
   };
 
   return (
@@ -61,7 +61,7 @@ export default function ProjectsHero({ featured }: { featured: Project[] }) {
 
           <div
             ref={scrollerRef}
-            className="snap-x snap-mandatory overflow-x-auto no-scrollbar flex gap-6 pr-6"
+            className="snap-x snap-mandatory overflow-x-auto no-scrollbar flex gap-6 pe-6"
           >
             {featured.map(p => <ProjectPeekCard key={p.id} p={p} />)}
           </div>
@@ -69,14 +69,13 @@ export default function ProjectsHero({ featured }: { featured: Project[] }) {
 
         {/* Secondary CTA */}
         <div className="mt-12 text-center">
-          <BlobButton 
-            as="a"
+          <BlobButton
             href="#all-projects" 
             variant="primary"
             className="inline-flex items-center text-lg"
           >
             {t("projects.viewAllProjects")}
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 ms-2 flip-x-rtl" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </BlobButton>

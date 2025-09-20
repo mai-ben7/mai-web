@@ -18,7 +18,7 @@ export default function PortfolioHero({
   name = "מאי בן שבע",
   title = "מפתחת אתרים • מהנדסת יצירתית",
   subtitle = "אני בונה אתרים מתקדמים עם אנימציות חכמות שמבליטות את העסק שלך וממירות מבקרים ללקוחות.",
-  avatarSrc = "/images/mai.jpg",
+  avatarSrc = "/images/portrait.jpg",
   ctaPrimaryHref = "#packages",
   ctaSecondaryHref = "#booking",
 }: Props) {

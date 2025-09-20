@@ -389,7 +389,7 @@ export function ProjectsClient() {
 
         {/* Controls Section */}
         <section className="py-8 lg:py-12">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="container">
             <ProjectControls
               selectedPackage={selectedPackage}
               onPackageChange={setSelectedPackage}
@@ -404,7 +404,7 @@ export function ProjectsClient() {
 
         {/* Projects Grid */}
         <section className="py-8 lg:py-16">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="container">
             {filteredProjects.length > 0 ? (
               <motion.div
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"

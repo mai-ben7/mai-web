@@ -165,72 +165,72 @@ export default function ContactOnlyCard() {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Name */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 text-right mb-2">
+            <label className="block text-sm font-medium text-gray-700 text-end mb-2">
               {t("booking.contact.fullName")}
             </label>
             <Input
               type="text"
               value={formData.name}
               onChange={(e) => handleFormChange('name', e.target.value)}
-              className="border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-right"
+              className="border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-end"
               placeholder={t("booking.contact.namePlaceholder")}
               suppressHydrationWarning
             />
             {errors.name && (
-              <p className="text-red-500 text-sm text-right mt-1">{errors.name}</p>
+              <p className="text-red-500 text-sm text-end mt-1">{errors.name}</p>
             )}
           </div>
 
           {/* Email */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 text-right mb-2">
+            <label className="block text-sm font-medium text-gray-700 text-end mb-2">
               {t("booking.contact.email")}
             </label>
             <Input
               type="email"
               value={formData.email}
               onChange={(e) => handleFormChange('email', e.target.value)}
-              className="border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-right"
+              className="border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-end"
               placeholder={t("booking.contact.emailPlaceholder")}
               suppressHydrationWarning
             />
             {errors.email && (
-              <p className="text-red-500 text-sm text-right mt-1">{errors.email}</p>
+              <p className="text-red-500 text-sm text-end mt-1">{errors.email}</p>
             )}
           </div>
 
           {/* Phone */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 text-right mb-2">
+            <label className="block text-sm font-medium text-gray-700 text-end mb-2">
               {t("booking.contact.phone")}
             </label>
             <Input
               type="tel"
               value={formData.phone}
               onChange={(e) => handleFormChange('phone', e.target.value)}
-              className="border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-right"
+              className="border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-end"
               placeholder={t("booking.contact.phonePlaceholder")}
               suppressHydrationWarning
             />
             {errors.phone && (
-              <p className="text-red-500 text-sm text-right mt-1">{errors.phone}</p>
+              <p className="text-red-500 text-sm text-end mt-1">{errors.phone}</p>
             )}
           </div>
 
           {/* Message */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 text-right mb-2">
+            <label className="block text-sm font-medium text-gray-700 text-end mb-2">
               {t("booking.contact.message")}
             </label>
             <Textarea
               value={formData.message}
               onChange={(e) => handleFormChange('message', e.target.value)}
-              className="border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-right min-h-[120px]"
+              className="border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-end min-h-[120px]"
               placeholder={t("booking.contact.messagePlaceholder")}
               suppressHydrationWarning
             />
             {errors.message && (
-              <p className="text-red-500 text-sm text-right mt-1">{errors.message}</p>
+              <p className="text-red-500 text-sm text-end mt-1">{errors.message}</p>
             )}
           </div>
 
@@ -242,12 +242,12 @@ export default function ContactOnlyCard() {
               onCheckedChange={(checked) => handleFormChange('agreeToTerms', checked as boolean)}
               suppressHydrationWarning
             />
-            <label htmlFor="terms" className="text-sm text-gray-600 text-right leading-relaxed">
+            <label htmlFor="terms" className="text-sm text-gray-600 text-end leading-relaxed">
               {t("booking.contact.agreeToTerms")}
             </label>
           </div>
           {errors.agreeToTerms && (
-            <p className="text-red-500 text-sm text-right">{errors.agreeToTerms}</p>
+            <p className="text-red-500 text-sm text-end">{errors.agreeToTerms}</p>
           )}
 
           {/* Submit Button */}
@@ -268,7 +268,7 @@ export default function ContactOnlyCard() {
                 </div>
               ) : (
                 <>
-                  <Send className="h-5 w-5 ml-2" />
+                  <Send className="h-5 w-5 ms-2" />
                   {t("booking.contact.sendMessage")}
                 </>
               )}

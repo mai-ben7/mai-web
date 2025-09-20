@@ -58,8 +58,8 @@ export default function AboutPage() {
         <EnableSectionParallax />
         
         {/* Hero Section */}
-      <section className="pt-32 px-8 xl:px-0 flex flex-col justify-center relative">
-        <div className="container mx-auto px-6 lg:px-8 relative z-10">
+      <section className="pt-32 flex flex-col justify-center relative">
+        <div className="container relative z-10">
           {/* Headline block */}
           <header className="max-w-2xl mx-auto text-center">
             <span className="text-slate-700 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 justify-center">
@@ -80,7 +80,7 @@ export default function AboutPage() {
 
         {/* About Section */}
         <section className="py-24">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <motion.div
                 variants={fadeInUp}
@@ -121,7 +121,7 @@ export default function AboutPage() {
 
         {/* Skills Section */}
         <section className="py-24 bg-bg-soft">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="container">
             <motion.div
               className="mx-auto max-w-2xl text-center mb-16"
               variants={fadeInUp}
@@ -168,7 +168,7 @@ export default function AboutPage() {
 
         {/* Workflow Section */}
         <section className="py-24">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="container">
             <motion.div
               className="mx-auto max-w-2xl text-center mb-16"
               variants={fadeInUp}
@@ -214,7 +214,7 @@ export default function AboutPage() {
 
         {/* CTA Section */}
         <section className="py-24 bg-brand text-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="container">
             <motion.div
               className="mx-auto max-w-2xl text-center"
               initial={{ opacity: 0, y: 20 }}
@@ -229,12 +229,6 @@ export default function AboutPage() {
                 {t("about.cta.description")}
               </p>
               <div className="mt-10 flex items-center justify-center gap-4">
-                <Button asChild size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold">
-                  <Link href="/">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    {t("cta.backToHome")}
-                  </Link>
-                </Button>
                 <BlobButton 
                   variant="primary"
                   className="text-lg"
@@ -247,6 +241,12 @@ export default function AboutPage() {
                 >
                   {t("about.cta.button")}
                 </BlobButton>
+                <Button asChild size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold">
+                  <Link href="/">
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    {t("cta.backToHome")}
+                  </Link>
+                </Button>
               </div>
             </motion.div>
           </div>

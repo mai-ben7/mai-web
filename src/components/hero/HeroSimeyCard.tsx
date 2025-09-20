@@ -76,12 +76,12 @@ export default function HeroSimeyCard({
   return (
     <section
       id="hero"
-      className={`relative min-h-[100svh] grid place-items-center px-6 ${className}`}
+      className={`relative min-h-[100svh] grid place-items-center ${className}`}
       dir={rtl ? "rtl" : "ltr"}
       aria-label="Intro"
     >
       {/* Global background handles the gradient/orbs to avoid section seams */}
-      <div className="mx-auto w-full max-w-[1200px] grid gap-10 md:grid-cols-[1.05fr,.95fr] items-center">
+      <div className="container grid gap-10 md:grid-cols-[1.05fr,.95fr] items-center">
         {/* Copy */}
         <div className="order-2 md:order-1 relative z-10">
           <p className="text-sm tracking-widest uppercase text-slate-700 font-semibold">{t("hero.portfolio")}</p>

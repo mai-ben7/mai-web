@@ -70,7 +70,7 @@ export default function AdvancedCapabilities({
         className={clsx("relative", className)}
         aria-label="Advanced capabilities"
       >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="container">
           <header className={clsx("mb-10", rtl ? "text-right" : "text-left")}>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">{title}</h2>
             {subtitle && <p className="mt-3 text-base text-white/70">{subtitle}</p>}
@@ -103,7 +103,7 @@ export default function AdvancedCapabilities({
       className={clsx("relative", className)}
       aria-label="Advanced capabilities"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="container">
         {/* Heading */}
         <header className={clsx("mb-10", rtl ? "text-right" : "text-left")}>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">{title}</h2>

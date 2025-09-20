@@ -16,7 +16,7 @@ export function middleware(req: NextRequest) {
 
   const existing = req.cookies.get("lang")?.value;
   if (!existing) {
-    const country = req.geo?.country || "";
+    const country = (req as any).geo?.country || "";
     const lang = country === "IL" ? "he" : "en";
     res.cookies.set("lang", lang, {
       path: "/",

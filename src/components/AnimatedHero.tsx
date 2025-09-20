@@ -48,7 +48,7 @@ export function AnimatedHero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 pt-20">
-      <div className="relative z-20 container mx-auto px-6 lg:px-8">
+      <div className="relative z-20 container">
         <motion.div
           className="grid lg:grid-cols-2 gap-12 items-center"
           variants={containerVariants}
@@ -56,7 +56,7 @@ export function AnimatedHero() {
           animate="visible"
         >
           {/* Main Content - Left Side */}
-          <motion.div className="text-right order-1 lg:order-1 relative z-20" variants={itemVariants}>
+          <motion.div className="text-end order-1 lg:order-1 relative z-20" variants={itemVariants}>
             <div className="bg-black/40 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl">
               <motion.div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6"

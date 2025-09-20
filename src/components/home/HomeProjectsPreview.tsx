@@ -25,16 +25,19 @@ export default function HomeProjectsPreview({
   id?: string;
   rtl?: boolean;
 }) {
-  const { t } = useI18n();
+  const { t, dir } = useI18n();
   const scrollerRef = React.useRef<HTMLDivElement | null>(null);
-  const scrollBy = (dx: number) => scrollerRef.current?.scrollBy({ left: dx, behavior: "smooth" });
+  const scrollBy = (dx: number) => {
+    const step = dx * (dir === "rtl" ? -1 : 1);
+    scrollerRef.current?.scrollBy({ left: step, behavior: "smooth" });
+  };
   const [hoveredId, setHoveredId] = React.useState<string | null>(null);
   const [cursorPos, setCursorPos] = React.useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   return (
-    <section id={id} className="min-h-screen py-20 px-8 xl:px-0 flex flex-col justify-center relative" dir={rtl ? "rtl" : "ltr"}>
+    <section id={id} className="min-h-screen py-20 flex flex-col justify-center relative" dir={rtl ? "rtl" : "ltr"}>
 
-      <div className="container mx-auto px-6 lg:px-8 relative z-10">
+      <div className="container relative z-10">
         {/* Headline block */}
         <header className="max-w-2xl mx-auto text-center mb-16">
           <span className="text-indigo-700 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center gap-3 justify-center">
@@ -57,7 +60,7 @@ export default function HomeProjectsPreview({
           {/* arrows (desktop) */}
           <div className="hidden md:flex absolute right-4 -top-12 items-center gap-2 z-20">
             <button 
-              onClick={() => scrollBy(rtl ? +480 : -480)} 
+              onClick={() => scrollBy(-480)} 
               className="rounded-full border border-cyan-400/30 bg-cyan-400/10 p-3 hover:bg-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300 backdrop-blur-sm" 
               aria-label={t("projects.scrollLeft")}
               suppressHydrationWarning
@@ -68,7 +71,7 @@ export default function HomeProjectsPreview({
             </button>
             
             <button 
-              onClick={() => scrollBy(rtl ? -480 : +480)} 
+              onClick={() => scrollBy(+480)} 
               className="rounded-full border border-pink-400/30 bg-pink-400/10 p-3 hover:bg-pink-400/20 hover:border-pink-400/50 transition-all duration-300 backdrop-blur-sm" 
               aria-label={t("projects.scrollRight")}
               suppressHydrationWarning
@@ -81,7 +84,7 @@ export default function HomeProjectsPreview({
 
           <div
             ref={scrollerRef}
-            className="snap-x snap-mandatory overflow-x-auto no-scrollbar flex gap-4 pr-4"
+            className="snap-x snap-mandatory overflow-x-auto no-scrollbar flex gap-4 pe-4"
           >
             {items.map((p) => (
               <article
@@ -174,14 +177,13 @@ export default function HomeProjectsPreview({
 
         {/* Secondary CTA */}
         <div className="mt-12 text-center">
-          <BlobButton 
-            as="a"
-            href={ctaHref} 
+          <BlobButton
+            href={ctaHref}
             variant="primary"
             className="inline-flex items-center text-lg"
           >
             {ctaLabel || t("projects.viewAllProjects")}
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 me-2 flip-x-rtl" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </BlobButton>
